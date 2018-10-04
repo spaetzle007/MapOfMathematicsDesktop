@@ -15,6 +15,11 @@ import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
 
+import org.scilab.forge.jlatexmath.ParseException;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TeXIcon;
+
 import com.spaetzle007.MapOfMathematicsLibraries.AccessException;
 import com.spaetzle007.MapOfMathematicsLibraries.Linked;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedList;
@@ -34,6 +39,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 public class MainViewport extends JFrame {
 		//Hilfsvariablen für LinkedList
@@ -117,7 +123,17 @@ public class MainViewport extends JFrame {
 			headerviewport.setText(actual.getName());	
 					
 			//Text
-			viewport.setIcon(actual.getJLatexMathRepresentation());
+			TeXFormula  formula = null;
+			try {
+				formula = new TeXFormula(actual.getJLatexMathRepresentation());
+			} catch (ParseException f) {
+				formula=new TeXFormula("\\textbf{Ungültige LaTeX-Eingabe!}");
+			}
+					
+			TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 17);
+			BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+			icon.paintIcon(new JLabel(), img.getGraphics(), 0, 0);
+			viewport.setIcon(icon);
 			
 			//list aktualisieren
 			listhandler.clear();
@@ -129,18 +145,18 @@ public class MainViewport extends JFrame {
 				}
 			} else {
 				if(!actual.getName().equals("Start")) {
-					listhandler.addElement(new ColoredString(actual.getSupLink(), (byte)4));
+					listhandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
 				}
 				if(!actual.getName().equals("Start")) {
 					for(int i=0; i<actualEqualLinks.size(); i++) {
-						listhandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)0));
+						listhandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
 					}
 				}
 				for(int i=0; i<actualSubLinks.size(); i++) {
-					listhandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)1));
+					listhandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)2));
 				}
-				for(int i=0; i<actual.getConnecteds().size(); i++) {
-					listhandler.addElement(new ColoredString(actual.getConnecteds().get(i), (byte)2));
+				for(int i=0; i<actual.getLinks().size(); i++) {
+					listhandler.addElement(new ColoredString(actual.getLinks().get(i)));
 				}
 			}
 		}

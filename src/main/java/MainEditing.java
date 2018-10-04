@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,8 +32,15 @@ import com.spaetzle007.MapOfMathematicsLibraries.LatexText;
 import com.spaetzle007.MapOfMathematicsLibraries.Linked;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedList;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedParseException;
+import com.spaetzle007.MapOfMathematicsLibraries.LinkedString;
 
 import javax.swing.SwingConstants;
+
+import org.scilab.forge.jlatexmath.ParseException;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TeXIcon;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -207,9 +215,9 @@ private JPanel contentPane;
 			}
 			//Verknüpfungen löschen
 			for(int i=0; i<list.size(); i++) {
-				for(int j=0; j<list.get(i).getConnecteds().size(); j++) {
-					if(del.equals(list.get(i).getConnecteds().get(j))) {
-						list.get(i).removeConnected(j);
+				for(int j=0; j<list.get(i).getLinks().size(); j++) {
+					if(del.equals(list.get(i).getLinks().get(j))) {
+						list.get(i).removeLink(j);
 					}
 				}
 			}
@@ -246,12 +254,12 @@ private JPanel contentPane;
 				return;
 			}
 			//Bei Namensänderung Namen auch in Links ändern
-			list.changeConnectedsName(before, actual);
+			list.changeLinksName(before, actual);
 			before = list.get(actualpos);
 			
 			//Bei Löschen/Hinzufügen von Links diese wieder bijektiv machen
 			
-			//list.calculateConnecteds(actual);
+			//list.calculateLinkss(actual);
 		} else if(e.getSource()==back) {
 			updateEditMode();
 			editMode(false);
@@ -272,7 +280,17 @@ private JPanel contentPane;
 				scrollertestViewport.setVisible(true);
 				testing=true;
 				
-				testViewport.setIcon(new LatexText(content.getText(), 3).getJLatexMathRepresentation());
+				TeXFormula  formula = null;
+				try {
+					formula = new TeXFormula(actual.getJLatexMathRepresentation());
+				} catch (ParseException f) {
+					formula=new TeXFormula("\\textbf{Ungültige LaTeX-Eingabe!}");
+				}
+						
+				TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 17);
+				BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+				icon.paintIcon(new JLabel(), img.getGraphics(), 0, 0);
+				testViewport.setIcon(icon);
 			}
 			
 		}
@@ -316,30 +334,30 @@ private JPanel contentPane;
 			return;
 		}
 		//Bei Namensänderung Namen auch in Links ändern
-		list.changeConnectedsName(before, actual);
+		list.changeLinksName(before, actual);
 		before = list.get(actualpos);
 		
 		//Bei Löschen/Hinzufügen von Links diese wieder bijektiv machen
 		
-		//list.calculateConnecteds(actual);
+		//list.calculateLinkss(actual);
 		
 		//Links neu anzeigen
 		linkshandler.clear();
 		actualEqualLinks=list.getEqualLinks(actual);
 		actualSubLinks=list.getSubLinks(actual);
 		if(!actual.getName().equals("Start")) {
-			linkshandler.addElement(new ColoredString(actual.getSupLink(), (byte)4));
+			linkshandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
 		}
 		if(!actual.getName().equals("Start")) {
 			for(int i=0; i<actualEqualLinks.size(); i++) {
-				linkshandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)0));
+				linkshandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
 			}
 		}
 		for(int i=0; i<actualSubLinks.size(); i++) {
-			linkshandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)1));
+			linkshandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)2));
 		}
-		for(int i=0; i<actual.getConnecteds().size(); i++) {
-			linkshandler.addElement(new ColoredString(actual.getConnecteds().get(i), (byte)2));
+		for(int i=0; i<actual.getLinks().size(); i++) {
+			linkshandler.addElement(new ColoredString(actual.getLinks().get(i)));
 		}
 	}
 	/**
@@ -400,14 +418,14 @@ private JPanel contentPane;
 		ColoredString con = linkshandler.get(selectedIndex);
 		if(linkshandler.get(selectedIndex).getType()!=(byte)2) {return;}	//Kann nur crosslinks löschen
 		//Link löschen
-		actual.removeConnected(con.getName());
+		actual.removeLink(con.getName());
 		
 		updateEditMode();
 		
 		//Bijektion des crosslinks löschen
-		for(int j=0; j<list.get(list.search(con.getName())).getConnecteds().size(); j++) {		//Iteration über Connecteds von "con"	
-			if(list.get(list.search(con.getName())).getConnecteds().get(j).equals(actual.getName())) {	//Connected hat gleicher Name wie "actual"
-				list.get(list.search(con.getName())).removeConnected(j);
+		for(int j=0; j<list.get(list.search(con.getName())).getLinks().size(); j++) {		//Iteration über Linkss von "con"	
+			if(list.get(list.search(con.getName())).getLinks().get(j).equals(actual.getName())) {	//Links hat gleicher Name wie "actual"
+				list.get(list.search(con.getName())).removeLink(j);
 				break;
 			}
 		}
@@ -424,9 +442,9 @@ private JPanel contentPane;
 		int index = linkselection.getSelectedIndex();
 		
 		//Bedingungen: Noch nicht in Liste enthalten und nicht Name des eigenen Eintrags
-		if(!actual.getConnecteds().contains(comboboxhandler.getElementAt(index)) && !comboboxhandler.getElementAt(index).equals(actual.getName())) {	//Link noch nicht enthalten & Link ist nicht eigener Name
-			actual.addConnected(comboboxhandler.getElementAt(index));
-			list.get(list.search(comboboxhandler.getElementAt(index))).addConnected(actual.getName());
+		if(!actual.getLinks().contains(comboboxhandler.getElementAt(index)) && !comboboxhandler.getElementAt(index).equals(actual.getName())) {	//Link noch nicht enthalten & Link ist nicht eigener Name
+			actual.addLink(new LinkedString(comboboxhandler.getElementAt(index), (byte)0));
+			list.get(list.search(comboboxhandler.getElementAt(index))).addLink(new LinkedString(actual.getName(), (byte)0));
 		}
 		
 		updateEditMode();
