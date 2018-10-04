@@ -37,7 +37,6 @@ import java.awt.event.MouseEvent;
 
 public class MainViewport extends JFrame {
 		//Hilfsvariablen für LinkedList
-		//Another testing...
 		private LinkedList links;
 		private Linked actual;
 		private ArrayList<String> actualEqualLinks;
