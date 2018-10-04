@@ -345,10 +345,10 @@ private JPanel contentPane;
 		linkshandler.clear();
 		actualEqualLinks=list.getEqualLinks(actual);
 		actualSubLinks=list.getSubLinks(actual);
-		if(!actual.getName().equals("Start")) {
+		if(!actual.getName().equals("Mathematik")) {
 			linkshandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
 		}
-		if(!actual.getName().equals("Start")) {
+		if(!actual.getName().equals("Mathematik")) {
 			for(int i=0; i<actualEqualLinks.size(); i++) {
 				linkshandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
 			}

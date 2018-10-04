@@ -90,7 +90,7 @@ public class MainViewport extends JFrame {
 			} catch(LinkedParseException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 			}
-			actual = links.get(links.search("Start"));
+			actual = links.get(links.search("Mathematik"));
 			
 			//Searchmode-Variablen initialisieren
 			searchmode=false;
@@ -144,10 +144,10 @@ public class MainViewport extends JFrame {
 					listhandler.addElement(new ColoredString(searchresults.get(i), (byte)3));
 				}
 			} else {
-				if(!actual.getName().equals("Start")) {
+				if(!actual.getName().equals("Mathematik")) {
 					listhandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
 				}
-				if(!actual.getName().equals("Start")) {
+				if(!actual.getName().equals("Mathematik")) {
 					for(int i=0; i<actualEqualLinks.size(); i++) {
 						listhandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
 					}
