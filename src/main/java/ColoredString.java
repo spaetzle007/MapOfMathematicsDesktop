@@ -16,7 +16,7 @@ public class ColoredString {
 	}
 	public ColoredString(LinkedString str) {
 		this.str=str.getName();
-		type=(byte) (str.getType()+(byte)4);
+		type=(byte) (str.getType()+(byte)4);	//typen ab 4 sind für verschiedene Linktypen reserviert
 	}
 	public byte getType() {return type;}
 	public String getName() {return str;}
