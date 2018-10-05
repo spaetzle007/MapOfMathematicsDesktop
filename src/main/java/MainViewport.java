@@ -33,6 +33,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -60,6 +63,7 @@ public class MainViewport extends JFrame {
 		private DefaultListModel<ColoredString> listhandler;
 		private JTextField search;
 		private JButton back;
+		private GridBagLayout layout;
 
 		/**
 		 * Main-Methode zum Starten der Ansicht
@@ -164,25 +168,34 @@ public class MainViewport extends JFrame {
 		 */
 		private void createGUIBasics() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(0, 0, (int)Variables.standardsize.getWidth(), (int)Variables.standardsize.getHeight());								//Format: 1920x1080
-			setResizable(false);
-			contentPane = new JPanel();
+			setBounds(0, 0, (int)Variables.standardsize.getWidth(), (int)Variables.standardsize.getHeight()); 	//Format: 1920x1080
+			contentPane = new JPanel(new GridBagLayout());
 			contentPane.setBackground(new Color(255, 204, 153));
 			contentPane.setBorder(null);
 			setContentPane(contentPane);
 			setTitle("MapOfMathematics");
-			contentPane.setLayout(null);
 		}
 		/**
 		 * GUI erstellen
 		 */
 		private void createGUI() {
+			GridBagConstraints c=new GridBagConstraints();
+			//Position in Grid: gridx und gridy
+			//Größe des Fensters: gridwidth: immer 1; gridy; immer 1, bis auf viewportscroller(3)
+			//Ausfüllmodus: Immer horizontal, außer bei viewportscroller(both)
+			//Rand: insets für Rand auf allen 4 Seiten immer 10
+			//Ausrichtung(anchor)
+			//Ausfüllrechte (weightx, weighty)
+			c.anchor=GridBagConstraints.FIRST_LINE_START;
+			c.insets=new Insets(5,5,5,5);
+			
+			c.weightx=1.0;
 			//Viewport initialisieren
 			headerviewport = new JLabel();
 			headerviewport.setFont(new Font(Variables.fontname, Font.BOLD, 36));
 			headerviewport.setHorizontalAlignment(SwingConstants.CENTER);
-			headerviewport.setBounds(10, 10, (int)Variables.standardsize.getWidth()-20, 60);
-			contentPane.add(headerviewport);
+			c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
+			contentPane.add(headerviewport, c);
 			
 			viewport = new JLabel();
 			viewport.setBorder(null);
@@ -191,16 +204,18 @@ public class MainViewport extends JFrame {
 			
 			viewportscroller= new JScrollPane();
 			viewportscroller.setBorder(null);
-			viewportscroller.setBounds(10, 70, (int)Variables.standardsize.getWidth()-Variables.rechterRand-10,(int)Variables.standardsize.getHeight()-110);
 			viewportscroller.setViewportView(viewport);
-			contentPane.add(viewportscroller);
+			c.gridx=0; c.gridy=1; c.gridheight=3; c.fill=GridBagConstraints.BOTH; c.weighty=1.0;
+			contentPane.add(viewportscroller, c);
 			
+			c.weightx=0.0;
 			//list initialisieren
 			headerlist = new JLabel("Verknüpfte Themen");
 			headerlist.setFont(new Font(Variables.fontname, Font.BOLD, 20));
 			headerlist.setHorizontalAlignment(SwingConstants.CENTER);
-			headerlist.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 70, Variables.rechterRand-20, 40); //810; 280
-			contentPane.add(headerlist);
+			headerlist.setVerticalAlignment(SwingConstants.CENTER);
+			c.gridx=1; c.gridy=0; c.gridheight=1; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
+			contentPane.add(headerlist, c);
 			
 			list = new JList<ColoredString>();
 			list.setBorder(null);
@@ -239,9 +254,9 @@ public class MainViewport extends JFrame {
 			list.setModel(listhandler);
 			listscroller= new JScrollPane();
 			listscroller.setBorder(null);
-			listscroller.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 110, Variables.rechterRand-20, 830); //810, 280
 			listscroller.setViewportView(list);
-			contentPane.add(listscroller);
+			c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
+			contentPane.add(listscroller, c);
 
 			//Such-Feld initialisieren
 			search = new JTextField("Suche");
@@ -249,7 +264,6 @@ public class MainViewport extends JFrame {
 			search.setBorder(null);
 			search.setFont(new Font(Variables.fontname, Font.PLAIN, 18));
 			search.setBackground(Color.decode("#FFB366"));
-			search.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 950, Variables.rechterRand-20, 40);
 			search.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
 					search.setText("");
@@ -275,20 +289,21 @@ public class MainViewport extends JFrame {
 					}
 				}
 			});
-			contentPane.add(search);
+			c.gridx=1; c.gridy=2; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
+			contentPane.add(search, c);
 			
 			//Zurück-Button
 			back=new JButton("Zurück");
 			back.setBorder(null);
 			back.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 			back.setBackground(Color.decode("#FFB366"));
-			back.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 1000, Variables.rechterRand-20, 40);
 			back.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					actual=links.get(links.search(actual.getSupLink()));
 					update();
 				}
 			});
-			contentPane.add(back);
+			c.gridx=1; c.gridy=3; c.weighty=0.0;
+			contentPane.add(back, c);
 		}
 }
