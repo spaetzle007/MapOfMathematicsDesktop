@@ -122,14 +122,13 @@ public class MainViewport extends JFrame {
 			//Überschrift
 			headerviewport.setText(actual.getName());	
 					
-			//Text
+			//LatexText
 			TeXFormula  formula = null;
 			try {
 				formula = new TeXFormula(actual.getJLatexMathRepresentation());
 			} catch (ParseException f) {
 				formula=new TeXFormula("\\textbf{Ungültige LaTeX-Eingabe!}");
 			}
-					
 			TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 17);
 			BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_4BYTE_ABGR);
 			icon.paintIcon(new JLabel(), img.getGraphics(), 0, 0);
@@ -224,6 +223,7 @@ public class MainViewport extends JFrame {
 					if(e.getClickCount()==2) {					//Mit Doppelclick neuen Eintrag auswählen
 						JList<String> treffer = (JList<String>)e.getSource();
 						int index = treffer.locationToIndex(e.getPoint());
+						
 						if(searchmode) {
 							actual=links.get(links.search(searchresults.get(index)));
 						} else {
@@ -261,6 +261,7 @@ public class MainViewport extends JFrame {
 				public void keyPressed(KeyEvent e) {
 					if(e.getKeyCode()==KeyEvent.VK_ENTER) {			//Suchen mit "ENTER"
 						searchmode=true;
+						
 						listhandler.clear();
 						searchresults.clear();
 						for(int i=0; i<links.size(); i++) {

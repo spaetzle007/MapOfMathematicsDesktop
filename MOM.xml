@@ -1,3 +1,6 @@
+
+
+
 <LinkedList>
 	<Linked>
 		<title>Abbildungen</title>
@@ -33,7 +36,7 @@
 	<Linked>
 		<title>Analysis</title>
 		<text></text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Basis und Dimension eines Vektorraums</title>
@@ -364,7 +367,7 @@
 	<Linked>
 		<title>Lineare Algebra</title>
 		<text>\textbf{Lineare Algebra}\\Die Lineare Algebra beschäftigt sich mit Vektorräumen und linearen Abbildungen \\dazwischen, was insbesondere lineare Gleichungssysteme und Matrizen mit einschließt.</text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Lineare Hülle von Vektoren</title>
@@ -385,12 +388,12 @@
 	<Linked>
 		<title>Logik</title>
 		<text>\textbf{Grundprinzipien}\\1. Prinzip der Zweiwertigkeit: Jede Aussage hat genau einen von zwei Wahrheitswerten:\\wahr oder falsch\\2. Prinzip der Kompositionalität: Der Wahrheitswert einer zusammengesetzten Aussagen\\ist durch den Wahrheitswert ihrer Teilaussagen und deren Verknüpfung eindeutig bestimmt\\\textbf{Verknüpfung von Aussagen}\\Junktoren\\-Negation $\lnot A$/$\bar A$ (nicht A)\\-Konjugation $A\land B$ (A und B)\\-Disjunktion $A\lor B$ (A oder B)\\-Implikation $A\Rightarrow B$\\-Äquivalenz $A\Leftrightarrow B$\\Quantoren\\-Allquantor $\forall$ (für alle ...)\\-Existenzquantor $\exists$ (es gibt mindestens ein...) / $\exists !$ (es gibt genau ein...)\\\textbf{Defininieren}\\-Definiere $a$ gleich wie $b$: $a:=b$\\-Definiere die Aussage $A$ als Äquivalent zu $B$: $A:\Leftrightarrow B$</text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Mathematik</title>
 		<text>\textbf{Servus!}</text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Matrix</title>
@@ -411,7 +414,7 @@
 	<Linked>
 		<title>Mengenlehre</title>
 		<text>\textbf{Definition}\\Eine Menge $M$ ist ein Verbund einzelner Elemente. Dabei interessiert nur, welche Elemente \\enthalten sind. Reihenfolge und mehrfaches Auftreten der Elemente interessiert nicht.\\Die leere Menge $\emptyset$ ist die einzige Menge, die keine Elemente enthält.\\\textbf{Kardinalität}\\Die Mächtigkeit oder Kardinalität einer Menge $\vert M\vert$ ist die Anzahl unterschiedlicher \\Elemente in der Menge.\\\textbf{Beziehungen zwischen Mengen und deren Elementen}\\-$x$ ist Element von $M$: $x\in M$ (oder $x\notin M$)\\-$M$ ist Teilmenge von $N$: $M\subseteq N$\\-$M$ ist echte Teilmenge von $N$: $M\subset N$\\\textbf{Mengenoperationen}\\-Schnittmenge $M\cap N:=\{ x\ |\ x\in M\land x\in N\}$\\-Vereinigung $M\cup N:=\{ x\ |\ x\in M\lor x\in N \}$\\-Differenz $M\setminus N:=\{x\ |\ x\in M\land x\notin N\}$\\-Kartesisches Produkt $M\times N:=\{(x,y)\ |\ x\in M\land y\in N\}$\\-Potenzmenge $\mathcal{P}(M):=\{N\ |\ N\subseteq M\}$, $\vert\mathcal{P}(M)\vert=2^{\vert M\vert}$\\\textbf{Abzählbar und überabzählbar unendliche Mengen}\\Menge $M$ heißt abzählbar unendlich $:\Leftrightarrow$ $\vert M\vert=\infty$, es gibt eine Bijektion zwischen $M$ und $\mathbb{N}$\\Menge $M$ heißt überabzählbar unendlich $:\Leftrightarrow$ $\vert M\vert=\infty$, keine Bijektion zwischen $M$ und $\mathbb{N}$\\\textbf{Gleichheit von Mengen}\\$A=B$ $:\Leftrightarrow$ $(A\subseteq B)\land(B\subseteq A)$</text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Metrischer Raum</title>
@@ -597,7 +600,7 @@
 	<Linked>
 		<title>Topologie</title>
 		<text>\textbf{Topologie}\\Die Topologie beschäftigt sich mit den Eigenschaften mathematischer Strukturen, \\die unter stetigen Verformungen erhalten bleiben. </text>
-		<suplink>Start</suplink>
+		<suplink>Mathematik</suplink>
 	</Linked>
 	<Linked>
 		<title>Transformationsformel</title>
@@ -682,4 +685,4 @@
 		<text>\textbf{Definition}\\$A, B \in \mathbb{C}^{n \times n}$ heißen ähnlich ($A \sim B$) $\Leftrightarrow$ $\exists _{Matrix \ S\ invertierbar}: B = S^{-1} \cdot A \cdot S$\\\textbf{Eigenschaften}\\-Gleich: \\ -Charakteristisches Polynom\\ -Eigenwerte mit alg. und geo. Vielfachheiten\\ -Spur(Summe der Eigenwerte)\\ -Determinante(Produkt der Eigenwerte)\\ -Eigenschaften: Invertierbarkeit, Diagonalisierbarkeit, Triagulierbarkeit</text>
 		<suplink>Diagonalisierung</suplink>
 	</Linked>
-</LinkedList><118.09.04>
+</LinkedList><118.09.05>

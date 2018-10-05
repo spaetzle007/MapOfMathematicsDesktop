@@ -61,7 +61,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	private JScrollPane scrollerlist;
 	private JList<String> overviewlist;
 	private DefaultListModel<String> listhandler;
-	private JButton neu, edit, delete, show, updateContent, synchronisieren;
+	private JButton neu, edit, delete, show, sicherung, synchronisieren;
 	private JTextField search;
 	private JLabel overview;
 	//Suche-Hilfsvariablen
@@ -72,10 +72,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	//LinkedList-Hilfsvariablen
 	private ArrayList<String> actualSubLinks;
 	private ArrayList<String> actualEqualLinks;
-	private Linked actual;		//Bearbeiteter Eintrag
-	private Linked before;		//Speicherung des Eintrags vor Editieren
-	private int actualpos;		//Position des bearbeiteten Eintrags
-	private boolean neuer;		//Erstelle neuen Eintrag
+	private int act;		//Position des bearbeiteten Eintrags
 	//GUI-Komponenten
 	private JScrollPane scrollertext, scrollerlinks, scrollertestViewport;
 	private JTextPane content;
@@ -83,7 +80,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	private boolean testing;
 	private JList<ColoredString> links;
 	private DefaultListModel<ColoredString> linkshandler;
-	private JButton save, back, showtestViewport;
+	private JButton back, showtestViewport;
 	private JTextField title;
 	private JComboBox<String> linkselection;
 	private DefaultComboBoxModel<String> comboboxhandler;
@@ -110,15 +107,12 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	public MainEditing() {
 		//Grundeinstellungen
 		try {
-			try {
 				list = new LinkedList();
-			} catch (LinkedParseException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
-			}
 		} catch(AccessException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 			System.exit(1);
-			
+		} catch(LinkedParseException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 		}
 
 		searchresults=new ArrayList<String>();
@@ -145,23 +139,6 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		//Modus einstellen
 		setContentPane(selectionMode);
 		updateSelectionMode();
-		
-	}
-	/**
-	 * GUI-Komponenten des Auswahlmodus ansteuern
-	 */
-	
-	/**
-	 * GUI-Komponenten des Editiermodus ansteuern
-	 */
-	
-	/**
-	 * Hilfsmethode zum Verlassen der Testansicht
-	 */
-	private void quitTestView() {
-		showtestViewport.setText("Testansicht");
-		scrollertestViewport.setVisible(false);
-		testing=false;
 	}
 	/**
 	 * Buttons in den beiden Modi: Neuer Eintrag, Eintrag bearbeiten, Eintrag löschen, Alles Anzeigen, Speichern, Zurück
@@ -172,42 +149,33 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			
 			linkshandler.clear();
 			
-			actualpos=list.size();
-			actual = new Linked();
-			before = new Linked();
-			neuer=true;
+			act=list.size();
+			list.add(new Linked());
 			
-			title.setText("");
-			content.setText("");
+			title.setText(list.get(act).getName());
+			content.setText(list.get(act).getEditModeRepresentation());
 			
 			updateEditMode();
-			updateComboBox();
 		} else if(e.getSource()==edit) {
 			editButton();
 		} else if(e.getSource()==delete) {
+			//String aus markiertem Index gewinnen
 			int selectedIndex = overviewlist.getSelectedIndex();
-
 			String del;
 			if(searchmode) {
 				del=searchresults.get(selectedIndex);
 			} else {
 				del=list.get(selectedIndex).getName();
 			}
-			//Verknüpfungen löschen
-			for(int i=0; i<list.size(); i++) {
-				for(int j=0; j<list.get(i).getLinks().size(); j++) {
-					if(del.equals(list.get(i).getLinks().get(j))) {
-						list.get(i).removeLink(j);
-					}
-				}
-			}
-			list.remove(del);
+			//Eintrag löschen
+			list.removeLinked(del);
 			
 			updateSelectionMode();
 		} else if(e.getSource()==show) {
 			searchmode=false;
+			search.setText("Suche");
 			updateSelectionMode();
-		} else if(e.getSource()==updateContent) {
+		} else if(e.getSource()==sicherung) {
 			list.sicherungskopie();
 		} else if(e.getSource()==synchronisieren) {
 			try {
@@ -219,30 +187,13 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			} catch (IOException e1) {
 				JOptionPane.showMessageDialog(null, "Dropbox-Synchronisierung nicht möglich! Keine Internetverbindung", "Fehler", 3);
 			}
-		} else if(e.getSource()==save) {
-			//Daten aus GUI einlesen
-			actual.setName(title.getText());
-			actual.setLatexText(new LatexText(content.getText(), 3));
-			
-			//Bedingung für Abspeichern: Eintrag hat Namen
-			if(!actual.getName().equals("") || actual.getName() != null) {
-				if(neuer) {
-					list.add(new Linked(actual));
-				}
-				list.set(actualpos, actual);
-			} else {
-				return;
-			}
-			//Bei Namensänderung Namen auch in Links ändern
-			list.changeLinksName(before, actual);
-			before = list.get(actualpos);
-			
-			//Bei Löschen/Hinzufügen von Links diese wieder bijektiv machen
-			
-			//list.calculateLinkss(actual);
 		} else if(e.getSource()==back) {
 			updateEditMode();
+			linkshandler.clear();
+			comboboxhandler.removeAllElements();
+			
 			setContentPane(selectionMode);
+			
 			
 			searchmode=false;
 			updateSelectionMode();
@@ -261,7 +212,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 				
 				TeXFormula  formula = null;
 				try {
-					formula = new TeXFormula(actual.getJLatexMathRepresentation());
+					formula = new TeXFormula(list.get(act).getJLatexMathRepresentation());
 				} catch (ParseException f) {
 					formula=new TeXFormula("\\textbf{Ungültige LaTeX-Eingabe!}");
 				}
@@ -296,38 +247,23 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	 */
 	private void updateEditMode() {
 		//Daten aus GUI einlesen
-		actual.setName(title.getText());
-		actual.setLatexText(new LatexText(content.getText(), 3));
+		if(!list.get(act).getName().equals(title.getText())) {
+			list.setLinkedsName(list.get(act), title.getText());
+		}
+		list.get(act).setLatexText(new LatexText(content.getText(), 3));
 		
 		//Infos ausgeben
-		title.setText(actual.getName());		
-		content.setText(actual.getEditModeRepresentation());
+		title.setText(list.get(act).getName());		
+		content.setText(list.get(act).getEditModeRepresentation());
 		
-		//Bedingung für Abspeichern: Eintrag hat Namen
-		if(!actual.getName().equals("") && actual.getName() != null) {
-			if(neuer) {
-				list.add(new Linked());
-			}
-			list.set(actualpos, actual);
-		} else {
-			return;
-		}
-		//Bei Namensänderung Namen auch in Links ändern
-		list.changeLinksName(before, actual);
-		before = list.get(actualpos);
-		
-		//Bei Löschen/Hinzufügen von Links diese wieder bijektiv machen
-		
-		//list.calculateLinkss(actual);
-		
-		//Links neu anzeigen
+		//Linklist aktualisieren
 		linkshandler.clear();
-		actualEqualLinks=list.getEqualLinks(actual);
-		actualSubLinks=list.getSubLinks(actual);
-		if(!actual.getName().equals("Mathematik")) {
-			linkshandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
+		actualEqualLinks=list.getEqualLinks(list.get(act));
+		actualSubLinks=list.getSubLinks(list.get(act));
+		if(!list.get(act).getName().equals("Mathematik")) {
+			linkshandler.addElement(new ColoredString(list.get(act).getSupLink(), (byte)0));
 		}
-		if(!actual.getName().equals("Mathematik")) {
+		if(!list.get(act).getName().equals("Mathematik")) {
 			for(int i=0; i<actualEqualLinks.size(); i++) {
 				linkshandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
 			}
@@ -335,15 +271,10 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		for(int i=0; i<actualSubLinks.size(); i++) {
 			linkshandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)2));
 		}
-		for(int i=0; i<actual.getLinks().size(); i++) {
-			linkshandler.addElement(new ColoredString(actual.getLinks().get(i)));
+		for(int i=0; i<list.get(act).getLinks().size(); i++) {
+			linkshandler.addElement(new ColoredString(list.get(act).getLinks().get(i)));
 		}
-	}
-	/**
-	 * Einträge der ComboBox aktualisieren
-	 * (Nur bei Starten des Editiermodus nötig)
-	 */
-	private void updateComboBox() {
+		//ComboBox aktualisieren
 		comboboxhandler.removeAllElements();
 		for(int i=0; i<list.size(); i++) {
 			comboboxhandler.addElement(list.get(i).getName());
@@ -353,91 +284,21 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	 * Hilfsmethode für den über 2 Wege aufrufbaren Edit-Button im Übersichtsmenü
 	 */
 	private void editButton() {
-		neuer=false;
-		
-		//Überprüfen: Existiert ausgewählter Eintrag?
 		int selectedIndex = overviewlist.getSelectedIndex();
 		if(searchmode) {
-			actualpos=list.search(searchresults.get(selectedIndex));
+			act=list.search(searchresults.get(selectedIndex));
 		} else {
-			actualpos=selectedIndex;
+			act=selectedIndex;
 		}
-		if(actualpos>=0) {
-			actual = list.get(actualpos);
-			before=new Linked(list.get(actualpos));
-			linkshandler.clear();
-			
-			setContentPane(editMode);
-			
-			title.setText(actual.getName());
-			content.setText(actual.getText());;
-			
-			updateEditMode();
-			updateComboBox();
-		}
-	}
-	private void viewportSearch() {
-		searchmode=true;
-		searchresults.clear();
-		listhandler.clear();
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getName().contains(search.getText())) {
-				searchresults.add(list.get(i).getName());
-			}
-		}
-		updateSelectionMode();
-	}
-	/**
-	 * Hilfsmethode zum Eintrag in LinkedList löschen
-	 * Speichert
-	 */
-	private void deleteInLinkedList() {		
-		int selectedIndex = links.getSelectedIndex();
-		ColoredString con = linkshandler.get(selectedIndex);
-		if(linkshandler.get(selectedIndex).getType()!=(byte)2) {return;}	//Kann nur crosslinks löschen
-		//Link löschen
-		actual.removeLink(con.getName());
 		
-		updateEditMode();
+		setContentPane(editMode);
 		
-		//Bijektion des crosslinks löschen
-		for(int j=0; j<list.get(list.search(con.getName())).getLinks().size(); j++) {		//Iteration über Linkss von "con"	
-			if(list.get(list.search(con.getName())).getLinks().get(j).equals(actual.getName())) {	//Links hat gleicher Name wie "actual"
-				list.get(list.search(con.getName())).removeLink(j);
-				break;
-			}
-		}
+		title.setText(list.get(act).getName());
+		content.setText(list.get(act).getStandardRepresentation());;
 		
 		updateEditMode();
 	}
-	/**
-	 * Hilfsmethode zum crosslink in LinkedList hinzufügen
-	 * Speichert
-	 * Keine Neuberechnungen nötig
-	 */
-	private void addCrossName() {		
-		updateEditMode();
-		int index = linkselection.getSelectedIndex();
-		
-		//Bedingungen: Noch nicht in Liste enthalten und nicht Name des eigenen Eintrags
-		if(!actual.getLinks().contains(comboboxhandler.getElementAt(index)) && !comboboxhandler.getElementAt(index).equals(actual.getName())) {	//Link noch nicht enthalten & Link ist nicht eigener Name
-			actual.addLink(new LinkedString(comboboxhandler.getElementAt(index), (byte)0));
-			list.get(list.search(comboboxhandler.getElementAt(index))).addLink(new LinkedString(actual.getName(), (byte)0));
-		}
-		
-		updateEditMode();
-	}
-	/**
-	 * Hilfsmethode zum SupName ändern
-	 * Speichert nicht
-	 */
-	private void addSupLink() {
-		updateEditMode();
-		int index = linkselection.getSelectedIndex();
-		actual.setSupLink(comboboxhandler.getElementAt(index));
-		
-		updateEditMode();
-	}
+
 	/**
 	 * JFrame erstellen
 	 */
@@ -520,14 +381,14 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		show.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 160, Variables.rechterRand-20, 40);
 		show.addActionListener(this);
 		selectionMode.add(show);
-		updateContent=new JButton("Sicherungskopie");
-		updateContent.setBorder(null);
-		updateContent.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
-		updateContent.setForeground(new Color(255, 255, 255));
-		updateContent.setBackground(new Color(0, 0, 153));
-		updateContent.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 300, Variables.rechterRand-20, 40);
-		updateContent.addActionListener(this);
-		selectionMode.add(updateContent);
+		sicherung=new JButton("Sicherungskopie");
+		sicherung.setBorder(null);
+		sicherung.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
+		sicherung.setForeground(new Color(255, 255, 255));
+		sicherung.setBackground(new Color(0, 0, 153));
+		sicherung.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 300, Variables.rechterRand-20, 40);
+		sicherung.addActionListener(this);
+		selectionMode.add(sicherung);
 		synchronisieren=new JButton("Dbx-Synchro");
 		synchronisieren.setBorder(null);
 		synchronisieren.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
@@ -554,7 +415,15 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			public void keyReleased(KeyEvent e) {}
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-					viewportSearch();
+					searchmode=true;
+					searchresults.clear();
+					listhandler.clear();
+					for(int i=0; i<list.size(); i++) {
+						if(list.get(i).getName().contains(search.getText())) {
+							searchresults.add(list.get(i).getName());
+						}
+					}
+					updateSelectionMode();
 				}
 			}
 		});
@@ -598,7 +467,17 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		links.addKeyListener(new KeyListener() {		//Einträge in list löschen
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_DELETE) {
-					deleteInLinkedList();
+					updateEditMode();
+					
+					int selectedIndex = links.getSelectedIndex();
+					ColoredString col=linkshandler.get(selectedIndex);
+					if(col.getType()<(byte)4) {return;}	//Kann nur crosslinks löschen
+					LinkedString link = new LinkedString(col.getName(), (byte)(col.getType()-4));
+					
+					//Link löschen
+					list.removeLink(list.get(act), link);
+					
+					updateEditMode();
 				}
 			}
 			public void keyPressed(KeyEvent e) {}
@@ -623,11 +502,17 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		linkselection.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 10, Variables.rechterRand-20, 40);
 		linkselection.addKeyListener(new KeyListener() {		//Einträge in list hinzufügen(Crosslinks)
 			public void keyPressed(KeyEvent e) {}
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {	//Verschiedene Linkarten hinzufügen mit verschiedenen Tasten
 				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-					addCrossName();
+					int index = linkselection.getSelectedIndex();
+					list.addLink(list.get(act), new LinkedString(comboboxhandler.getElementAt(index), (byte)0));
+					
+					updateEditMode();
 				} else if(e.getKeyCode()==KeyEvent.VK_SPACE) {
-					addSupLink();
+					int index = linkselection.getSelectedIndex();
+					list.get(act).setSupLink(comboboxhandler.getElementAt(index));
+					
+					updateEditMode();
 				}
 			}
 			public void keyTyped(KeyEvent e) {}
@@ -651,14 +536,6 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		editMode.add(scrollertestViewport);
 		
 		//Optionen
-		save = new JButton("Speichern");
-		save.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
-		save.setBorder(null);
-		save.setForeground(new Color(255, 255, 255));
-		save.setBackground(new Color(0, 0, 153));
-		save.setBounds(10, (int)Variables.standardsize.getHeight()-80, 200, 40);
-		save.addActionListener(this);
-		editMode.add(save);
 		back = new JButton("Zurück");
 		back.setBorder(null);
 		back.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
@@ -672,7 +549,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		showtestViewport.setBorder(null);
 		showtestViewport.setForeground(new Color(255, 255, 255));
 		showtestViewport.setBackground(new Color(0, 0, 153));
-		showtestViewport.setBounds(220, (int)Variables.standardsize.getHeight()-80, 200, 40);
+		showtestViewport.setBounds(10, (int)Variables.standardsize.getHeight()-80, 200, 40);
 		showtestViewport.addActionListener(this);
 		editMode.add(showtestViewport);
 	}
@@ -684,6 +561,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	@Override
 	public void windowClosing(WindowEvent arg0) {
 		setVisible(false);
+		System.out.println(list.convertToXML());
 		
 		try {
 			list.saveList();
@@ -692,6 +570,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		} catch (DbxException | IOException e) {
 			JOptionPane.showMessageDialog(null, "Dropbox-Synchronisierung nicht möglich! Keine Internetverbindung", "Fehler", 3);
 		}
+		
 	}
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {}
