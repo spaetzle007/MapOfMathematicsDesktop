@@ -388,6 +388,11 @@
 		<suplink>Start</suplink>
 	</Linked>
 	<Linked>
+		<title>Mathematik</title>
+		<text>\textbf{Servus!}</text>
+		<suplink>Start</suplink>
+	</Linked>
+	<Linked>
 		<title>Matrix</title>
 		<text>\textbf{Definition}\\$A \in  \mathbb{K}^{n \times m}$ ist eine $n \times m$-Matrix  mit $n$ Zeilen und $m$ Spalten und eine Darstellung der \\linearen Abbildung $L_A: \mathbb{K}^m \to\mathbb{K}^n$\\\textbf{Zusammenhang Matrizen - Lineare Abbildungen}\\Bijektion: Matrix $\Leftrightarrow$ Endlichdimensionale Lineare Abbildung\\Im Gegensatz zu $L$ hängt die Matrix $M_{BA}(L)$ von den Basen $A$ des $\mathbb{K}^n$ und $B$ des  $\mathbb{K}^m$ ab\\\textbf{Besondere Matrizen:}\\Einheitsmatrix $1\!\!1$, Diagonalmatrix, obere/untere Dreiecksmatrix, quadratische Matrix\\Wichtige Darstellungen: Zeilenstufenform\\\textbf{Matrizensumme: } $(A+B)_{ij}=(A)_{ij}+(B)_{ij}$\\\textbf{Matrizenprodukt: }$(A \cdot B)_{ij}=\sum_{k=1}^m (A)_{ik} (B)_{kj}$\\-Operation führt von Zustand rechts zu Zustand links(Wie bei Verkettungen)\\-Assoziativ, distributiv, aber nicht kommutativ\\-Kommutator $[A, B] := A \cdot B -B \cdot A$\\\textbf{Funktionen auf Matrizen}\\-Transponierte $A^T$: $(A^T)_{ij}=(A)_{ji}$  \\ -Es gilt: $(A \cdot B)^\dagger = B^\dagger \cdot A^\dagger$, $\forall_{\alpha \in \mathbb{K}}: (\alpha A)^\dagger = \overline{\alpha} A^\dagger$, $ (A^\dagger)^{-1}= (A^{-1})^\dagger$\\-Adjungierte $A^\dagger$: $A^\dagger= \overline{A^T}$ (Es gilt: $\langle u | A \cdot v \rangle = \langle A^\dagger u | v \rangle$)\\-Inverse $A^{-1}$: Nur für quadratische Matrix \\ -Kriterium: $det(A)\neq 0$ oder $A\cdot x=0$ hat keine Lösung\\-Adjunkte $adj(A)$: ($adj(A))_{ij}=(-1)^{i+j} A_{ji}$ mit Submatrix $A_{ij}$\\-Spur $spur(A)$: $spur (A) = \sum_{i=1}^n (A)_{ii}$\\\textbf{Eigenschaften einer Matrix}\\-Symmetrisch(reell)/Hermitesch(komplex) $\Leftrightarrow$ $A=A^T$/$A=A^\dagger$ \\-Orthogonal($\mathbb{R}$)/Unitär($\mathbb{C}$) $\Leftrightarrow$ Spalten bilden Orthonormalbasis $\Leftrightarrow$ $\langle A \cdot u | A \cdot v \rangle = \langle u | v \rangle$\\-Regulär/Singulär $\Leftrightarrow$ $det A\neq 0$/$det A=0$\\-$A$ und $B$ sind äquivalent $\Leftrightarrow$ $Rang(A)=Rang(B)$ $\Leftrightarrow$ $\exists_{Z, S\ invertierbar}: Z\cdot A\cdot S=B$\\ $\Leftrightarrow$ $A$ und $B$ beschreiben selbe lineare Abbildung bezüglich verschiedener Basen\\-Rang: Anzahl linear unabhängiger Zeilen-/Spaltenvektoren / $dim(Bild(A))$\\ $\forall _{A \in \mathbb{R}^{n \times m}}: Spaltenrang(A)=Zeilenrang(A)=Rang(A)$\\-Dimensionsformel: $n=dim(Kern(A))+dim(Bild(A))$\\\textbf{Koordinatentransformationsmatrix}\\Basen $A, B$ von $\mathbb{K}^n$ $\Rightarrow$ Koordinatentransformationsmatrix $M_{BA}(1\!\!1): \mathbb{K}^n_A\to\mathbb{K}^n_B$ \\Spalten von $M_{BA}(1\!\!1)$ sind Basisvektoren der Basis $A$ bezüglich Basis $B$\\\textbf{Achtung vor Zeilen-/Spaltenvertauschung}\\$n$ Zeilen und $m$ Spalten: $n\times m$-Matrix, $A \in \mathbb{K}^{n\times m}$, $L_A: \mathbb{K}^m\to\mathbb{K}^n$\\-Matrizenmultiplikation von rechts(Urbild) nach links(Bild): $L_{AB}=L_{AA'}L_{A'B'}L_{B'B}$</text>
 		<suplink>Lineare Abbildungen</suplink>
@@ -572,11 +577,6 @@
 		<title>Skalarprodukt</title>
 		<text>\textbf{Definition}\\Ein Skalarprodukt ordnet zwei Elementen eines Vektorraumes $V$ einen Skalar zu:\\$\langle \cdot | \cdot \rangle : V \times V \to \mathbb{K}$ \\Axiome für Skalarprodukt($x, y, z \in V$, $\alpha \in \mathbb{R}$)\\1. Positive Definitheit: $\langle x | x \rangle \ge 0, \langle x | x \rangle = 0 \Leftrightarrow x = 0$\\2. Symmetrisch: $\langle x | y \rangle = \overline{\langle y | x \rangle}$\\3. Linearität: $\langle x+y|z \rangle = \langle x|z \rangle + \langle y|z \rangle,  \langle \alpha x | y \rangle = \alpha \langle x| y \rangle$ \\\textbf{Eigenschaften}\\-Cauchy-Schwarz-Ungleichung $\| \langle x | y \rangle \| \le \langle x | x \rangle ^\frac{1}{2} \langle y | y \rangle ^\frac{1}{2}$</text>
 		<suplink>Vektor</suplink>
-	</Linked>
-	<Linked>
-		<title>Start</title>
-		<text>\textbf{Servus!}</text>
-		<suplink>Start</suplink>
 	</Linked>
 	<Linked>
 		<title>Stetigkeit in einem metrischen Raum</title>
