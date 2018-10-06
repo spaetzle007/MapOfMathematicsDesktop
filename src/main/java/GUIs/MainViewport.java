@@ -60,7 +60,6 @@ public class MainViewport extends JPanel {
 		private ArrayList<String> searchresults;
 		
 		//GUI-Komponenten
-		private JPanel contentPane;
 		private JLabel viewport, headerlist, headerviewport;
 		private JScrollPane listscroller, viewportscroller;
 		private JList<Hilfsklassen.ColoredString> list;
