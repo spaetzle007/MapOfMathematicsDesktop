@@ -1,0 +1,688 @@
+
+
+
+<LinkedList>
+	<Linked>
+		<title>Abbildungen</title>
+		<text>\textbf{Definition}\\$f:X\to Y$ heißt Abbildung/Funktion $:\Leftrightarrow$ $G_f\subset X\times Y$ ist linkstotal und rechtseindeutig \\$X$ heißt Definitionsmenge von $f$\\$Y$ heißt Wertemenge von $f$\\$G_f=\{(x,f(x))\ |\ x\in X\}\subset X\times Y$ heißt Graph von $f$\\Bild $f(X)=\{y\in Y\ |\ \exists_{x\in X}: f(x)=y\}\subset Y$\\Urbild $f^{-1}(Y)=\{x\in X\ |\ \exists_{y\in Y}: f(x)=y\}\subset X$\\Schreibweise: $f: \begin{cases}X\to Y\\x\mapsto f(x)\end{cases}$\\\textbf{Injektiv, surjektiv, bijektiv}\\Funktion $f:X\to Y$ heißt injektiv $:\Leftrightarrow$ $f\subset X\times Y$ ist linkseindeutig\\Funktion $f:X\to Y$ heißt surjektiv $:\Leftrightarrow$ $f\subset X\times Y$ ist rechtstotal\\Funktion $f:X\to Y$ heißt bijektiv $:\Leftrightarrow$ $f\subset X\times Y$ ist linkseindeutig und rechtstotal\\\textbf{Komposition von Abbildungen}\\$f:X\to Y$, $g:Y\to Z$ Abbildungen\\$g\circ f: X\to Z$ heißt Komposition von $f$ und $g$\\-assoziativ: $f_1\circ (f_2\circ f_3)=(f_1\circ f_2)\circ f_3$\\\textbf{Eigenschaften von Abbildungen}\\-Beschränktheit und Monotonie werden wie bei Folgen erklärt</text>
+		<suplink>Mengenlehre</suplink>
+		<link>Folgen;0</link>
+	</Linked>
+	<Linked>
+		<title>Abelsche Gruppe</title>
+		<text>\textbf{Definition}\\$(M, \ast)$ heißt abelsche Gruppe $\Leftrightarrow (M, \ast)$ ist eine Gruppe und kommutativ</text>
+		<suplink>Algebraische Strukturen</suplink>
+	</Linked>
+	<Linked>
+		<title>Ableitungsregel in mehreren Veränderlichen</title>
+		<text>\textbf{Linearität}\\$D\subset\mathbb{R}^n$ offen, $a\in D$, $f,g: D\to\mathbb{R}^m$ in $a$ differenzierbar $\Rightarrow$ \\$f+g: D\to\mathbb{R}^m$ und $\alpha f: D\to\mathbb{R}^m$ ($\alpha\in\mathbb{R}$) in $a$ differenzierbar mit\\Summenregel $(f+g)'(a)=f'(a)+g'(a)$ und Faktorregel $(\alpha f)'(a)=\alpha f'(a)$\\\textbf{Kettenregel}\\$D \subset \mathbb{R}^n$ offen, $f:D \to \mathbb{R}^m$ differenzierbar in $x_0 \in D$, $F \subset \mathbb{R}^m$ offen, $f(D) \subset G$, \\$g:G \to \mathbb{R}^p$ differenzierbar in $ y_0 := f(x_0)$\\$\Rightarrow$ $g \circ f:D \to \mathbb{R}^p$ differenzierbar in $ x_0$ und $(g \circ f)'(x_0)=g'(f( x_0))\ f'(x_0)$\\-Kettenregel ist Matrizenprodukt\\\textbf{Produkt- und Quotientenregel für $m=1$}\\Produktregel: $fg$ in $a$ differenzierbar $\Rightarrow$ $(fg)'(a)=f'(a)g(a)+f(a)g'(a)$\\Produktregel für Skalarprodukt: $\langle f | g\rangle'(a) = \langle f'(a) | g(a)  \rangle + \langle f(a) | g'(a) \rangle$\\Produktregel für Vektorprodukt: $(f\times g)'(a)=f'(a)\times g(a) + f(a) \times g'(a)$\\Quotientenregel: $\[ \frac{f}{g} \]$ in $a$ differenzierbar $\Rightarrow$ $(\[ \frac{f}{g} \])'(a)=\[ \frac{f'(a)g(a) - f(a)g'(a)}{g(a)^2} \]$</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Ableitungsregeln in einer Veränderlichen</title>
+		<text>\textbf{Linearität}\\$f, g$ differenzierbar, $\alpha\in\mathbb{R}$ $\Rightarrow$ $(f+g)$, $(\alpha f)$ differenzierbar\\\textbf{Produkt- und Quotientenregel}\\$f, g$ differenzierbar $\Rightarrow$ $(fg)'=f'g+g'f$, $\[(\frac{f}{g})'=\frac{f'g-fg'}{g^2}\]$\\\textbf{Kettenregel}\\$f,g$ differenzierbar auf passendem Definitionsbereich $\Rightarrow$ $(g\circ f)'=g'(f)f'$\\\textbf{Ableitung der Umkehrfunktion}\\$f \in C^1(D), f^{-1}\in C^1(D)$ $\Rightarrow$ $(f^{-1})'(x)=\[\frac{1}{f'(f^{-1}(x))}\]</text>
+		<suplink>Differentialrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Absolute Konvergenz</title>
+		<text>\textbf{Definition}\\$\[\sum_{k=1}^\infty a_k \]$ absolut konvergent $:\Leftrightarrow $\[\sum_{k=1}^\infty \vert a_k\vert\]$ konvergent\\\textbf{Bemerkungen}\\-Absolute Konvergenz ist stärker als Konvergenz\\-Unterschied zu normaler Konvergenz, wenn Reihenglieder negativ sind</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Algebraische Strukturen</title>
+		<text>\textbf{Definition}\\Eine Menge, versehen mit Verknüpfugen auf dieser Menge.\\\textbf{Beispiele}\\Gruppe, Ring, Körper, Algebra</text>
+		<suplink>Lineare Algebra</suplink>
+	</Linked>
+	<Linked>
+		<title>Analysis</title>
+		<text></text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Basis und Dimension eines Vektorraums</title>
+		<text>\textbf{Definition}\\Eine Menge $M$ von Vektoren aus dem $K$-Vektorraum $(V,+,*)$ heißt Basis von $V$ $\Leftrightarrow$\\1. Die Vektoren in $M$ sind linear unabhängig\\2. Die Vektoren in $M$ spannen V auf: $Lin_{K} (M) = V$\\Die Dimension von V ist die Anzahl der Elemente einer Basis von V: $dim(V)=\vert M \vert$\\\textbf{Basis finden}\\a) Basis zu einer Matrix\\ Spalten einer Matrix sind ein Erzeugendensystem bezüglich der Standardbasis in $\mathbb{K}^n$\\ -Keine Vorgaben\\  Matrix mit Spaltenumformungen vereinfachen und Basis(Spaltenvektoren) ablesen\\ -Manche Vektoren der Basis vorgegeben\\  Ergänze gegebene Vektoren in Matrix und verfahre wie oben\\b) Basis zu einer Menge von Vektoren durch Wegstreichen\\ Systematisch: $(B\setminus \{x_j\}) \cdot \alpha = x_j$ hat Lösung $\Rightarrow$ $B':=B\setminus \{x_j\}$\\ Raten: $\exists_{\alpha_i\in\mathbb{R}}: x_j=\[ \sum_{i=1, i\neq j}^n \alpha_i x_i \]$ $\Rightarrow$ $B'=B \setminus \{x_j\}$\\c) Basis zu Vektorraum, der durch Beziehungen zwischen Komponenten gegeben ist\\ 1) Beziehungen als LGS schreiben\\ 2) LGS in Abhängigkeit von Komponenten lösen $\Rightarrow$ Lösungsvektor $x(t_1, \dots t_n)$\\ 3) $\forall_{i\in\{1, \dots n\}}: x_i:=x(0_1 \dots 0_{i-1}, 1_i, 0_{i+1}, \dots 0_n)$ $\Rightarrow$ Basis $\{x_1, \dots x_n\}$\\\textbf{Basiswechsel}\\a) Basiswechsel von Matrizen $A\to A'$, $B\to B'$\\ -Koordinatentransformationsmatrix $M_{BA}(1\!\!1)=M_{BE}(1\!\!1)\cdot M_{EA}(1\!\!1)$ \\  Spalten von $M_{BA}(L)$ sind deren Bild bezüglich der Basis $B$\\  Koordinatentransformationsmatrizen sind invertierbar: $M_{AB}(L)^{-1}=M_{BA}(L)$ \\ -$M_{B'A'}(L)=M_{B'B}(1\!\!1)\cdot M_{BA}(L)\cdot M_{AA'}(1\!\!1)$\\ -Zum Verständnis: $L_Ex_E=L_ET_A^{-1}T_Ax_E=L_{EA}x_A%$</text>
+		<suplink>Vektorraum</suplink>
+	</Linked>
+	<Linked>
+		<title>Bekannte Grenzwerte von Folgen</title>
+		<text>\textbf{Bekannte Grenzwerte von Folgen}\\$(1+\frac{a}{n})^n \to e^a$\\$\sqrt[n]{n}\to 1$</text>
+		<suplink>Folgen</suplink>
+	</Linked>
+	<Linked>
+		<title>Bekannte Grenzwerte von Reihen</title>
+		<text>\textbf{Bekannte Grenzwerte von Reihen}\\-$\[\forall_{\vert x\vert <1}:\sum_{k=0}^\infty x^k\ = \frac{1}{1-x} \]$ (Geometrische Reihe)\\-$\[\forall_{\alpha>1}: \sum_{k=1}^\infty \frac{1}{k^\alpha}\]$ divergent (Harmonische Reihe)\\-$\[e^x=\sum_{k=1}^\infty \frac{x^k}{k!}\]$</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Cauchy-Folge</title>
+		<text>\textbf{Definition}\\Folge $a_n$ heißt Cauchyfolge $:\Leftrightarrow$ $\forall_{\epsilon>0}\exists_{n_0\in\mathbb{N}}: \forall_{n,m \ge n_0}: \vert a_m-a_n\vert <\epsilon$\\\textbf{Bemerkungen}\\-Jede Cauchyfolge in einem vollständigen Raum (z.b. $\mathbb{R}$, $\mathbb{C}$) ist konvergent</text>
+		<suplink>Folgen</suplink>
+	</Linked>
+	<Linked>
+		<title>Charakteristisches Polynom</title>
+		<text>\textbf{Definition}\\$Â \in \mathbb{K}^{n \times n}$\\$p_Â : \mathbb{K} \to \mathbb{K}$; $\lambda \mapsto p_Â(\lambda) = det(Â - \lambda 1\!\!1$) heißt charakteristisches Polynom zu $Â$\\\textbf{Eigenschaften}\\-Die Lösungen des charakteristischen Polynoms sind die Eigenwerte von $Â$</text>
+		<suplink>Diagonalisierung</suplink>
+	</Linked>
+	<Linked>
+		<title>Cramersche Regel</title>
+		<text>\textbf{LGS lösen}\\$Â \in \mathbb{K}^{n \times n}$, $\vec x,\vec y \in \mathbb{K}^n$, $Â \cdot \vec x = \vec y$ hat eindeutige Lösung \\$\Rightarrow$ $x_i = \frac{1}{det(Â)} det((Â)^1 \dots (Â)^{i-1}, (Â)^{i+1} \dots (Â)^n)$ mit Spaltenvektoren $a^i \in \mathbb{K}^n$ aus $Â$\\\textbf{Matrix invertieren}\\$Â \in \mathbb{K}^{n \times n}$, $det(Â) \neq 0$ \\$\Rightarrow$  $(Â)_{ij}^{-1} = \frac{1}{det(A)} (-1)^{i+j} det(Â_{ij})$ (mit Minorante $Â_{ij}$ wie in Laplaceschem Entwicklungssatz)</text>
+		<suplink>Determinante</suplink>
+		<link>Lineares Gleichungssystem;0</link>
+		<link>Matrix;0</link>
+	</Linked>
+	<Linked>
+		<title>Darstellung von Flächen</title>
+		<text>\textbf{Implizite Darstellung}\\$A=\{ \left(\begin{array}{c}x_1\\\vdots\\x_n\end{array}\right)\ |\ F(x_1, \dots x_n) =0 \}$, $F:\mathbb{R}^n\to\mathbb{R}^m$ Bedingungen\\-Gleichungen auflösen nach einer Variablen $\Rightarrow$ Explizite Darstellung\\-Normaleneinheitsvektor in $\mathbb{R}^3$: $n(x,y,z)=\[ \frac{\nabla F(x,y,z)}{\| \nabla F(x,y,z) \|}\]$\\\textbf{Explizite Darstellung}\\$A=\{ \left(\begin{array}{c}x_1\\\vdots\\x_{n-1}\\ f(x_1, \dots x_{n-1})\end{array}\right)\ |\ (x_1, \dots x_{n-1})\in U  \}$\\-Spezialfall der Parameterdarstellung: Keine Einschränkungen an Variablen\\-Normaleneinheitsvektor in $\mathbb{R}^3$: \\ $n(x,y,f(x,y))=\[ \frac{1}{\sqrt{1+(\partial_xf(x,y))^2+(\partial_yf(x,y))^2}} \left(\begin{array}{c}-\partial_xf(x,y)\\-\partial_yf(x,y)\\1\end{array}\right) \]$\\\textbf{Parameterdarstellung}\\$A=\{ \left(\begin{array}{c}f_1(x_1, \dots x_n)\\\vdots\\f_n(x_1, \dots, x_n)\end{array}\right)\ |\ x_1\in [a_1, b_1], \dots x_n\in [a_n, b_n] \}$\\-Normaleneinheitsvektor in $\mathbb{R}^3$: $n(g(u,v))=\[ \frac{\partial_ug(u,v)\times \partial_vg(u,v))}{\| \partial_ug(u,v)\times \partial_vg(u,v)) \|} \]$\\\textbf{Oberflächenelemente}\\Skalares Oberflächenelement $do:=\|n(g(u,v))\|\ d(u,v)$\\Vektorielles Oberflächenelement $do:=n(g(u,v))\ d(u,v)$</text>
+		<suplink>Topologie</suplink>
+		<link>Oberflächenintegrale;0</link>
+	</Linked>
+	<Linked>
+		<title>Definitheit</title>
+		<text>\textbf{Definition}\\$V$ ein $\mathbb{R}$- oder $\mathbb{C}$-Vektorraum\\Symmetrische/hermitesche Bilinearform $\langle \cdot | \cdot \rangle: V \times V \to \mathbb{K}$ \\heißt $\begin{cases}positiv\ definit & \forall _{v \in V}: \langle v | v \rangle > 0 \\ positiv\ semidefinit &\forall _{v \in V}: \langle v | v \rangle \ge 0 \\ negativ\ definit & \forall _{v \in V}:\langle v | v \rangle < 0 \\ negativ\ semidefinit \ \ &\forall _{v \in V}: \langle v | v \rangle \le 0 \\ indefinit & sonst\end{cases}$ und es gilt $\begin{array}{c}\forall _{Eigenwert\ \lambda\ von\ Â \in V}: \lambda > 0 \\ \forall _{Eigenwert\ \lambda\ von\ Â \in V}: \lambda \ge 0 \\ \forall _{Eigenwert\ \lambda\ von\ Â \in V}: \lambda < 0 \\ \forall _{Eigenwert\ \lambda\ von\ Â \in V}: \lambda \le 0\\\forall _{Â \in V}: Eigenwerte\ existieren\end{array}$\\-Definitheit der linearen Abbildung $L$: Ersetze $\langle x|x \rangle$ durch $\langle x|Lx\rangle$</text>
+		<suplink>Lineare Abbildungen</suplink>
+	</Linked>
+	<Linked>
+		<title>Definitionen für Integration in mehreren Veränderlichen</title>
+		<text>\textbf{Messbarkeit}\\Quader $Q$, $\Omega \subset Q \subset \mathbb{R}^n$ beschränkt, charakteristische Funktion $1\!\!1_\Omega(x)=\begin{cases}1&&x\in \Omega \\ 0&&sonst\end{cases}$\\$\Omega$ heißt messbar $\Leftrightarrow$ $1\!\!1_\Omega$ über $Q$ Riemann-integrierbar: $|\Omega|=\int_Q 1\!\!1_\Omega d\lambda$\\-Jede offene Menge $M\subset\mathbb{R}^n$ ist messbar\\\textbf{Untermannigfaltigkeit}\\$M\subset\mathbb{R}^n$ heißt k-dimensionale Untermannigfaltigkeit $\Leftrightarrow$ \\$\forall_{x\in M} \exists_{U\ni x\ offen,\ V\in\mathbb{R}^n\ offen,\ Diffeomorphismus\ h:U\to V}:$\\$H(M\cap U)=V\cap (\mathbb{R}^k\times\{0\})=\{ y \in V| y_{k+1}=\dots=y_k=\dots=0 \}$\\-Jede $k-1$-Untermannigfaltigkeit von $\mathbb{R}^n$ heißt \textbf{Hyperfläche}</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Determinante</title>
+		<text>\textbf{Definition}\\$det: \mathbb{K}^{n \times n} \to \mathbb{K}$ heißt Determinante, existiert und ist eindeutig $\Leftrightarrow$\\1. det ist multilinear (linear in jeder Spalte)\\2. det ist alternierend bei Zeilen- und Spaltenvertauschungen\\3. det ist normiert ($det($1\!\!1$_n)=1$)\\\textbf{Rechenregeln}\\-$det(Â)=\overline{det(Â^T)}$\\-$det(Â \cdot Ĉ) = det(Â) det(Ĉ)$ \\-$det(\alpha Â)=\alpha^n det(Â)$, $\alpha\in\mathbb{K}$\\-$det(\dots,\vec v+\vec w, \dots)=det(\dots,\vec v, \dots)+det(\dots,\vec w, \dots)$\\-$det(\dots, \alpha\vec v, \dots)=\alpha det(\dots, \vec v, \dots)$\\-$E=\left(\begin{array}{cc}A&B\\C&D\end{array}\right)$ mit passenden Matrizen $A, B, C, D$ $\Rightarrow$ $det(E)=det(D)det(A-BD^{-1}C)$\\\textbf{Eigenschaften}\\-Alle Aussagen über Spalten auf Zeilen übertragbar\\-$det(Â)=0$ $\Leftrightarrow$ Spalten von $Â$ linear abhängig\\-Addition eines Vielfachen einer Spalte zu einer anderen ändert $det$ nicht\\-$Â$ invertierbar $\Rightarrow$ $det(Â^{-1})=\frac{1}{det(Â)}$\\</text>
+		<suplink>Lineare Algebra</suplink>
+	</Linked>
+	<Linked>
+		<title>Determinanten-Definition von Laplace</title>
+		<text>\textbf{Definition}\\$Â \in \mathbb{K}^{n \times n}$ $\Rightarrow$ $det(Â) = \sum _{\sigma \in S_n} (A)_{\sigma(1) 1} \dots (A)_{\sigma(n) n} sgn(\sigma) = \sum _{\sigma \in S_n} (A)_{1 \sigma(1)} \dots (A)_{n \sigma(n)} sgn(\sigma)$</text>
+		<suplink>Determinante</suplink>
+	</Linked>
+	<Linked>
+		<title>Diagonalisierung</title>
+		<text>\textbf{Diagonalisierbarkeit}\\$A:V \to V$ linear, $V$ n-dimensionaler $\mathbb{K}$-Vektorraum\\$A$ heißt diagonalisierbar oder diagonalähnlich\\$\Leftrightarrow$ $\exists _{Basis\ k\ von\ V}:$ Matrizendarstellung von $A$ hat ist Diagonalmatrix\\$\Leftrightarrow$ $p_A(\lambda)$ zerfällt in Linearfaktoren, $\forall _{Eigenwert\ \lambda\ von\ A}: geoV(\lambda) = algV(\lambda)$\\$\Leftrightarrow$ $\exists_{x_1, \dots x_n,\ \lambda_1, \dots \lambda_n}: A\cdot x=\lambda x$\\$\Leftrightarrow$ $A\sim D$ $\Leftrightarrow$ $\exists _{Diagonalmatrix \ D_A, \ \\S}: D_A = S^{-1} \cdot A \cdot S$, $D_A=diag(\lambda_1, \dots \lambda_n)$, $S=(x_1, \dots x_n)$\\\textbf{Matrix nicht diagonaliserbar}\\-$p_A$ hat komplexe Nullstellen oder zerfällt nicht vollständig in Linearfaktoren\\-$\exists _{Eigenwert \ \lambda_i}: algV(\lambda_i) \neq geoV(\lambda_i)$\\\textbf{Anschaulich}\\$A$ ist eine quadratische Matrix, die sich durch Basiswechsel in eine Diagonalmatrix\\transformieren lässt\\\textbf{Vorgehen zur Diagonalisierung von $A$}\\1. Eigenwerte $\lambda_i$ von $A$ bestimmen: $p_A = det(A - \lambda 1\!\!1) = 0$ \\2. Normierte Eigenvektoren $x_j$ zu jedem $\lambda_i$: \\    $(A - \lambda_i 1\!\!1) \ x_j = 0$ lösen/$Lin_\mathbb{R}(x_1, \dots x_n)=Kern(A-\lambda 1\!\!1)$\\3. $S=(x_1, \dots x_n)$ invertieren\\4. Diagonalisierte Matrix $D_A$ in neuer Basis $\{x_1, \dots x_n\}$: $D_A = diag(\lambda_1, \dots \lambda_n) = S^{-1}\cdot A \cdot S$\\ (Eigenwerte und Eigenvektoren haben selbe Reihenfolge)\\\textbf{Eigenschaften}\\-$B=\{ x_1, \dots x_n \}$ ist eine Orthonormalbasis von $\mathbb{K}^n$\\-Eigenwerte $\lambda_i$ mit $algV(\lambda_i) = m \ge 1$: $\lambda_i$ kommt $m$-mal in $D_A$ vor \\-Selbstadjungierte lineare Abbildungen immer diagonalisierbar\\-Potenz von Diagonalisierten Matrizen: $D^k=(S^{-1}\cdot A\cdot S)^k=S^{-1}\cdot A^k\cdot S$\\-Bei Dreiecksmatrizen liegen die Eigenwerte auf der Hauptdiagonalen</text>
+		<suplink>Lineare Algebra</suplink>
+	</Linked>
+	<Linked>
+		<title>Diffeomorphismus</title>
+		<text>\textbf{Definition}\\$U,V \subset \mathbb{R}^n$, $r \in \mathbb{N} \cap \{ \infty \}$\\$f:U \to V$ heißt $C^r$-Diffeomorphismus $\Leftrightarrow$ $f$ bijektiv, $f\in C^r(U,V)$, $f^{-1}\in C^r(V, U)$</text>
+		<suplink>Topologie</suplink>
+		<link>Transformationsformel;0</link>
+		<link>Umkehrsatz;0</link>
+	</Linked>
+	<Linked>
+		<title>Differentialrechnung in einer Veränderlichen</title>
+		<text>\textbf{Differenzierbarkeit in einer Veränderlichen}\\$f:D\to\mathbb{C}$, $D\subset\mathbb{C}$ heißt in $x_0\in D$ differenzierbar $:\Leftrightarrow$ $f'(x_0)=\[\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\]$ existiert\\$f$ heißt stetig differenzierbar in $x_0$ $:\Leftrightarrow$ $f$ ist in $x_0$ differenzierbar und $f'(x_0)$ stetig\\\textbf{Höhere Ableitungen}\\$f$ ist $n$-mal differenzierbar \\$\Leftrightarrow$ $f$ ist $n-1$-mal differenzierbar und $f^{(n-1)}$ ist differenzierbar, $f^{(n)}=(f^{(n-1)})'$\\\textbf{Differenzenquotient und Differentialquotient}\\Differenzenqotient $\[\frac{f(x_1)-f(x_0)}{x_1-x_0}\]$: Sekantensteigung\\Differentialquotient $\[\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\]$: Tangentensteigung\\\textbf{Schreibweise: Menge der n-mal stetig differenzierbare Funktionen}\\$f\in C(D)=C^0(D)$ $:\Leftrightarrow$ $f$ ist stetig\\$f\in C^n(D)$ $:\Leftrightarrow$ $f$ ist $n$-mal stetig differenzierbar\\$f\in C^\infty(D)$ $:\Leftrightarrow$ $f$ ist unendlichoft stetig differenzierbar\\-$C$ steht für "contineous"\\\textbf{Linearisierung von Funktionen}\\$f:(a,b)\subset\mathbb{R}\to\mathbb{R}$ heißt in $x_0\in(a,b)$ differenzierbar \\$\Leftrightarrow$ $\exists _{h:(a,b)\to\mathbb{R},\ h(x)\to 0}: f(x)=f(x_0)+f'(x_0)(x-x_0)+h(x)(x-x_0)$ \\\textbf{Bemerkungen}\\-$f$ differenzierbar in $x_0$ $\Rightarrow$ $f$ stetig in $x_0$</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Differentialrechnung in mehreren Veränderlichen</title>
+		<text>\textbf{Partielle Differenzierbarkeit}\\$I\subset\mathbb{R}^n$, $f: I \to \mathbb{R}^m$ heißt partiell differenzierbar $\Leftrightarrow$ $\forall_{j,k}: \partial_j f_k$ existiert\\-Zurückführen auf eindimensionale Analysis\\\textbf{Totale Differenzierbarkeit}\\$I\subset\mathbb{R}^n$, $f: I \to \mathbb{R}^m$ total differenzierbar in $x_0\in I$ \\$\Leftrightarrow$ $\exists_{f'(x_0): I\to\mathbb{R}^m\ linear}:\[ \lim_{x \to x_0}\]  \frac{ f( x)- f( x_0) - f'(x_0)(x - x_0)}{\| x - x_0 \| } = 0$ \\$I\subset\mathbb{R}^n$, $f: I \to \mathbb{R}^m$ total differenzierbar $\Leftrightarrow$ $\forall_{x\in I}:$ $f$ total differenzierbar in $x$\\-$f$ total differenzierbar in $x\in I$ $\Rightarrow$ $f$ stetig in $x$\\\textbf{Stetig partielle Differenzierbarkeit}\\$I\subset\mathbb{R}^n$, $f: I \to \mathbb{R}^m$ stetig partiell differenzierbar $\Leftrightarrow$ $\forall_{j,k}: \partial_jf_k \in C^0(I, \mathbb{R}^n)$\\\textbf{Stetige Differenzierbarkeit}\\$I\subset\mathbb{R}^n$, $f: I \to \mathbb{R}^m$ stetig differenzierbar $\Leftrightarrow$ $f$ ist total differenzierbar und stetig auf $I$\\\textbf{Zusammenhang der Begriffe}\\stetig differenzierbar $\Leftrightarrow$ stetig partiell differenzierbar $\Rightarrow$ total differenzierbar  \\$\Rightarrow$ partiell differenzierbar \\\textbf{Jacobi-Matrix}\\$f$ total differenzierbar in $x_0\in I$ $\Leftrightarrow$ $ f'( x_0)$ hat Form der Jacobi-Matrix: \\$f'( x_0) = J_f( x_0) = (\partial_i f_j ( x_0))_{ij}\\\textbf{Tangentialhyperebene}\\$D\subset\mathbb{R}^n$, $f:D\to \mathbb{R}$ in $a$ differenzierbar $\Rightarrow$ $\{(x, x_{n+1})\ \in \mathbb{R}^n\times\mathbb{R} |\ x_{n+1}=f(a)+Df(a)(x-a) \}$\\heißt Tangentialhyperebene vom Graphen von $f$ in $(a, f(a))$\\-Verallgemeinerung der Tangente für $n=1$</text>
+		<suplink>Mehrdimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Doppelreihen</title>
+		<text>\textbf{Doppelreihe}\\$\[\sum_{j,k}^\infty a_{jk}\]$ ist eine Doppelreihe\\\textbf{Summierbarkeit}\\Doppelreihe $\[\sum_{j,k}^\infty a_k\]$ ist summierbar $:\Leftrightarrow$ $\[ \sup_{n\in\mathbb{N}} \sum_{j,k}^n \vert a_{jk}\vert <\infty  \]$\\\textbf{Doppelreihensatz}\\$\[\sum_{j,k}^\infty a_{jk}\]$ ist summierbare Doppelreihe $\Rightarrow$\\$\forall_{Umordnung\ \tau}: \[\sum_{j,k}^\infty a_{\tau (k)}\]$ konvergiert absolut gegen von $\tau$ unabhängigen Wert\\$\[\sum_{j,k}^\infty a_{jk} = \sum_{j=1}^\infty \sum_{k=1}^\infty a_{jk} = \sum_{k=1}^\infty \sum_{j=1}^\infty a_{jk} \]$ alle absolut konvergent gegen selben Wert\\\textbf{Cauchyprodukt}\\$\[\sum_{k=0}^\infty a_k\]$ ,$\[\sum_{k=0}^\infty b_k\]$ absolut konvergent $\Rightarrow$ $\[ \left( \sum_{k=1}^\infty a_k \right) \left( \sum_{k=1}^\infty b_k\right) = \sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k}\]$ absolut konvergent</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Eigenraum</title>
+		<text>\textbf{Definition}\\Lineare Hülle aller zum Eigenwert $\lambda$ gehörigen Eigenvektoren von $A$ vereinigt mit $\vec 0$:\\$E_A(\lambda) = \{ x \in \mathbb{K}^n | A \cdot x = \lambda x \}=Kern(A-\lambda 1\!\!1)$</text>
+		<suplink>Diagonalisierung</suplink>
+	</Linked>
+	<Linked>
+		<title>Eigenschaften von Folgen</title>
+		<text>\textbf{Beschränktheit}\\Folge $a_n$ heißt beschränkt $:\Leftrightarrow$ $\exists_{0<c\in\mathbb{R}} \forall_{n\in\mathbb{N}}:  \vert a_n\vert \le c$ \\-ansonsten heißt $a_n$ unbeschränkt\\\textbf{Monotonie}\\Folge $a_n$ heißt monoton $\begin{array}{c}wachsend\\fallend\end{array}$ $:\Leftrightarrow$ $\forall_{n\in\mathbb{N}}: a_{n+1}-a_n \begin{array}{c}\le\\\ge\end{array} 0$ $\Leftrightarrow$ $a_n\neq 0, \frac{a_{n+1}}{a_n}\begin{array}{c}\le\\\ge\end{array} 1$\\\textbf{Grenzwert und Konvergenz}\\$a_0$ heißt Grenzwert von Folge $a_n$ $\Leftrightarrow$ $\[\lim_{n\to\infty}a_n\]=a_0$ $\Leftrightarrow$ $a_n\to a_0$ $:\Leftrightarrow$ $\forall_{\epsilon>0}\exists_{n_0\in\mathbb{N}}: \forall_{n\ge n_0}: \vert a_n-a_0\vert <\epsilon$\\$a_n$ heißt konvergent $:\Leftrightarrow$ $a_n$ hat einen Grenzwert\\-Eine Folge besitzt höchstens einen Grenzwert\\\textbf{Rechenregeln für konvergente Folgen}\\$a_n, b_n$ Folgen, $\[\lim_{n\to\infty} a_n=a_0\]$, $\[\lim_{n\to\infty}b_n=b_0\]$, $\alpha\in\mathbb{K}$, $p,q\in\mathbb{N}$\\-$\[\lim_{n\to\infty}\alpha a_n \] = \alpha a_0$\\-$\[\lim_{n\to\infty}a_n+b_n\]=a_0+b_0$\\-$\[\lim_{n\to\infty}a_nb_n\]=a_0b_0$\\-$\[\lim_{n\to\infty}a_n^\frac{p}{q} \] = a_0^\frac{p}{q}$</text>
+		<suplink>Folgen</suplink>
+	</Linked>
+	<Linked>
+		<title>Eigenschaften von Mengen</title>
+		<text>\textbf{Wegzusammenhängend}\\Die Menge $M$ heißt wegzusammenhängend bzw. Gebiet \\$\Leftrightarrow$ $\forall_{x_0, x_1 \in M} \exists_{\varphi:[0,1]\to M stetig}: \varphi(0)=x_0, \varphi(1)=x_1$\\\textbf{Konvex}\\Die Menge $M$ heißt konvex $\Leftrightarrow$ $\forall_{x_0, x_1 \in M}: [x_0, x_1]=\{x_0+t(x_1-x_0)\ |\ 0 \le t \le 1 \} \subset M$\\\textbf{Sternförmig}\\Die Menge $M$ heißt sternförmig $\Leftrightarrow$ $\exists_{x_0 \in M} \forall_{x_1 \in M}: [x_0, x_1] \subset M$</text>
+		<suplink>Topologie</suplink>
+	</Linked>
+	<Linked>
+		<title>Eigenwerte und Eigenvektoren</title>
+		<text>\textbf{Definition}\\$Â:V \to V$ linear, $V$ ein $\mathbb{K}$-Vektorraum, $\lambda \in \mathbb{K}$, $x \in V \setminus \{ 0 \}$\\$Â \cdot x = \lambda x$ $\Leftrightarrow$ Eigenvektor $x$ zum Eigenwert $\lambda$\\\textbf{Eigenschaften}\\-$Â \in \mathbb{C}^{n \times n}$ $\Rightarrow$ $\forall _\lambda : \lambda \in \mathbb{R}$\\-Der Nullvektor $\vec 0$ ist Element jedes Eigenraums, aber nie ein Eigenvektor\\-Eigenvektoren von unterschiedlichen Eigenwerten sind linear unabhängig\\-Bei einer Diagonalmatrix stehen die Eigenwerte auf der Hauptdiagonalen</text>
+		<suplink>Diagonalisierung</suplink>
+	</Linked>
+	<Linked>
+		<title>Eindimensionale Analysis</title>
+		<text>\textbf{Eindimensionale Analysis}</text>
+		<suplink>Analysis</suplink>
+		<link>Grenzwert in einem metrischen Raum;0</link>
+		<link>Stetigkeit in einem metrischen Raum;0</link>
+	</Linked>
+	<Linked>
+		<title>Exponentialfunktion</title>
+		<text>\textbf{Definition}\\$exp:\mathbb{C}\to\mathbb{C}, z\mapsto exp(z):=\[\sum_{n=0}^\infty \frac{z^n}{n!}\]$\\\textbf{Funktionalgleichung}\\$\forall_{x,y\in\mathbb{C}}: exp(x+y)=exp(x)exp(y)$\\\textbf{Ungleichung}\\$\forall_{x\in\mathbb{R}}: 1+x\le exp(x)$\\\textbf{Eulersche Zahl}\\Für $exp(1)$ erhält man die eulersche Zahl $e$:\\$e=\[\sum_{n=0}^\infty \frac{1}{n!}\] = \[\lim_{n\to\infty} (1+\frac{1}{n})^n\]$</text>
+		<suplink>Potenzreihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Extremwertaufgabe mit Nebenbedingungen und Lagrange-Multiplikatoren</title>
+		<text>\textbf{Definition}\\$D\subset\mathbb{R}^n$, $f:D\to\mathbb{R}$, $h:D\to\mathbb{R}^m$, $m<n$, $S:=\{ \vec x\in D\ |\ \vec h(\vec x)=0\}$\\$f$ hat in $\vec x_0\in D$ lokales Maximum/Minimum unter Nebenbedingung $\vec h=0$\\$\Leftrightarrow$ $\vec x_0 \in S$, $\exists_{\delta>0}:K(\vec x_0, \delta)\subset D, \forall_{\vec x\in K(\vec x_0, \delta)\cap S}:f(\vec x) \le / \ge f(\vec x_0)$\\\textbf{Lagrange-Multiplikatoren}\\$F(\vec x, \vec\lambda):=f(\vec x)+\vec\lambda\cdot\vec h(\vec x)$\\$f$ hat in $\vec x_0\in D$ ein lokales Extremum unter der Nebenbedingung $\vec h=0$, $Rang\ \vec h'(\vec x_0)=m$\\$\Rightarrow$ $\exists_{\vec\lambda\in\mathbb{R}^m}: grad\ F(\vec x_0, \vec\lambda)=0$\\Liefert ein (nicht zwingend lineares) Gleichungssystem mit $m+n$ Unbekannten:\\$0=grad\ F(\vec x_0, \vec\lambda)\cdot \vec e_k=\partial_kf(\vec x_0)+\lambda_j\partial_k h_j(\vec x_0)$</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Extremwertaufgaben in mehreren Veränderlichen</title>
+		<text>\textbf{Lokales Minimum/Maximum}\\$f:D\to\mathbb{R}$ hat in $\vec x_0\in D$ ein lokales Maximum/Minimum\\$\Leftrightarrow$ $\exists_{\delta>0}: K(\vec x_0, \delta)\subset D, \forall_{\vec x\in K(\vec x_0, \delta)}: f(\vec x)\le / \ge f(\vec x_0)$\\\textbf{Notwendiges Kriterium}\\$f$ hat in $\vec x_0$ ein lokales Extremum, $f$ in $\vec x_0$ partiell differenzierbar $\Rightarrow$ $grad\ f(\vec x_0)=0$\\\textbf{Hinreichendes Kriterium}\\$f\in C^2(D, \mathbb{R})$, $grad\ f(\vec x_0)=0$ $\Rightarrow$ \\$H_f(\vec x_0)$ positiv definit $\Rightarrow$ $f$ hat in $\vec x_0$ ein lokales Minimum\\$H_f(\vec x_0)$ negativ definit $\Rightarrow$ $f$ hat in $\vec x_0$ ein lokales Maximum\\$H_f(\vec x_0)$ indefinit $\Rightarrow$ $f$ hat in $\vec x_0$ einen Sattelpunkt\\\textbf{Mögliche Extremalstellen}\\1. Punkte mit $a\in D$, $f$ in $a$ differenzierbar, $f'(a)=0$\\2. Randpunkte von $D$\\3. Punkte mit $a\in D$, $f$ nicht differenzierbar</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Folgen</title>
+		<text>\textbf{Definition}\\Eine $M$-wertige Folge ist eine Abbildung $a:\mathbb{N}\to M$\\Notation: $a_n=a(n)=(a_n)_{n\in\mathbb{N}}=(a_n)_n$\\</text>
+		<suplink>Eindimensionale Analysis</suplink>
+		<link>Abbildungen;0</link>
+	</Linked>
+	<Linked>
+		<title>Funktionenfolgen</title>
+		<text>\textbf{Definition}\\Funktionenfolgen sind Folgen von Funktionen $f_n:D\to\mathbb{R}$, $D\subset\mathbb{R}$\\\textbf{Punktweise Konvergenz}\\Eine Funktionenfolge $f_n$ heißt punktweise konvergent gegen $f:D\to\mathbb{R}$ \\$\Leftrightarrow$ $\forall_{x\in D}:\[\lim_{n\to\infty}\vert f_n(x)-f(x)\vert\]=0$\\$\Leftrightarrow$ $\forall_{x\in D,\ \epsilon>0}\exists_{n_0(\epsilon, x)\in\mathbb{N}}:\forall_{n\ge n_0}\vert f_n(x)- f(x) \vert < \epsilon$\\\textbf{Gleichmäßige Konvergenz}\\Eine Funktionenfolge $f_n$ heißt gleichmäßig konvergent gegen $f:D\to\mathbb{R}$ \\$\Leftrightarrow$ $\forall_{x\in D}:\[\lim_{n\to\infty} \sup_{x\in D} \vert f_n(x)-f(x)\vert\]=0$\\$\Leftrightarrow$ $\forall_{\epsilon>0}\exists_{n_0(\epsilon)\in\mathbb{N}}:\forall_{n\ge n_0,\ x\in D}:\vert f_n(x)- f(x) \vert < \epsilon$\\-$f_n$ gleichmäßig konvergent $\Rightarrow$ $f_n$ punktweise konvergent\\Bei gleichmäßiger Stetigkeit werden viele Eigenschaften von $f_n$ auf $f$ übertragen\\\textbf{Untersuchung auf punktweise Konvergenz}\\Kann $x\in D$ konstant wählen $\Rightarrow$ Finde Grenzwert $f$ mit Regeln der Folgenkonvergenz\\\textbf{Untersuchung auf gleichmäßige Konvergenz}\\$\oplus$ Finde $n_0(\epsilon)$ mit $\forall_{n\ge n_0,\ x\in D}:\vert f_n(x)- f(x) \vert < \epsilon$\\$\oplus$ Abschätzen: $\[\sup_{x\in D}\vert f_n(x)-f(x)\vert\] \le 0$\\$\oplus$ Finde Majorante $\alpha_n$ mit $0 \le\alpha_n\to 0$, $\vert f_n(x)-f(x)\vert <\alpha_n$\\$\ominus$ Finde $\forall_{n\in\mathbb{N}}:x_0(n)\in D$ mit $\vert f_n(x_0)-f(x_0)\vert \neq 0$\\$\ominus$ Grenzfunktion $f$ unstetig\\\textbf{Stetigkeit bei gleichmäßiger Konvergenz}\\$f_n\to f$ gleichmäßig, $f_n$ stetig $\Rightarrow$ $f$ stetig\\-Grenzwertvertauschung erlaubt: $\[\lim_{n\to\infty}\lim_{x\to a} f_n(x)=\lim_{x\to a}\lim_{n\to\infty}f_n(x)\]$\\\textbf{Differentiation bei gleichmäßiger Konvergenz}\\$f_n$ stetig differenzierbar, $f_n\to f$ punktweise, $f_n'\to g$ gleichmäßig \\$\Rightarrow$ $f_n\to f$ gleichmäßig, $f_n'\to f'$ gleichmäßig ($f'=g$)\\-Grenzwertvertauschung erlaubt: $\[\lim_{n\to\infty}\frac{d}{dx} f_n(x)=\frac{d}{dx}\lim_{n\to\infty}f_n(x)\]$\\\textbf{Integration bei gleichmäßiger Konvergenz}\\$f_n\to f$ gleichmäßig, $f_n\in L([a,b])$ $\Rightarrow$ $\[\lim_{n\to\infty}\int_a^b f_n(x)dx = \int_a^b f(x)dx\]$\\-Grenzwertvertauschung erlaubt: $\[\lim_{n\to\infty}\int_a^b f_n(x)dx = \int_a^b \lim_{n\to\infty}f_n(x)dx\]$</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Funktionenreihen</title>
+		<text>\textbf{Definition}\\Funktionenreihen sind Reihen von Funktionen $f_n:D\to\mathbb{R}$, $D\subset\mathbb{R}$\\Die Begriffe punktweise und gleichmäßige Konvergenz und damit verbundene Sätze werden \\gleich wie für Funktionenfolgen definiert, da Reihen spezielle Folgen sind\\\textbf{Untersuchung auf punktweise Konvergenz}\\Kann $x\in D$ konstant wählen $\Rightarrow$ Wende Konvergenzkriterien für Reihen an\\-Kann Grenzfunktion $\sum_{n=0}^\infty f$ berechnet werden?\\\textbf{Untersuchung auf gleichmäßige Konvergenz}\\$\oplus$ Finde Majorante $\alpha_n$: $0\le\alpha_n \to 0$, $\vert f_n\vert \le \alpha_n$ ab $n_0\in\mathbb{N}$, $\sum_{n=0}^\infty \alpha_n$ absout konvergent \\    $\Rightarrow$ $\sum_{n=0}^\infty f_n$ konvergiert absolut und gleichmäßig</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Ganze und rationale Zahlen</title>
+		<text>\textbf{Ganze Zahlen $\mathbb{Z}$}\\$\mathbb{Z}:=\{x\in\mathbb{R}\ |\ x\in\mathbb{N}\lor x=0\lor -x\in\mathbb{N}\}$\\\textbf{Rationale Zahlen $\mathbb{Q}$}\\$\mathbb{Q}:=\{x\in\mathbb{R}\ |\ \exists_{n,m\in\mathbb{Z}}: n\neq 0, x=\frac{m}{n}\}$</text>
+		<suplink>Zahlbereiche</suplink>
+	</Linked>
+	<Linked>
+		<title>Geometrische und algebraische Vielfachheit</title>
+		<text>\textbf{Algebraische Vielfachheit $algV$: }Vielfachheit eines Eigenwertes als Nullstelle des \\charakteristischen Polynoms\\\textbf{Geometrische Vielfachheit $geoV$: }$geoV(\lambda)=dim(E_A(\lambda)$\\\textbf{Es gilt: }$1 \le geoV(\lambda) \le algV(\lambda) \le n$ für eine $n \times n$-Matrix\\\textbf{Berechnung}\\Algebraische Vielfachheit\\1) Charakteristisches Polynom aufstellen\\2) Rechenregeln für Determinante benutzen, um Linearfaktoren mit $\lambda$ auszumultiplizieren\\3) Determinante ausrechnen\\Geometrische Vielfachheit\\1) Kern(A-\lambda 1\!\!1) berechnen\\2) $algV(\lambda)=dim\ Kern(A-\lambda 1\!\!1)=$Anzahl der freien Parameter</text>
+		<suplink>Diagonalisierung</suplink>
+	</Linked>
+	<Linked>
+		<title>Gram-Schmidtsches Orthogonalisierungsverfahren</title>
+		<text>Orthogonalprojektion von $\vec x$ auf $\vec u$: $P_g(\vec x) = \frac{\vec x \cdot \vec u}{\vec u \cdot \vec u}$\\\textbf{Orthogonalisierungsverfahren}\\Gegeben: Prähilbertraum $V$, linear unabhängige Vektoren $v_1, \dots v_n \in V$\\$u_1 = v_1$\\$u_n = v_n - \sum_{i=1}^{n-1} \frac{\langle v_i | u_i \rangle}{\| v_i \|^2} \cdot u_i$\\\textbf{Erweiterung: Orthonormalisierungsverfahren}\\$u_1 = \frac{v_1}{\| v_1 \|}$\\$u_n =\[  \frac{v_n - \sum_{i=1}^{n-1} \langle v_i | u_i \rangle \cdot u_i}{\|v_n - \sum_{i=1}^{n-1} \langle v_i | u_i \rangle \cdot u_i \|} \]$\\\textbf{Grundgedanke}\\Erster Vektor wird übernommen.\\Von jedem Vektor werden Komponenten mit Länge $\langle v_i | u_i \rangle$ in Richtung $-u_i$ abgeschnitten.\\$\Rightarrow$ Vektor, der zu allen bisherigen Vektoren senkrecht steht, bleibt übrig</text>
+		<suplink>Orthogonal- und Orthonormalbasis</suplink>
+		<link>Orthogonalität von Vektoren;0</link>
+	</Linked>
+	<Linked>
+		<title>Grenzwert in einem metrischen Raum</title>
+		<text>\textbf{Definition}\\$f:X \to Y$, $(X, d_X)$, $(Y, d_Y)$ metrische Räume\\$f$ konvergiert gegen den Grenzwert $\eta \in Y$ mit dem Häufungspunkt $\xi \in X$ $\Leftrightarrow$ $\[ \lim_{x \to \xi} f(x) = \eta \]$\\$\Leftrightarrow$ $\forall_{\epsilon>0}\exists_{\delta>0}: \forall_{x \in X}: d_X(x, \xi)<\delta \Rightarrow d_Y(f(x), \eta)<\epsilon$\\$\Leftrightarrow$ $\forall_{x_n\in X\setminus\{\xi\}}: x_n\to \xi \Rightarrow \[\lim_{x\to\xi}f(x)=\eta\]$\\\textbf{Einseitige Grenzwerte}\\Einseitige Grenzwerte $\[\lim_{x\to x_0+}f(x)\]$, $\[\lim_{x\to x_0-}f(x)\]$ so definiert, dass Annäherung an Grenzwert \\nur von einer Seite geschieht.\\Falls $\[\lim_{x\to x_0}f(x)\]$ existiert, ist $\[\lim_{x\to x_0}f(x)\]$=$\[\lim_{x\to x_0+}f(x)\]$=$\[\lim_{x\to x_0-}f(x)\]$\\\textbf{Grenzwertsätze}\\$\[\lim_{x\to x_0}f(x)=a_0\]$, $\[\lim_{x\to x_0}g(x)=b_0\]$ $\Rightarrow$ $\[\lim_{x\to x_0}(f+g)(x)=a_0+b_0\]$, $\[\lim_{x\to x_0}(fg)(x)=a_0\ b_0\]$\\\textbf{Satz von l'Hospital}\\$\[\lim_{x\to x_0}f(x)=\lim_{x\to x_0}g(x) =\]\begin{cases}\pm\infty\\0\end{cases}$ $\Rightarrow$ $\[\lim_{x\to x_0}\frac{f(x)}{g(x)}=\lim_{x\to x_0}\frac{f'(x)}{g'(x)}\]$\\\textbf{Grenzwerte finden}\\-Grenzwertsätze\\-Stetigkeit benutzen\\-Satz von l'Hospital\\-Taylorreihenentwicklung vereinfacht Grenzwertbildung\\-Mittelwertsatz</text>
+		<suplink>Mehrdimensionale Analysis</suplink>
+		<link>Eindimensionale Analysis;0</link>
+		<link>Mittelwertsatz und Schrankensatz in mehreren Veränderlichen;0</link>
+		<link>Satz von Taylor in mehreren Veränderlichen;0</link>
+	</Linked>
+	<Linked>
+		<title>Gruppe</title>
+		<text>$(M, \ast)$, $\ast: M \to M $ ist eine Gruppe $\Leftrightarrow$\\1. Assoziativität: \forall_{a,b,c \in M}: (a \ast b) \ast c = a \ast (b \ast c) \\2. Neutrales Element: \exists_{0 \in M}: \forall_{a \in M}: a \ast 0 = 0\ast a =a \\3. Inverses Element: \forall_{a \in M} \exists_{-a \in M}: a \ast -a = 0 \</text>
+		<suplink>Algebraische Strukturen</suplink>
+	</Linked>
+	<Linked>
+		<title>Hauptsätze der Differential- und Integralrechnung</title>
+		<text>\textbf{Erster Hauptsatz}\\$f:[a,b]\to\mathbb{R}$ $\Rightarrow$ $F:\begin{cases}[a,b]\to\mathbb{R}\\x\mapsto F(x)=\int_a^x f(t)dt\end{cases}$ ist differezierbar auf $(a,b)$ mit $F'(x)=f(x)$\\-Ableiten und Integrieren sind Gegenspieler\\\textbf{Zweiter Hauptsatz}\\$F:[a,b]\to\mathbb{R}$ , $F\in C([a,b])$, $F\in C^1((a,b))$, $F'\in L(a,b)$ $\Rightarrow$ $\int_a^b F'(t)dt=F(b)-F(a)$\\-Integrale berechnen durch Finden von Stammfunktionen</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Homomorphismus</title>
+		<text>\textbf{Definition}\\$f:G\to G'$ zwischen den Gruppen $(G,*)$ und $(G', *')$ heißt Homomorphismus \\$:\Leftrightarrow$ $\forall_{a,b\in G}: f(a*b)=f(a) *' f(b)$\\\textbf{Erweitertungen}\\$f$ heißt Isomorphismus $:\Leftrightarrow$ $f$ ist Homomorphismus und bijektiv\\$f$ heißt Automorphismus $:\Leftrightarrow$ $f$ ist Isomorphismus und $G=G'$</text>
+		<suplink>Algebraische Strukturen</suplink>
+	</Linked>
+	<Linked>
+		<title>Hyperbolische Funktionen</title>
+		<text>\textbf{Cosinus Hyperbolicus}\\$cosh(z):=\[\sum_{n=0}^\infty \frac{z^{2n}}{(2n)!} = \frac{1}{2}(e^z+e^{-z})\]$\\\textbf{Sinus Hyperbolicus}\\$sinh(z):=\[\sum_{n=0}^\infty \frac{z^{2n+1}}{(2n+1)!} = \frac{1}{2}(e^z-e^{-z})\]$\\\textbf{Schöne Gleichung}\\$\forall_{z\in\mathbb{C}}: 1=cosh^2(z)+sinh^2(z)$</text>
+		<suplink>Potenzreihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Inneres, Äußeres, Rand</title>
+		<text>\textbf{Definition}\\Metrischer Raum $(M, d)$ \\Inneres $M^\circ:=\{ x \in M | \exists _{\epsilon > 0}: B_\epsilon(x) \subset A \}$\\Abschluss $\bar A := \{ x \in \mathbb{R}^d | \forall_{\epsilon>0}: B_\epsilon(x) \cap A \neq \emptyset \}$\\Rand $\partial A := \{ x \in \mathbb{R}^d | \forall_{\epsilon>0}: B_\epsilon(x) \cap A \neq \emptyset, B_\epsilon(x) \cap A^C \neq \emptyset \}$\\\textbf{Eigenschaften}\\-$A^\circ$ offen, $U$ offen, $U \subset A$ $\Rightarrow$ $U \subset A^\circ$\\-$\bar A$ abgeschlossen, $B$ abgeschlossen, $A\subset B$ $\Rightarrow$ $\bar A \subset B$\\-$\partial A$ abgeschlossen $\Rightarrow$ $\partial A = \bar A \setminus A^\circ$</text>
+		<suplink>Topologie</suplink>
+	</Linked>
+	<Linked>
+		<title>Integralrechnung in einer Veränderlichen</title>
+		<text></text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Integralrechnung in mehreren Veränderlichen</title>
+		<text>\textbf{Riemann-Integral im $\mathbb{R}^n$}\\Das Riemann-Integral im $\mathbb{R}^n$ ist wie das Riemann-Integral im $\mathbb{R}$ über Ober- und \\Untersummen definiert, wobei Quader im $\mathbb{R}^n$ die Intervalle im $\mathbb{R}$ ersetzen. Das Integral \\existiert, wenn Ober- und Untersumme übereinstimmen.\\Daraus folgt die Linearität $\int \alpha f(x) + \beta g(x) dx = \alpha \int f(x) dx + \beta \int g(x) dx$ und \\Dreiecks-Ungleichung $| \int f(x) dx | \le \int | f(x) | dx$\\\textbf{Intergrierbarkeit}\\Alle beschränkten und stetigen Funktionen sind auf kompakten Mengen integrierbar.</text>
+		<suplink>Mehrdimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Integralsätze im R^2</title>
+		<text>\textbf{Voraussetzungen}\\$\bar G \subset \mathbb{R}^2$ beschränkt($G$ kompakt und messbar), Aneinanderreihung $\gamma=\partial G$ der \\Kurven $\gamma_1 \dots \gamma_m$, $m \in \mathbb{N}$ umläuft $G$ in mathematisch positiver Richtung($G$ liegt links).\\$D \subset \mathbb{R}^2$ offen, $G\subset D$, $\vec v=\left(\begin{array}{c}v_1\\v_2\end{array}\right)\in C^1(D, \mathbb{R}^2)$\\\textbf{Satz von Gauss}\\$\oint_{\partial G} \vec v(x,y) \cdot d\vec s = \iint_G\vec\nabla\times\left(\begin{array}{c}v_1\\v_2\\0\end{array}\right)\cdot\vec e_3d(x,y)  = \iint_G(\partial_1v_2(x,y)-\partial_2v_1(x,y))d(x,y) $\\$\Rightarrow$ Kurvenintegral wird zu Flächenintegral\\\textbf{Divergenzsatz}\\$\gamma$ in natürlicher Parametrisierung($\forall_{t\in[a,b]}:\|\gamma'(t)\|=1$), $\vec T:=\left(\begin{array}{c}x'(t)\\y'(t)\end{array}\right)$, $\vec N:=\left(\begin{array}{c}y'(t)\\-x'(t)\end{array}\right)$\\$\oint \vec v(x,y) \cdot \vec N\ dt= \iint_G \vec\nabla\cdot\vec v(x,y) d(x,y)=\iint_G(\partial_1 v_1+\partial_2 v_2) d(x,y)$\\$\Rightarrow$ Kurvenintegral wird zu Flächenintegral\\\textbf{Satz von Green}\\$\oint_{\partial G}(\vec v dx+\vec w dy)=\iint_G(\partial_x\vec w-\partial_y\vec v)d(x,y)$\\$\Rightarrow$ Nicht sicher, ob das stimmt</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integralsätze im R^3</title>
+		<text>\textbf{Voraussetzungen}\\\textbf{Satz von Gauss/Divergenzsatz}\\$V\subset\mathbb{R}^3$ offen, $\bar G\subset V, \vec f\in C^1(V, \mathbb{R}^3)$ stetig differenzierbar\\$\iint_{\partial V} \vec f \cdot d\vec o= \iiint_V \vec \nabla \cdot \vec f\ d(x,y,z)$\\$\Rightarrow$ Flächenintegral und Volumenintegral\\\textbf{Satz von Stokes}\\$A\subset\mathbb{R}^2$ orientierbare Fläche, $\vec f:D\subset\mathbb{R}^3\to\mathbb{R}^3$ stetig differenzierbar\\$\int_{\partial A} \vec f \cdot d\vec s = \iint_A (\vec \nabla \times \vec f) \cdot d\vec o$\\$\Rightarrow$ Kurvenintegral und Flächenintegral\\\textbf{Greensche Formeln}\\$f,g \in C^2(\mathbb{R})$\\$\iint_{\partial V} f\ \vec\nabla g\ \cdot d\vec o = \iiint_V(f \Delta g+\vec\nabla f \cdot \vec\nabla g)dx$\\$\iint_{\partial V} (f\ \vec\nabla g-g\ \vec\nabla f)\cdot d\vec o=\iiint_V(g\Delta f-f\Delta g)dx$\\</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integralsätze im R^n</title>
+		<text></text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integration über Normalbereich</title>
+		<text>\textbf{Normalbereich}\\$g,h:[a,b]\to\mathbb{R}$ stetig \\$G=\{(x_1, \dots x_n) \in \mathbb{R}^n\ |$\\$a\le x_1\le b,\ g_1(x_1)\le x_2\le h_1(x_1), \dots g_{n-1}(x_1, \dots x_{n-1})\le x_n\le h_{n-1}(x_1, \dots x_{n-1}) \}$\\heißt Normalbereich\\\textbf{Integration über einen Normalbereich}\\$D\subset\mathbb{R}^n$ ein Normalbereich, $f\in L(D)$\\$\Rightarrow$ $\[ \int_D f(x)dx \] = \[ \int_a^b dx_1 \int_{g_1(x_1)}^{h_1(x_1)} dx_2 \dots \int_{g_{n-1}(x_1, \dots x_{n-1})}^{h_{n-1}(x_1, \dots x_{n-1})} dx_n f(x_1, \dots x_n) \]$</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integrationsbegriffe</title>
+		<text>\textbf{Integrationsbegriffe}\\Mit verschiedenen Integrationsbegriffen ändern sich die Mengen der integrierbaren \\Funktionen. Die Integrationsregeln wie Partielle Integration, Substution, Hauptsätze der \\Differential- und Integralrechnung etc. bleiben erhalten, da sie von der Definition des \\Integrals unabhängig sind.</text>
+		<suplink>Integralrechnung in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integrationstechniken</title>
+		<text>\textbf{Stammfunktion}\\$F:(a,b)\to\mathbb{R}$ heißt Stammfunktion zu $f:(a,b)\to\mathbb{R}$ $:\Leftrightarrow$ $F'=f$\\\textbf{Eigenschaften des Integrals}\\Linearität: $\int_a^b f(x)+g(x)dx = \int_a^b f(x)dx + \int_a^b g(x)dx$, $\int_a^b \lambda f(x) dx = \lambda \int_a^b f(x) dx$\\Zerlegung des Intervalls: $\int_a^c f(x) dx = \int_a^b f(x)dx+\int_b^c f(x) dx$\\Monotonie: $f(x)\le g(x)$ $\Rightarrow$ $\int_a^b f(x)dx \le \int_a^b g(x)dx$\\Dreiecksungleichung: $\vert \int_a^b f(x)dx\vert \le \int_a^b \vert f(x)\vert dx$\\Definitheit: $f(x)\ge 0$, $\int_a^b f(x)dx=0$ $\Rightarrow$ $f(x)=0$\\Orientierung: $\int_a^a f(x)dx=0$, $\int_a^b f(x)dx = -\int_b^a f(x) dx$\\\textbf{Partielle Integration}\\$u,v$ passend\\$\int_a^b u'(x)v(x)dx = u(x)v(x)\vert_a^b - \int_a^b u(x)v'(x) dx$\\\textbf{Substitution}\\$f,u$ passend\\$\int_a^b f(u(x)) u'(x)dx=\int_{u(a)}^{u(b)} f(u)du$\\\textbf{Hauptsätze der Differential- und Integralrechnung}\\1. $F(x)=\int_a^x f(t)dt$ diffbar mit $F'=f$\\2. $\int_a^b F'(t)dt=F(b)-F(a)$\\\textbf{Rationale Funktionen}\\Bei rationalen Funktionen führt eine Partialbruchzerlegung auf eine einfach berechenbares \\Integral</text>
+		<suplink>Integralrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Integrierbarkeit in mehreren Veränderlichen</title>
+		<text>\textbf{Definition}\\$D\subset\mathbb{R}^n$ kompakt, $f:D\to\mathbb{R}$ stetig $\Rightarrow$ $f\in L(D)$\\\textbf{Bemerkungen}\\-$L(D)$ ist die Menge der auf $D$ Lebesgue-Integrierbaren Funktionen</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Intervall</title>
+		<text>\textbf{Definition}\\Ein Intervall $I$ ist eine zusammenhängende Teilmenge $I\subset\mathbb{R}$\\Im Folgenden ist $a,b\in\mathbb{R}$, $a\le b$\\\textbf{Abgeschlossenes Intervall}\\$[a,b]:=\{x\in\mathbb{R}\ |\ a\le x\le b\}$\\\textbf{Offenes Intervall}\\$(a,b):=\{x\in\mathbb{R}\ |\ a<x<b\}$\\\textbf{Halboffenes Intervall}\\$[a,b):=\{x\in\mathbb{R}\ |\ a\le x<b\}$\\$(a,b]:=\{x\in\mathbb{R}\ |\ a<x\le b\}$\\\textbf{Abgeschlossener Halbstrahl}\\$[a,\infty):=\{x\in\mathbb{R}\ |\ a\le x\}$\\$(-\infty, b]:=\{x\in\mathbb{R}\ |\ x\le b\}$\\\textbf{Offener Halbstrahl}\\$(a,\infty):=\{x\in\mathbb{R}\ |\ a< x\}$\\$(-\infty, b):=\{x\in\mathbb{R}\ |\ x< b\}$\\\textbf{Zahlengerade}\\$(-\infty, \infty):=\mathbb{R}$\\</text>
+		<suplink>Zahlbereiche</suplink>
+	</Linked>
+	<Linked>
+		<title>Jacobideterminante</title>
+		<text>Die Jacobideterminante wird bei der Transformationsformel verwendet\\\textbf{Funktionen $f:\mathbb{R}^n\to\mathbb{R}^n$}\\Einfacher Fall: $det(J_f):=det(f')$ mit $f'\in\mathbb{R}^{n\times n}$\\\textbf{Funktionen $f:\mathbb{R}′^n\to\mathbb{R}^m$}\\Schwerer Fall: $det(J_f):=\sqrt{det(f'^T\cdot f')}$ mit $f'\in\mathbb{R}^{n\times m}$</text>
+		<suplink>Determinante</suplink>
+		<link>Transformationsformel;0</link>
+	</Linked>
+	<Linked>
+		<title>Kehrwert von Polynom als Potenzreihe darstellen</title>
+		<text>\textbf{Potenzreihendarstellung um Entwicklungspunkt $x_0$ vom Kehrwert eines}\\\textbf{Polynoms berechnen}\\1. Nullstellen $x_i$ von f bestimmen $\Rightarrow$ Konvergenzradius $\[ R\le \min_i\vert x_0-x_i\vert \]$\\2. Rübermultiplizieren: $\[\frac{1}{f}=\sum_{k=0}^\infty a_k (x-x_0)^k\]$ $\Rightarrow$ $1=f \[\sum_{k=0}^\infty a_k (x-x_0)^k \]$\\3. Schreibe $f$ in Faktoren $(x-x_0)$, obige Formel ausmultiplizieren\\4. Indexshift in jeder Reihe, sodass überall $(x-x_0)^k$ steht\\5. In jeder Reihe Terme rausziehen $\Rightarrow$ Startindex überall gleich\\6. Koeffizientenvergleich: $n$ Startwerte und Rekursionsformel für maximal $n+1$ Terme \\7. Explizite Darstellung für $a_k$ erraten und mit Induktion beweisen\\8. Reihe auf Konvergenz untersuchen($R<0$?)</text>
+		<suplink>Potenzreihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Klassifizierung von Funktionen in mehreren Veränderlichen</title>
+		<text>\textbf{Kurven }sind Abbildungen $\gamma: I \to \mathbb{R}^m$, $t \mapsto \gamma (t)$, $I = [a, b] \subset \mathbb{R}$\\\textbf{Skalarfelder }sind Abbildungen $f: I \to \mathbb{R}$ mit $I \subset \mathbb{R}^n$\\\textbf{Vektorfelder }sind Abbildungen $\vec f: I \to \mathbb{R}^m$ mit $I \subset \mathbb{R}^n$\\</text>
+		<suplink>Mehrdimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Kompaktheit</title>
+		<text>\textbf{Definition}\\Menge $M$ heißt kompakt $:\Leftrightarrow$ $M$ ist abgeschlossen und beschränkt</text>
+		<suplink>Mengenlehre</suplink>
+	</Linked>
+	<Linked>
+		<title>Komplexe Zahlen</title>
+		<text>\textbf{Imaginäre Einheit $i$}\\$i=(0,1)$, $i^2=(-1, 0)$ $(i^2=-1)$\\-Damit werden alle Gleichungen lösbar\\\textbf{Definition}\\$(\mathbb{C}, +, *)$ ist der Körper der komplexen Zahlen:\\$\mathbb{C}:=\mathbb{R}^2$, $(a,b)+(c,d)=(a+c, b+d)$, $(a,b)*(c,d)=(ac-bd, ad+bc)$\\$(a,b)\subset\mathbb{C}$ ist darstellbar durch $(a,b)=(a,0)+(b,0)(0,1)=a+ib$\\\textbf{Bemerkungen}\\-$\mathbb{C}$ ist im Gegensatz zu $\mathbb{R}$ nicht angeordnet</text>
+		<suplink>Zahlbereiche</suplink>
+	</Linked>
+	<Linked>
+		<title>Konvergenzkriterien</title>
+		<text>\textbf{Kriterien für Konvergenz}\\Nullfolgenkriterium\\$a_k\to x\neq 0$ $\Rightarrow$ $\[\sum_{k=1}^\infty a_k\]$ divergent\\Majorantenkriterium\\$\exists_{b_n}: a_n \le b_n, \[\sum_{n=1}^\infty b_n\]$ konvergent $\Rightarrow$ $\[\sum_{n=1}^\infty a_n \]$ konvergent\\Minorantenkriterium\\$\exists_{b_n}: b_n \le a_n, \[\sum_{n=1}^\infty b_n\]$ divergent $\Rightarrow$ $\[\sum_{n=1}^\infty a_n \]$ divergent\\Leibnizkriterium\\$0\le a_n\to 0$ monoton $\Rightarrow$ $\[\sum_{n=1}^\infty (-1)^n a_n \]$ konvergent\\Verdichtungskriterium\\$\[\sum_{k=1}^\infty a_k\]$ konvergent $\Leftrightarrow$ $\[\sum_{k=1}^\infty 2^k a_{2^k}\]$ konvergent\\Grenzwertkriterium\\$\[\lim_{n\to\infty}\frac{a_n}{b_n}>0 \]$, $a_n, b_n >0$ $\Rightarrow$  ($\[\sum_{k=1}^\infty a_k \]$ konvergent $\Leftrightarrow$ $\[\sum_{k=1}^\infty b_k\]$ konvergent)\\\textbf{Kriterien für absolute Konvergenz}\\Quotientenkriterium\\$\[\lim_{n\to\infty} \vert \frac{a_{n+1}}{a_n}\vert <1\]$ $\Rightarrow$ $\[\sum_{k=1}^\infty a_k \]$ absolut konvergent\\Wurzelkriterium\\$\[\lim_{n\to\infty} \vert \sqrt[n]{a_n} \vert <1\]$ $\Rightarrow$ $\[\sum_{k=1}^\infty a_k \]$ absolut konvergent\\Majorantenkriterium\\$\exists_{b_n}: \vert a_n\vert \le b_n, \[\sum_{n=1}^\infty b_n\]$ konvergent $\Rightarrow$ $\[\sum_{n=1}^\infty a_n \]$ absolut konvergent</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Konvergenzkriterien für Folgen</title>
+		<text>\textbf{Definition nachrechnen}\\Bestimme $n_0(\epsilon)$, sodass $\forall_{\epsilon>0}\exists_{n_0\in\mathbb{N}}: \forall_{n\ge n_0}: \vert a_n-a_0\vert <\epsilon$\\\textbf{Sandwichtheorem}\\$\exists_{Folgen\ b_n, c_n}: b_n\to a_0, c_n\to a_0, \forall_{n\in\mathbb{N}}:b_n\le a_n\le c_n \Rightarrow a_n\to a$\\\textbf{Majorantenkriterium}\\$\exists_{Folge\ b_n}: b_n\to 0, \forall_{n\in\mathbb{N}}: \vert a_n-a\vert \le b_n \Rightarrow a_n\to a$\\\textbf{Monotoniekriterium}\\$a_n$ beschränkt und monoton $\Rightarrow$ $a_n$ konvergent\\\textbf{Vorgehen bei rekursiven Folgen}\\1. Fixpunktgleichung: Für Grenzwert $a_0$ gilt  $a_0=a_n=a_{n+1}$\\    Lösungen für $a_0$ sind Kandidaten für Grenzwerte\\2. Durch Induktion Beschränktheit und Monotonie zeigen\\3. Monotoniekriterium anwenden</text>
+		<suplink>Folgen</suplink>
+	</Linked>
+	<Linked>
+		<title>Konvex und konkav</title>
+		<text>\textbf{Definition}\\$f:[a,b]\to\mathbb{R}$ heißt konvex \\$:\Leftrightarrow$ $\forall_{x,y\in (a,b),\ \lambda\in [0,1]}:f(\lambda x+(1-\lambda y)\le \lambda f(x)+(1-\lambda )f(y)$ $\Leftrightarrow$ $f''\ge 0$\\$f:[a,b]\to\mathbb{R}$ heißt konkav $:\Leftrightarrow$ $-f$ ist konvex\\-Strikte Eigenschaft für $<$ statt $\le$</text>
+		<suplink>Differentialrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Kurven</title>
+		<text>\textbf{Definition}\\Kurven sind Abbildungen $\gamma: I \to \mathbb{R}^m$, $t \mapsto \gamma (t)$, $I = [a, b] \subset \mathbb{R}$\\\textbf{Eigenschaften}\\-$\gamma$ regulär $\Leftrightarrow$ $\forall_{t \in I}: \| \gamma ' (t) \| \neq 0$\\-$\gamma$ geschlossen $\Leftrightarrow$ $\gamma(a)=\gamma(b)$\\-$\gamma$ doppelpunktfrei $\Leftrightarrow$ $\gamma$ auf $[a, b)$ injektiv\\-$\gamma_2: I \to \mathbb{R}^n$ heißt Umparametrisierung von $\gamma_1: J \to \mathbb{R}^n$ \\$\Leftrightarrow$ $\exists_{Diffeomorphismus\ \Phi:I \to J}: \forall_{t \in I}: \gamma_1(t) = \gamma_2(\Phi (t))$\\-Kurvenlänge $L(\gamma):=\int_a^b \| \gamma ' (t) \| dt$\\-Kurvenlängenfunktion $s: [a, b] \to \mathbb{R}, \tau \mapsto s(\tau)=\int_a^\tau \| \gamma '(t) \| dt$ mit $s(b)=L(\gamma)$\\-Natürliche Parametrisierung $\gamma_0:[0, L(\gamma)] \to \mathbb{R}^n$, $t \mapsto \gamma_0(t)  = \gamma(s^{-1}(t))$ mit $\forall_{t \in I}: \| \gamma_0'(t) \|=1$ \\ mit Tangenteneinheitsvektor $\vec \tau(t) = \[ \frac{\gamma'(t)}{\| \gamma'(t) \|} \]$ und  Normaleneinheitsvektor $\vec n(t)=\[ \frac{\vec \tau'(t)}{\|\vec \tau'(t)\|} \]$</text>
+		<suplink>Klassifizierung von Funktionen in mehreren Veränderlichen</suplink>
+		<link>Kurvenintegrale;0</link>
+	</Linked>
+	<Linked>
+		<title>Kurvenintegrale</title>
+		<text>\textbf{Kurvenintegral über Skalarfeld}\\$D \subset \mathbb{R}^n$ offen, $f:D\to \mathbb{R}^m$ stetig, $\gamma:[a,b] \to D$ reguläre Kurve\\$\[ \int_\gamma f ds \]:= \[ \int_a^b f(\gamma(t)) \cdot \| \.\gamma(t) \| dt \]$\\-$\gamma$ geschlossen $\Rightarrow$ $\oint_\gamma f ds:= \int_\gamma f ds$\\-Linear, zerlegbar, Umparametrisierung möglich\\\textbf{Kurvenintegral über Vektorfeld}\\$D\subset\mathbb{R}^n$ offen, $f:D\to\mathbb{R}^m$ stetig, $\gamma:[a,b] \to D$ reguläre Kurve\\$\[ \int_\gamma f(x) dx := \int_a^b \langle f(\gamma(t))\ |\ \. \gamma(t) \rangle\ dt \]\\-$f$ ist Gradientenfeld $\Rightarrow$ $\forall_{\gamma_1, \gamma_2: [a,b]\to D\ stetig,\ \gamma_1(a)=\gamma_2(a), \gamma_1(b)=\gamma_2(b)}: \int_{\gamma_1} f ds = \int_{\gamma_2} f ds$</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+		<link>Kurven;0</link>
+	</Linked>
+	<Linked>
+		<title>Körper</title>
+		<text>\textbf{Definition}\\$(M, +, *)$ mit zweistelligen Verknüpfungen $+, *$ heißt Körper $\Leftrightarrow$\\1. $(K, +)$ ist abelsche Gruppe (mit neutralem Element $0$)\\2. $(K \setminus \{ 0 \}, *)$ ist abelsche Gruppe (mit neutralem Element $1$)\\3. Distributivgesetze: $\forall _{a,b,c \in M}: a*(b+c)=a+b+a*c, (a+b)*c = a*c+b*c$</text>
+		<suplink>Algebraische Strukturen</suplink>
+		<link>Reelle Zahlen;0</link>
+	</Linked>
+	<Linked>
+		<title>Laplacescher Entwicklungssatz</title>
+		<text>\textbf{Laplacescher Entwicklungssatz}\\$Â \in \mathbb{R}^{n \times n}$ $\Rightarrow$ $det(Â) = \sum_{k=1}^n  (-1)^{i+k} (Â)_{ik} det(Â_{ik}) = \sum_{k=1}^n (-1)^{j+k} (Â)_{kj} det(Â_{kj})$\\-Minorante $Â_{ij}:=$ Submatrix von $Â$ durch Streichen der i-ten Zeile und j-ten Spalte\\\textbf{Anwendung}\\-$Â = \left( \begin{array}{cc}a & b \\ c & d \end{array} \right) \in \mathbb{R}^{2 \times 2}$ $\Rightarrow$ $det(Â) = ad -bc $\\-Determinante von Dreiecksmatrix $Â$: $det(Â) = \prod_{i=1}^n (Â)_{ii}$\\-Nach Zeile oder Spalte mit vielen Nullen entwickeln</text>
+		<suplink>Determinante</suplink>
+	</Linked>
+	<Linked>
+		<title>Lebesgue-Integral</title>
+		<text>\textbf{Die Menge $L^\uparrow((a,b))$}\\$f:(a,b)\to\mathbb{R}\ \in L^\uparrow((a,b))$ $:\Leftrightarrow$ \\$\exists_{\varphi_n}: \varphi_n$ fast überall monoton wachsend, für fast alle $x\in[a,b]$: $\[\lim_{n\to\infty}\varphi_n(x)=f(x)\]$, \\$\int_a^b\varphi_n(x)dx$ konvergent\\Alle Elemente von $L^\uparrow((a,b))$ sind konvergent, z.B. nach dem Riemannschen Integral\\\textbf{Lebesgue-Integrierbarkeit}\\$L((a,b)):=\{f=f_1-f_2:(a,b)\to\mathbb{R}\ |\ f_1, f_2\in L^\uparrow((a,b))\}$\\$f\in L((a,b))$ $\Rightarrow$ $\int_a^bf(x)dx=\int_a^b f_1(x)dx-\int_a^bf_2(x)dx$\\\textbf{Unterschied Riemann- und Lebesgue-Integral}\\$R((a,b))\subset L((a,b))$\\Beispielsweise sind manche unbeschränkten Funktionen auf kompakten Intervallen \\Lebesgue-integrierbar.</text>
+		<suplink>Integrationsbegriffe</suplink>
+	</Linked>
+	<Linked>
+		<title>Leibniz-Regel für Parameterintegrale</title>
+		<text>\textbf{Leibniz-Regel für Parameterintegrale}\\$f$, $\alpha$, $\beta$ stetig differenzierbar\\$\Rightarrow$ $\frac{d}{dy}\int_{\alpha(y)}^{\beta(y)} f(x,y) dx = \int_{\alpha(y)}^{\beta(y)} \frac{\partial}{\partial y} f(x,y) dx + f(\beta(y), y) \frac{d}{dy}\beta(y)-f(\alpha(y),y) \frac{d}{dy}\alpha(y)$</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Levi-Civita-Tensor</title>
+		<text></text>
+		<suplink>Determinante</suplink>
+	</Linked>
+	<Linked>
+		<title>Lineare Abbildungen</title>
+		<text>\textbf{Definition}\\$L: V \to W$ mit K-Vektorräumen $V$, $W$ heißt lineare Abbildung $\Leftrightarrow$ $\forall _{x,y \in V, \alpha \in K}:$\\1. Homogen: $L(\alpha x)=\alpha L(x)$\\2. Additiv: $L(x+y)=L(x)+L(y)$\\\textbf{Bild und Kern }einer linearen Abbildung $L:V \to W$\\$Kern(L) := \{ \alpha \in V | L(\alpha)=0 \}\subset V$ \\$Bild(L) :=\{ L(\alpha) | \alpha \in W \} \subset W$\\\textbf{Weitere Eigenschaften} \\-$Rang(L)=dim(Bild(L))$\\-$L$ heißt orientierungstreu $\Leftrightarrow$ $det(L) \ge 0$\\-$L$ heißt längentreu $\Leftrightarrow$ $det(L)=1$\\-$L$ heißt invertierbar $\Leftrightarrow$ $\exists_{L^{-1}:W\to V}: L\circ L^{-1}=L^{-1}\circ L = 1\!\!1$\\\textbf{Bild einer linearen Abbildung $A$ berechnen}\\1) Basis $B$ von $Bild(A)$ finden\\2) $Bild(A)=Lin_\mathbb{R}(B)$\\\textbf{Kern einer linearen Abbildung $A$ berechnen}\\1) Löse $A\cdot x=0$ (Erhalte Vektor $x(t_i)$ mit Parametern $t_i$) $\Rightarrow$ \\ $B:=\begin{cases} \emptyset && \vert t_i\vert =0\\\{x(t_i=1, t_{\neq i}=0)\} && \vert t_i\vert >0 \end{cases}$\\ Kann auch $A\cdot x=b$ lösen und dann konstante Summanden in $x$ weglassen\\2) $Kern(A)=Lin_\mathbb{R}(B)\\</text>
+		<suplink>Lineare Algebra</suplink>
+	</Linked>
+	<Linked>
+		<title>Lineare Algebra</title>
+		<text>\textbf{Lineare Algebra}\\Die Lineare Algebra beschäftigt sich mit Vektorräumen und linearen Abbildungen \\dazwischen, was insbesondere lineare Gleichungssysteme und Matrizen mit einschließt.</text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Lineare Hülle von Vektoren</title>
+		<text>\textbf{Definition}\\Gegeben ist eine Menge von n Vektoren $M (m_i, i \in [1,n]$) bezüglich des Körpers K\\1. Lineare Hülle oder Spann $Lin_K (M) = \{ \sum_{i=1}^n \alpha_i m_i : \alpha_i \in K, m_i\in M \}$\\2. Linearkombination $v$ von $M$ mit beliebigen $\alpha_i \in K, i\in\{1, \dots n\}$: $v=\sum_{i=1}^n \alpha_i m_i$</text>
+		<suplink>Vektor</suplink>
+	</Linked>
+	<Linked>
+		<title>Lineare Unabhängigkeit</title>
+		<text>\textbf{Definition}\\Eine Menge $M$ von Vektoren $m_i$, $i \in [0,n]$ ist linear unabhängig $\Leftrightarrow$\\$\forall _{\alpha_i, i \in [0,n]}: ( \[ \sum_{i=0}^n \alpha_i  m_i \]= 0 \Rightarrow \alpha_i=0 )$\\\textbf{Eigenschaften}\\-$\vec 0$ ist linear abhängig mit allen anderen Vektoren\\\textbf{Lineare Unabhängigkeit von $\{v_1, \dots v_n\}$ nachweisen }\\a) Lineare Abhängigkeit nachweisen\\ -Gebe $\{\alpha_1, \dots \alpha_n\}$ mit $\[ \sum_{i=1}^n \alpha_i v_i \] \neq 0$ an\\ -$v_i$ durch andere Vektoren darstellen: $v_i=f(v_1, \dots v_{i-1}, v_{i+1}, \dots v_n)$\\b) Lineare Unabhängigkeit bei Vektoren\\ -Darstellung von $v_i$ durch linear unabhängige Vektoren $w_i$ bekannt\\ 1) Umschreiben: $0=\[ \sum_{i=1}^n \alpha_i v_i \]=\[ \sum_{i=1}^n \beta_i(\alpha) w_i \]$, habe nun $\beta_i(\alpha)=\beta_i(\alpha_1, \dots \alpha_n)$\\ 2) $w_i$ linear unabhängig $\Rightarrow$ $\forall_{\beta_i}: \beta_i=0$\\ 3) LGS lösen: $\beta_i(\alpha)= 0$\\ 4) Nur $\forall_{\alpha_i}:\alpha_i=0$ löst LGS $\Rightarrow$ $v_i$ linear unabhängig\\c) Lineare Unabhängigkeit bei Funktionen\\ -Eigenschaft gilt für alle Funktionswerte x $\Rightarrow$ Kann x $n$-mal wählen und so Koeffizienten für \\  Linearkombination berechnen</text>
+		<suplink>Vektor</suplink>
+	</Linked>
+	<Linked>
+		<title>Lineares Gleichungssystem</title>
+		<text>\textbf{Definition}\\Lineares Gleichungssystem: $A \cdot \vec x = \vec y$ mit $A \in \mathbb{R}^{n \times m}$ $(A:V \to W$) $\vec x \in \mathbb{R}^m$, $\vec y \in \mathbb{R}^n$\\\\textbf{Schreibweise: }Erweiterte Koeffizientenmatrix $\left(\begin{array}{ccc|c}(A)_{11} & \dots & (A)_{1m} & y_1 \\ \vdots & \ddots & \vdots & \vdots \\ (A)_{n1} & \dots & (A)_{nm} & y_n \end{array}\right)$\\\textbf{Rechenregeln zum Lösungen von LGSen: }\\1. Zeilen addieren\\2. Skalare multiplizieren\\3. Zeilen vertauschen\\-Alternative: Cramersche Regel\\\textbf{Für ein LGS $ Â \cdot \vec x = \vec y$ gilt eine der folgenden Alternativen: }\\1. $A$ ist invertierbar $\Leftrightarrow$ $y \in Bild(A), Kern(A)=\{ 0 \}$ $\Leftrightarrow$ Genau eine Lösung, $V=W$\\2. $y \notin Bild(A)$ $\Leftrightarrow$ Keine Lösung\\3. $y \in Bild(A), Kern(A) \neq \{ 0 \}$ $\Leftrightarrow$ Unendlich viele Lösungen\\\textbf{Tricks}\\-Anfangs Zeilen sortieren: Oben Zeilen mit $1$en, unten Zeilen mit $0$en\\-Eine Variable in LGS $\Rightarrow$ Löse Gleichungen in der Reihenfolge, dass nie durch Eintrag \\ mit Variable geteilt werden muss\\-"-1 - Ergänzungstrick": $\left(\begin{array}{cccc|c}1&&&x_1&0\\&\ddots&&\vdots&\vdots\\&&1&x_n&\vdots\\&&&0&0\end{array}\right)$ $\Leftrightarrow$ $\left(\begin{array}{cccc|c}1&&&0&x_1t\\&\ddots&&\vdots&\vdots\\&&1&0&x_nt\\&&&-1&t\end{array}\right)$\\ Erhalte Lösung in Abhängigkeit von Parameter $t$</text>
+		<suplink>Lineare Algebra</suplink>
+		<link>Cramersche Regel;0</link>
+	</Linked>
+	<Linked>
+		<title>Logik</title>
+		<text>\textbf{Grundprinzipien}\\1. Prinzip der Zweiwertigkeit: Jede Aussage hat genau einen von zwei Wahrheitswerten:\\wahr oder falsch\\2. Prinzip der Kompositionalität: Der Wahrheitswert einer zusammengesetzten Aussagen\\ist durch den Wahrheitswert ihrer Teilaussagen und deren Verknüpfung eindeutig bestimmt\\\textbf{Verknüpfung von Aussagen}\\Junktoren\\-Negation $\lnot A$/$\bar A$ (nicht A)\\-Konjugation $A\land B$ (A und B)\\-Disjunktion $A\lor B$ (A oder B)\\-Implikation $A\Rightarrow B$\\-Äquivalenz $A\Leftrightarrow B$\\Quantoren\\-Allquantor $\forall$ (für alle ...)\\-Existenzquantor $\exists$ (es gibt mindestens ein...) / $\exists !$ (es gibt genau ein...)\\\textbf{Defininieren}\\-Definiere $a$ gleich wie $b$: $a:=b$\\-Definiere die Aussage $A$ als Äquivalent zu $B$: $A:\Leftrightarrow B$</text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Mathematik</title>
+		<text>\textbf{Servus!}</text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Matrix</title>
+		<text>\textbf{Definition}\\$A \in  \mathbb{K}^{n \times m}$ ist eine $n \times m$-Matrix  mit $n$ Zeilen und $m$ Spalten und eine Darstellung der \\linearen Abbildung $L_A: \mathbb{K}^m \to\mathbb{K}^n$\\\textbf{Zusammenhang Matrizen - Lineare Abbildungen}\\Bijektion: Matrix $\Leftrightarrow$ Endlichdimensionale Lineare Abbildung\\Im Gegensatz zu $L$ hängt die Matrix $M_{BA}(L)$ von den Basen $A$ des $\mathbb{K}^n$ und $B$ des  $\mathbb{K}^m$ ab\\\textbf{Besondere Matrizen:}\\Einheitsmatrix $1\!\!1$, Diagonalmatrix, obere/untere Dreiecksmatrix, quadratische Matrix\\Wichtige Darstellungen: Zeilenstufenform\\\textbf{Matrizensumme: } $(A+B)_{ij}=(A)_{ij}+(B)_{ij}$\\\textbf{Matrizenprodukt: }$(A \cdot B)_{ij}=\sum_{k=1}^m (A)_{ik} (B)_{kj}$\\-Operation führt von Zustand rechts zu Zustand links(Wie bei Verkettungen)\\-Assoziativ, distributiv, aber nicht kommutativ\\-Kommutator $[A, B] := A \cdot B -B \cdot A$\\\textbf{Funktionen auf Matrizen}\\-Transponierte $A^T$: $(A^T)_{ij}=(A)_{ji}$  \\ -Es gilt: $(A \cdot B)^\dagger = B^\dagger \cdot A^\dagger$, $\forall_{\alpha \in \mathbb{K}}: (\alpha A)^\dagger = \overline{\alpha} A^\dagger$, $ (A^\dagger)^{-1}= (A^{-1})^\dagger$\\-Adjungierte $A^\dagger$: $A^\dagger= \overline{A^T}$ (Es gilt: $\langle u | A \cdot v \rangle = \langle A^\dagger u | v \rangle$)\\-Inverse $A^{-1}$: Nur für quadratische Matrix \\ -Kriterium: $det(A)\neq 0$ oder $A\cdot x=0$ hat keine Lösung\\-Adjunkte $adj(A)$: ($adj(A))_{ij}=(-1)^{i+j} A_{ji}$ mit Submatrix $A_{ij}$\\-Spur $spur(A)$: $spur (A) = \sum_{i=1}^n (A)_{ii}$\\\textbf{Eigenschaften einer Matrix}\\-Symmetrisch(reell)/Hermitesch(komplex) $\Leftrightarrow$ $A=A^T$/$A=A^\dagger$ \\-Orthogonal($\mathbb{R}$)/Unitär($\mathbb{C}$) $\Leftrightarrow$ Spalten bilden Orthonormalbasis $\Leftrightarrow$ $\langle A \cdot u | A \cdot v \rangle = \langle u | v \rangle$\\-Regulär/Singulär $\Leftrightarrow$ $det A\neq 0$/$det A=0$\\-$A$ und $B$ sind äquivalent $\Leftrightarrow$ $Rang(A)=Rang(B)$ $\Leftrightarrow$ $\exists_{Z, S\ invertierbar}: Z\cdot A\cdot S=B$\\ $\Leftrightarrow$ $A$ und $B$ beschreiben selbe lineare Abbildung bezüglich verschiedener Basen\\-Rang: Anzahl linear unabhängiger Zeilen-/Spaltenvektoren / $dim(Bild(A))$\\ $\forall _{A \in \mathbb{R}^{n \times m}}: Spaltenrang(A)=Zeilenrang(A)=Rang(A)$\\-Dimensionsformel: $n=dim(Kern(A))+dim(Bild(A))$\\\textbf{Koordinatentransformationsmatrix}\\Basen $A, B$ von $\mathbb{K}^n$ $\Rightarrow$ Koordinatentransformationsmatrix $M_{BA}(1\!\!1): \mathbb{K}^n_A\to\mathbb{K}^n_B$ \\Spalten von $M_{BA}(1\!\!1)$ sind Basisvektoren der Basis $A$ bezüglich Basis $B$\\\textbf{Achtung vor Zeilen-/Spaltenvertauschung}\\$n$ Zeilen und $m$ Spalten: $n\times m$-Matrix, $A \in \mathbb{K}^{n\times m}$, $L_A: \mathbb{K}^m\to\mathbb{K}^n$\\-Matrizenmultiplikation von rechts(Urbild) nach links(Bild): $L_{AB}=L_{AA'}L_{A'B'}L_{B'B}$</text>
+		<suplink>Lineare Abbildungen</suplink>
+		<link>Cramersche Regel;0</link>
+	</Linked>
+	<Linked>
+		<title>Matrizenrechnung</title>
+		<text>\textbf{Elementare Umformungen}\\1) Vertauschung von Zeilen/Spalten\\2) Multiplikation von Zeilen/Spalten mit Skalar$\neq 0$\\3) Addition eines Vielfachen einer Zeile/Spalte zu einer anderen\\-Ändern Rang nicht\\\textbf{Unterschied Zeilen- und Spaltenumformungen}\\Spaltenumformungen: Ändern Basisvektoren, Bild bleibt gleich\\Zeilenumformungen: Ändern Geometrie des Bildes(vertauschen Dimensionen), Basis gleich\\Betrachte Matrizengleichung $A\cdot x=b$\\1) Suche Element des Bilds($b$) (Spaltenumformungen)\\ -Basis des Bildes: Bild der Standardbasis=Spalten der Matrix\\ -Zeilenumformungen würden Dimensionen vertauschen\\2) Suche Element des Urbilds ($x$) (Zeilenumformungen)\\ -Spaltenumformungen würden Variablen in $A$ vertauschen\\3) Suche Determinante ($det\ A$) (Zeilen- und Spaltenumformungen)\\ -$det\ A=det\ A^T$ $\Rightarrow$ Zeilen- und Spaltenumformungen gleichwertig\\\textbf{Berechnung der Inversen}\\a) Gauß-Algorithmus: ($A|1\!\!1) \to (1\!\!1|A^{-1}$)\\b) Cramersche Regel: $(A)_{ij}^{-1} = \frac{1}{det(A)} (-1)^{i+j} det(A_{ij})$\\</text>
+		<suplink>Lineare Abbildungen</suplink>
+	</Linked>
+	<Linked>
+		<title>Mehrdimensionale Analysis</title>
+		<text>\textbf{Mehrdimensionale Analysis}\\Die mehrdimensionale Analysis überträgt die Begriffe aus der eindimensionalen Analysis \\auf n Dimensionen.\\Da $\mathbb{R}^n$ ein metrischer Raum ist, werden die Begriffe dementsprechend auf metrische Räume \\bzw. (noch spezialisierter) Banachräume übertragen.</text>
+		<suplink>Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Mengenlehre</title>
+		<text>\textbf{Definition}\\Eine Menge $M$ ist ein Verbund einzelner Elemente. Dabei interessiert nur, welche Elemente \\enthalten sind. Reihenfolge und mehrfaches Auftreten der Elemente interessiert nicht.\\Die leere Menge $\emptyset$ ist die einzige Menge, die keine Elemente enthält.\\\textbf{Kardinalität}\\Die Mächtigkeit oder Kardinalität einer Menge $\vert M\vert$ ist die Anzahl unterschiedlicher \\Elemente in der Menge.\\\textbf{Beziehungen zwischen Mengen und deren Elementen}\\-$x$ ist Element von $M$: $x\in M$ (oder $x\notin M$)\\-$M$ ist Teilmenge von $N$: $M\subseteq N$\\-$M$ ist echte Teilmenge von $N$: $M\subset N$\\\textbf{Mengenoperationen}\\-Schnittmenge $M\cap N:=\{ x\ |\ x\in M\land x\in N\}$\\-Vereinigung $M\cup N:=\{ x\ |\ x\in M\lor x\in N \}$\\-Differenz $M\setminus N:=\{x\ |\ x\in M\land x\notin N\}$\\-Kartesisches Produkt $M\times N:=\{(x,y)\ |\ x\in M\land y\in N\}$\\-Potenzmenge $\mathcal{P}(M):=\{N\ |\ N\subseteq M\}$, $\vert\mathcal{P}(M)\vert=2^{\vert M\vert}$\\\textbf{Abzählbar und überabzählbar unendliche Mengen}\\Menge $M$ heißt abzählbar unendlich $:\Leftrightarrow$ $\vert M\vert=\infty$, es gibt eine Bijektion zwischen $M$ und $\mathbb{N}$\\Menge $M$ heißt überabzählbar unendlich $:\Leftrightarrow$ $\vert M\vert=\infty$, keine Bijektion zwischen $M$ und $\mathbb{N}$\\\textbf{Gleichheit von Mengen}\\$A=B$ $:\Leftrightarrow$ $(A\subseteq B)\land(B\subseteq A)$</text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Metrischer Raum</title>
+		<text>\textbf{Definition}\\$(M, d)$  mit Menge $M$ und Metrik $d: M\times M \to \mathbb{R}$ heißt metrischer Raum $\Leftrightarrow$ $\forall_{x,y\in M}:$\\1. d positiv semidefinit: $d(x,y) \ge 0, d(x,y)=0 \Rightarrow x=y$\\2. d symmetrisch: $d(x,y)=d(y,x)$\\3. d erfüllt Dreiecks-Ungleichung: $d(x,y) \le d(x,z) + d(z,y)$</text>
+		<suplink>Topologie</suplink>
+	</Linked>
+	<Linked>
+		<title>Mittelwertsatz</title>
+		<text>\textbf{Mittelwertsatz}\\$f:[a,b]\to\mathbb{R}$ stetig differenzierbar auf $[a,b]$ $\Rightarrow$ $\exists_{x_0\in(a,b)} f(b)-f(a)=f'(x_0)(b-a)$</text>
+		<suplink>Differentialrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Mittelwertsatz der Integralrechnung</title>
+		<text>\textbf{Mittelwertsatz der Integralrechnung}\\$f:[a,b]\to\mathbb{R}$, $f\in C([a,b])$\\$\Rightarrow$ $\exists_{\xi\in [a,b]}:\int_a^bf(x)dx=f(\xi)(b-a)$</text>
+		<suplink>Integralrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Mittelwertsatz und Schrankensatz in mehreren Veränderlichen</title>
+		<text>\textbf{Mittelwertsatz und Schrankensatz für skalarwertige Funktionen}\\$D\subset\mathbb{R}^n$ offen, $f:D\to\mathbb{R}$ differenzierbar, $a$, $b$ mit $S_{a,b}=\{a+t(b-a)\ |\ 0\le t\le 1\}\subset D$ \\$\underrightarrow{MWS}$ $\exists_{\xi\in S_{a,b}}: f(b)-f(a)=f'(\xi)\cdot(b-a)$\\$\underrightarrow{SS}$ $\vert f(b)-f(a) \vert \le L \ \| b-a\|$, $L:=max\{f'(x)\ |\ x\in S_{a.b}\}$\\\textbf{Mittelwertsatz und Schrankensatz für vektorwertige Funktionen}\\$D\subset\mathbb{R}^n$ offen, $f:D\to\mathbb{R}^m$ differenzierbar, $a$, $b$ mit $S_{a,b}=\{a+t(b-a)\ |\ 0\le t\le 1\}\subset D$ \\$\underrightarrow{MWS}$ $f(b)-f(a)=\[ (\int_0^1 J_f(a+t(b-a))dt) \] (b-a)$\\-Komponentenweise über Jacobi-Matrix integrieren\\$\underrightarrow{SS}$ $\| f(b)-f(a) \| \le L \|b-a\|$, $L:=max\{\|J_f(a+t(b-a))\|\ |\ 0\le t\le 1\}$</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+		<link>Grenzwert in einem metrischen Raum;0</link>
+	</Linked>
+	<Linked>
+		<title>Nabla-Operator</title>
+		<text>\textbf{Definition}\\$\vec \nabla := \partial_i \vec e_i$\\\textbf{Anwendungsbeispiele}\\$grad\ f := \vec \nabla f$\\$div \vec f := \vec \nabla \cdot \vec f$\\$rot \vec f := \vec \nabla \times \vec f$\\$(\vec h \cdot \vec \nabla) f = h_i \partial_i f=\vec h\cdot grad\ f$\\$\Delta:=\vec \nabla^2=\partial_i^2$\\\textbf{Rechenregeln}\\-$\vec \nabla (\vec f\cdot \vec g)=(\vec f \cdot \vec \nabla)\vec g+(\vec f\cdot\vec \nabla)\vec g+\vec f \times(\vec \nabla\times\vec g) + \vec g\times(\vec\nabla\times\vec f)$\\-$\vec\nabla(fg)=(\vec\nabla f) g + f(\vec\nabla g)$ \\-$\vec\nabla\cdot(f\vec g)=f(\vec\nabla\cdot\vec g)+(\vec\nabla f)\cdot\vec g$\\-$\vec\nabla\times(f \vec g)=f(\vec\nabla\times\vec g)-(\vec\nabla f)\times\vec g$\\-$\Delta(fg)=(\Delta f)g+2(\vec\nabla f)(\vec\nabla g) + f(\Delta g)$\\-$rot(grad\ f)=\vec\nabla\times(\vec\nabla f)=0$\\-$div(rot\vec f)=\vec\nabla\cdot(\vec\nabla\times\vec f)=0$\\-$rot(rot\vec f)=\vec\nabla\times(\vec\nabla\times\vec f)=grad(div\vec f)-\Delta\vec f=\vec\nabla(\vec\nabla\cdot\vec f)-(\vec\nabla\cdot\vec\nabla)\vec f$</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Natürliche Zahlen</title>
+		<text>\textbf{Induktive Menge}\\$M\subset\mathbb{R}$ heißt induktive Menge $:\Leftrightarrow$ $1\in M$, $\forall_{x\in M}: x+1\in M$\\\textbf{Definition}\\$\mathbb{N}:=\cap\{M\subset\mathbb{R}\ |\ M\ ist\ induktiv\}$\\-$\mathbb{N}$ ist die kleinste induktive Teilmenge von $\mathbb{R}$\\\textbf{Induktionsprinzip}\\$\forall_{n\in\mathbb{N}}: A(n)$ ist mathematische Aussage mit \\1) $A(1)$ ist wahr\\2) $A(n)$ ist wahr $\Rightarrow$ $A(n+1)$ ist wahr\\$\Rightarrow$ $\forall_{n\in\mathbb{N}}:$ $A(n)$ ist wahr</text>
+		<suplink>Zahlbereiche</suplink>
+	</Linked>
+	<Linked>
+		<title>Norm</title>
+		<text>\textbf{Definition}\\Eine Norm ist eine Abbildung, die Elementen eines $\mathbb{K}$-Vektorraums $V$ eine  Zahl zuordnet:\\$\| \cdot \|: V \to \mathbb{R}_{\ge 0}$\\Folgende Axiome definieren eine Norm($\alpha \in \mathbb{K}$, $x, y \in V$):\\1. Positive Definitheit: $\| x \| \ge 0 , \| x \|=0 \Leftrightarrow x=0$\\2. Absolute Homogenität: $\| \alpha x \| = | \alpha | \| x \|$\\3. Dreiecksungleichung; $\| x+ y \| \le \| x \| + \| y \|$\\\\\textbf{Bemerkungen}\\-Alle Normen auf $\mathbb{R}^n$ sind äquivalent</text>
+		<suplink>Vektor</suplink>
+	</Linked>
+	<Linked>
+		<title>Oberflächenintegrale</title>
+		<text>\textbf{Oberflächenintegrale über Skalarfeldern $f:\mathbb{R}^n\to\mathbb{R}$}\\$F\subset g(U)$, $f:F\to\mathbb{R}$ $\Rightarrow$ $\[ \int_F fdo \] := \[ \int_B f(g(u,v))\ \|n(g(u,v))\|\ d(u,v) \]$\\\textbf{Oberflächenintegrale über Vektorfeldern $f:\mathbb{R}^n\to\mathbb{R}^m$}\\$F\subset g(U)$, $f:F\to\mathbb{R}^m$ $\Rightarrow$ $\[ \int_F fdo \] := \[ \int_B \langle f(g(u,v))\ |\ n(g(u,v))\rangle\ d(u,v) \]$</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+		<link>Darstellung von Flächen;0</link>
+	</Linked>
+	<Linked>
+		<title>Offenheit und Abgeschlossenheit</title>
+		<text>\textbf{Definition}\\Metrischer Raum $(M,d)$, $U \subset M$ heißt offen $\Leftrightarrow$ $\forall _{x \in U} \exists _{\epsilon >0} \forall _{y \in \mathbb{R}^n}: d(x,y) < \epsilon \Rightarrow y \in U$ \\Menge $M$ heißt abgeschlossen $\Leftrightarrow$ Komplement $M^C$ ist offen\\\textbf{Eigenschaften}\\-$\emptyset$ und $\mathbb{R}^n$ sind offen und abgeschlossen\\-Es gibt Mengen, die weder offen noch abgeschlossen sind(z.B. $(0,1]$)\\-$\forall_{A_i}: A_i$ ist offen $\Rightarrow$ $\cup_{n\in\mathbb{N} \cup \{\infty\}}\ A_i$ ist offen, $\cap_{n\in\mathbb{N}}\ A_i$ ist offen\\-Urbild einer stetigen Funktion über eine offene Menge ist offen\\-$\exists_{(x_n)_{n\in\mathbb{N}}\in M}:\[ \lim_{n\to \infty} x_n \] \notin M$ $\Rightarrow$ $M$ nicht abgeschlossen</text>
+		<suplink>Mengenlehre</suplink>
+	</Linked>
+	<Linked>
+		<title>Orthogonal- und Orthonormalbasis</title>
+		<text>\textbf{Definition}\\$\{ v^1, \dots v^n \}$ heißt Orthogonalbasis $\Leftrightarrow$ $ \forall _{i,j \in [1,n]}:  \langle v^i | v^j \rangle= \begin{cases}\alpha \in \mathbb{R} \neq 0 \ \ & i = j \\ 0 & i \neq j \end{cases}$\\$\{ v^1, \dots v^n \}$ heißt Orthonormalbasis $\Leftrightarrow$ $ \forall _{i,j \in [1,n]}:  \langle v^i | v^j \rangle= \delta _{ij} = \begin{cases}1 \ \ & i = j \\ 0 & i \neq j \end{cases}$\\\textbf{Eigenschaften}\\-Jeder endlich dimensionale $\mathbb{K}$-Vektorraum mit Skalarprodukt hat eine Orthonormalbasis</text>
+		<suplink>Lineare Abbildungen</suplink>
+	</Linked>
+	<Linked>
+		<title>Orthogonalität von Vektoren</title>
+		<text>\textbf{Definition}\\Vektoren $a, b$ sind orthogonal $\Leftrightarrow$ $\langle a | b \rangle =0$</text>
+		<suplink>Vektor</suplink>
+		<link>Gram-Schmidtsches Orthogonalisierungsverfahren;0</link>
+	</Linked>
+	<Linked>
+		<title>Partielle Ableitung und Gradient</title>
+		<text>\textbf{Partielle Ableitung}\\$f:\mathbb{R}^n \to \mathbb{R}^m$\\$\partial_x_i f(\vec x) = \frac{\partial f}{\partial x_i}(x_1_0, \dots x_n_0) = \[ \lim_{h \to 0} \frac{f(x_1_0, \dots x_i_0+h, \dots x_n_0)-f(x_1_0, \dots x_i_0, \dots x_n_0)}{h}\] \subset \mathbb{R}$\\\textbf{Gradient}\\$grad(f) = \vec \nabla f = \left( \begin{array}{c}\partial_x_1 f(\vec x) \\ \vdots \\ \partial_x_n f(\vec x)\end{array} \right) \subset \mathbb{R}^n$\\</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Permutation</title>
+		<text>\textbf{Definition}\\$f: \{ 1 \dots n \} \to \{ 1 \dots n \}$ ist injektive Abbildung $\Leftrightarrow$ f heißt Permutation\\Symmetrische Gruppe $S_n:=$ Menge aller Permutationen mit Komposition als Verknüpfung\\\textbf{Bemerkungen}\\-Neutrales Element: Identität $x \to x$, Inverses Element: Umkehrung(Permutation ist injektiv)\\-$|S_n|=n!$</text>
+		<suplink>Determinante</suplink>
+	</Linked>
+	<Linked>
+		<title>Potenzreihen</title>
+		<text>\textbf{Definition}\\Potenzreihen sind Reihen der Form $\[\sum_{n=0}^\infty a_n (z-z_0)^n\]$\\Hierbei ist $z\in\mathbb{C}$ ein Parameter, $a_n$ eine komplexe Folge und $z_0\in\mathbb{C}$ der Entwicklungspunkt\\\textbf{Konvergenzradius}\\Zu jeder Potenzreihe $\[\sum_{n=0}^\infty a_n (z-z_0)^n\]$ gehört ein Konvergenzradius $R\in\mathbb{R}^+\cup \{0, \infty\}$, sodass \\$\[\sum_{n=0}^\infty a_n (z-z_0)^n\]$ für alle $z$ im Konvergenzkreis $K=\{z\in\mathbb{C}\ |\ \|z-z_0\|<R\}$ absolut konvergiert\\und sonst divergiert\\-Zur Bestimmung des Konvergenzradius $R$ behandelt man Potenzreihen wie gewöhnliche \\ Reihen mit Parameter $z$\\-Rand $\{z\in\mathbb{C}\ |\ \|z-z_0\| =R\}$ gesondert untersuchen</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Potenzreihen als Funktionen</title>
+		<text>\textbf{Stetigkeit}\\Eine Potenzreihe definiert auf ihrem Konvergenzradius eine stetige Funktion.\\\textbf{Abelscher Grenzwertsatz}\\Für reelle Potenzreihe $\[\sum_{n=0}^\infty a_n (x-x_0)^n\]$ mit Potenzradius $R>0$ und Entwicklungspunkt $x_0$ \\konvergiert $\[\sum_{n=0}^\infty a_n (x_r-x_0)^n\]$ mit $\|x_r-x_0\| =R$\\$\Rightarrow$ $\[\lim_{x\to x_r, \|x-x_0\|<R} \sum_{n=0}^\infty a_n (x-x_0)^n\] = \[\sum_{n=0}^\infty a_n (x_r-x_0)^n\]$\\\textbf{Identitätssatz für Potenzreihen}\\Für zwei Potenzreihen gilt für $0<\|z-z_0\|<r$ $\[\sum_{n=0}^\infty a_n (z-z_0)^n\]=\[\sum_{n=0}^\infty b_n (z-z_0)^n\]$ \\$\Rightarrow$ Koeffizientenfolgen$a_n$, $b_n$ identisch: $\forall_{n\in\mathbb{N}}: a_n=b_n$</text>
+		<suplink>Potenzreihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Projektoren</title>
+		<text>\textbf{Definition}\\Lineare Abbildung $P:V \to V$ auf $n$-dim. Vektorraum $V$ heißt Projektor $\Leftrightarrow$ $\forall _{v \in V}: P^2(v) = P(v)$\\\textbf{Eigenschaften}\\-$Q:=1\!\!1 - P$ ist ebenfalls Projektor\\-$Bild(P)=\{ v \in V | P(v)=v \}$\\-$Kern(P)=Bild(Q)$\\-$V=Bild(P) \oplus Kern(P)$\\\textbf{Orthogonalprojektion}\\$U$ mit Orthonormalbasis $\{ u_1, \dots u_l \}$ ist l-dimensionaler Untervektorraum von $V$, $l \le n$\\$\Rightarrow$ $u =P(v)= \sum_{i=1}^l \langle v | u_i \rangle u_i$ ist Orthogonalprojektion von $v \in V$ auf $u \in U$\\Abstand zwischen Ausgangsvektor und Untervektorraum: $d(x,U)=min_{y\in U}\|x-y\|=\|x-P(x)\|$</text>
+		<suplink>Orthogonal- und Orthonormalbasis</suplink>
+	</Linked>
+	<Linked>
+		<title>Reelle Zahlen</title>
+		<text>\textbf{Definition}\\Der Körper der reellen Zahlen $(\mathbb{R}, +, *)$ werden mittels drei Gruppen von Axiomen definiert.\\\textbf{1. Körperaxiome}\\$(\mathbb{R}, +, *)$ ist ein Körper: Addition und Mulitplikation sind assoziativ, kommutativ und haben neutrale und inverse Elemente. Zudem gelten die Distributivgesetze\\\textbf{2. Anordnungsaxiome}\\1. Trichotomie: $\forall_{a\in \mathbb{R}}: a>0 \lor a=0\lor a<0$\\2. $\forall_{a,b>0}: a+b, a*b>0$\\\textbf{3. Vollständigkeitsaxiom}\\$\forall_{M\subset\mathbb{R}}\exists_{s\in\mathbb{R}}: \forall_{x\in M}: x\le s$\\\textbf{Zusätzliche Definitionen}\\$a\ge 0$ $:\Leftrightarrow$ $a>0 \lor a=0$\\$a\le 0$ $:\Leftrightarrow$ $a<0 \lor a=0$\\\textbf{Folgerungen}\\-Aus den Axiomen lassen sich alle weiteren Rechenregeln ableiten\\-Kann Gleichheit beweisen: $a\le b$, $b\le a$ $\Rightarrow$ $a=b$\\-Definiere alle anderen Zahlbereiche mithilfe der reellen Zahlen</text>
+		<suplink>Zahlbereiche</suplink>
+		<link>Körper;0</link>
+	</Linked>
+	<Linked>
+		<title>Reihen</title>
+		<text>\textbf{Reihen sind besondere Folgen}\\Für eine Folge $a_k$ ist die Reihe $s_n=\[ \sum_{k=1}^na_k\]$ die Folge der Partialsummen von $a_k$\\Somit können alle Begriffe von Folgen auf Reihen übertragen werden.</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Reihenwerte berechnen</title>
+		<text>\textbf{Geometrische Reihe}\\-Reihe in geometrische Reihe umformen\\-Benutze Cauchyprodukt\\\textbf{Teleskopsumme}\\$\[\sum_{k=1}^\infty (a_n-a_{n+1})\]=a_1$\\\textbf{Elementarfunktion oder Taylorreihe}\\-Erkenne Funktionswert von E in Elementarfunktion oder Taylorreihe\\-Eventuell vorher gliedweise differenzieren oder integrieren, nach Funktionswert-Erkennen \\ rückintegrieren oder rückdifferenzieren</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Relation</title>
+		<text>\textbf{Binäre Relation}\\Eine binäre Relation $R$ von $X$ in $Y$ ist eine Teilmenge $R\subset X\times Y$\\\textbf{Reflexiv, symmetrisch, antisymmetrisch, transitiv}\\$R\subset X\times X$ heißt reflexiv $:\Leftrightarrow$ $\forall_{x\in R}: (x,x)\in R$\\$R\subset X\times X$ heißt symmetrisch $:\Leftrightarrow$ $\forall_{x,y\in R}: (x,y)\in R\Rightarrow (y,x)\in R$\\$R\subset X\times X$ heißt antisymmetrisch $:\Leftrightarrow$ $\forall_{x,y\in R}: (x,y)\in R, (y,x)\in R\Rightarrow x=y$\\$R\subset X\times X$ heißt transitiv $:\Leftrightarrow$ $\forall_{x,y,z\in R}: (x,y), (y,z)\in R\Rightarrow (x,z)\in R$\\\textbf{Ordnungsrelation, Äquivalenzrelation}\\$R\subset X\times X$ heißt Äquivalenzrelation $:\Leftrightarrow$ $R$ ist reflexiv, symmetrisch und transitiv\\$R\subset X\times X$ heißt Ordnungsrelation $:\Leftrightarrow$ $R$ ist reflexiv, antisymmetrisch und transitiv\\\textbf{Eindeutigkeit und Totalität}\\$R\subset X\times Y$ heißt linkseindeutig $:\Leftrightarrow$ $\forall_{(x_1,y_1), (x_2,y_2)\in R}: y_1=y_2\Rightarrow x_1=x_2$\\$R\subset X\times Y$ heißt rechtseindeutig $:\Leftrightarrow$ $\forall_{(x_1,y_1), (x_2,y_2)\in R}: x_1=x_2\Rightarrow y_1=y_2$\\$R\subset X\times Y$ heißt linkstotal $:\Leftrightarrow$ $\forall_{x\in X}\exists_{y\in X}: (x,y)\in R$\\$R\subset X\times Y$ heißt rechtstotal $:\Leftrightarrow$ $\forall_{y\in X}\exists_{x\in X}: (x,y)\in R$</text>
+		<suplink>Mengenlehre</suplink>
+	</Linked>
+	<Linked>
+		<title>Richtungsableitung</title>
+		<text>\textbf{Definition}\\Richtungsableitung von $f:I \to \mathbb{R}^m$, $\emptyset \neq I \subset \mathbb{R}^n$ entlang $v \in \mathbb{R}^n \setminus \{ 0 \}$: \\$\partial_{v}f( x_0) =\frac{\partial}{\partial v} f( x_0) := \[ \lim_{h \to 0}  \frac{f(x_0 + h v)- f( x_0)}{h}\]$\\\textbf{Bemerkungen}\\-Mit der Jacobi-Matrix $J_{f}$ gilt: $\partial_vf( x_0) = J_f(x_0) \cdot v$\\-Eine total differenziarbare Funktion hat Richtungsableitungen in alle Richtungen</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Riemann-Integral</title>
+		<text>\textbf{Riemann-Summe, Feinheit und Riemann-Folge}\\Zerlegung $Z$ des Intervalls $[a,b]$: $a=x_0<...<x_n=b$ mit Zwischenstellen $z_i\in[x_{i-1},x_i]$\\Riemann-Summe $R(Z,z):=\[\sum_{i=1}^n f(z_i)\vert x_i-x_{i-1}\vert\]$\\Feinheit einer Zerlegung $\vert Z\vert:=max\{\vert x_i-x_{i-1}\vert\ |\ i=1,\dots n\}$\\Definiere für Folge von Zerlegungen $Z_n$ mit $\[\lim_{n\to\infty}\vert Z_n\vert =0\]$ die Riemann-Folge $(R(Z_n, z_n))_{n\in\mathbb{N}}$\\\textbf{Riemann-Integrierbarkeit}\\$f:[a,b]\to\mathbb{R}$ heißt riemann-integrierbar $\Leftrightarrow$ $f\in R([a,b])$ \\$:\Leftrightarrow$ $\forall_{Riemann-Folgen\ R(Z_n, z_n)}:\[\lim_{n\to\infty}R(Z_n, z_n)\]=:\int_a^b f(x)dx$ existiert \\\textbf{Riemann-integrierbare Funktionen}\\Beispiele für Riemann-integrierbare Funktionen sind\\-Stückweise stetige Funktionen auf kompakten Intervallen(stetig bis auf endlich viele Stellen)\\-Stückweise monotone Funktionen auf kompakten Intervallen</text>
+		<suplink>Integrationsbegriffe</suplink>
+	</Linked>
+	<Linked>
+		<title>Ring</title>
+		<text>\textbf{Definition}\\$(M,+,*)$ heißt Ring $:\Leftrightarrow$\\1. $(R, +)$ ist kommutative Gruppe\\2. $*$ ist assoziativ\\3. Distributivgesetze: $\forall_{a,b\in M}: (a+b)*c=a*c+b*c,\ a*(b+c)=a*b+a*c</text>
+		<suplink>Algebraische Strukturen</suplink>
+	</Linked>
+	<Linked>
+		<title>Satz von Fubini</title>
+		<text>\textbf{Satz von Fubini}\\$p,q \in \mathbb{N}$, $p+q=n$, $I_1 \subset \mathbb{R}^p$, $I_2 \subset \mathbb{R}^q$, $I_1$ und $I_2$ Quader, $I:=I_1 \times I_2$, $f\in L(I)$\\$\Rightarrow$ $\int_I f(x,y) d(x,y) = \int_{I_1}(\int_{I_2} f(x,y) dy) dx = \int_{I_2}(\int_{I_1} f(x,y) dx) dy$\\\textbf{In eigenen Worten}\\Bei Integration über Quader existiert Integral und Integrationsreihenfolge ist vertauschbar</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Satz von Taylor</title>
+		<text>\textbf{Satz von Taylor}\\$f\in C^{n+1}(D)$ $\Rightarrow$ $\exists_{\alpha\in (x,x_0)}: f(x)=T_n(f,x_0)+R_n(f, x_0, \alpha)$\\\textbf{Taylorpolynom}\\$\[ T_n(f,x_0)=\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\]$\\\textbf{Restglied}\\$\[ R_n(f,x_0, \alpha)= \frac{f^{(n+1)}(\alpha)}{(n+1)!} (x-x_0)^{n+1}\]$\\\textbf{Taylorreihe um $x_0$ zu $f$ angeben}\\1. $\forall_{n\in\mathbb{N}}:f^{(n)}$ berechnen und mittels Induktion beweisen\\2. $f^{(n)}(x_0)$ berechnen\\3. Unendliche Reihe $T_n(f,x_0)$ berechnen\\4. Zeige: $\[\lim_{n\to\infty}R_n(f,x_0)=0\]$\\$\Rightarrow$ $\[\lim_{n\to\infty} T_n(f,x_0)= f(x)\]$ in Umgebung von $x_0$</text>
+		<suplink>Differentialrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Satz von Taylor in mehreren Veränderlichen</title>
+		<text>\textbf{Definition: Verbindungsstrecke}\\Strecke $[a,b]$ bezeichnet Menge aller Punkte auf einer Geraden von $a$ nach $b$.\\\textbf{Satz von Taylor}\\$D \subset \mathbb{R}^m$ offen, $n \in \mathbb{N}_0$, $f:\mathbb{R}^m\to\mathbb{R}$, $f \in C^{n+1}(D, \mathbb{R})$; $x_0 \in D$, $h \in \mathbb{R}^m$, $[x_0, x_0+h] \subset D$\\$\Rightarrow$ $\exists_{\xi \in [x_0, x_0+h]}: f(x_0+h)=\sum_{j=0}^n\frac{1}{j!}(h \cdot \vec \nabla)^j f(x_0) + R_k(f,x_0,h)$\\mit dem Restglied $R_k(f,x_0,h)=\frac{1}{(n+1)!}(h \cdot \vec \nabla)^{n+1}f(\xi)$\\\textbf{Spezialfälle}\\$n=0$: $f(x_0+h)=f(x_0)+h \cdot grad\ f(\xi)$ \\           bzw als MWS: $f(x_0+h)-f(x_0)=(x_0+h-x_0) \cdot grad\ f(\xi)$\\$n=1$: $f(x_0+h)=f(x_0)+h\cdot grad\ f(x_0)+\frac{1}{2}h^T H_f(\xi) h$</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+		<link>Grenzwert in einem metrischen Raum;0</link>
+	</Linked>
+	<Linked>
+		<title>Satz über implizite Funktionen</title>
+		<text>\textbf{Satz über implizite Funktionen}\\$D \subset \mathbb{R}^n$ offen, $f:D \to \mathbb{R}^m$, $f\in C^1(D, \mathbb{R}^n)$, $n>m$, $p:=n-m$, $(x_0, y_0) \in D$, $f(x_0, y_0)=0$, \\$\partial_yf(x,y)$ regulär\\$\Rightarrow$ $\exists_{x_0 \ni U,\ y_0 \ni V\ offen,\ \varphi:U \to V\ stetig}: \forall_{x \in U, y \in V}: f(x,y) =0 \Leftrightarrow y=\varphi(x)$,\\$\varphi'(x) = -(\partial_y f(x,\varphi(x))^{-1}\ \partial_xf(x,\varphi(x))$\\\textbf{Bemerkungen}\\$f'(x,y)=\left(\begin{array}{ccc|ccc}\partial_x_1f_1(x,y) & \dots & \partial_x_pf_1(x,y) & \partial_y_1f_1(x,y) & \dots & \partial_y_mf_1(x,y) \\ \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\ \partial_x_1f_m(x,y) & \dots &  \partial_x_pf_m(x,y) & \partial_y_1f_m(x,y) & \dots & \partial_y_mf_m(x,y) \end{array} \right)$\\$=\left( \begin{array}{c|c}\partial_xf(x,y) & \partial_yf(x,y) \end{array} \right)$\\-$\varphi$ ist lokale, eindeutige Auflösung von $f(x,y)=0$ nach $y$: $f(x,y)=0 \Leftrightarrow y=\varphi(x)$\\-$\varphi$ existiert nur für beliebig kleine $U, V$ mit $U\times V\subset D$\\ -Hier ist $f(x,y)=0$ eindeutig nach $y$ auflösbar\\-$\varphi(x)$ ist eine implizite Funktion\\-Umkehrsatz und Satz über implizite Funktionen sind äquivalent\\-$f:D\to\mathbb{R}^n$ $\Rightarrow$ $f$ kann $n$ Gleichungen enthalten</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Schranken und weitere Begriffe</title>
+		<text>$M\subset\mathbb{R}$\\\textbf{Schranken}\\$s\in\mathbb{R}$ heißt $\begin{array}{c}obere\\untere\end{array}$ Schranke von $M$ $:\Leftrightarrow$ $\forall_{x\in M}: \begin{array}{c}x\le s\\x\ge s\end{array}$\\\textbf{Beschränktheit}\\$M$ heißt nach $\begin{array}{c}oben\\unten\end{array}$ beschränkt $:\Leftrightarrow$ $M$ hat eine $\begin{array}{c}obere\\untere\end{array}$ Schranke\\$M$ heißt beschränkt $:\Leftrightarrow$ $M$ ist nach oben und unten beschränkt\\\textbf{Supremum und Infimum}\\$s$ heißt $\begin{array}{c}Supremum\\Infimum\end{array}$ von $M$ $\Leftrightarrow$ $s=\begin{array}{c}sup(M)\\inf(M)\end{array}$ $:\Leftrightarrow$ $\forall_{x\in\mathbb{R}}: x \begin{array}{c}obere\\untere\end{array}$ Schranke v. $M$ $\Rightarrow$ $s\begin{array}{c}\le\\\ge\end{array} x$\\-Kleinste/größte obere/untere Schranke\\\textbf{Maximum und Minimum}\\$s$ heißt $\begin{array}{c}Maximum\\Minimum\end{array}$ von $M$ $\Leftrightarrow$ $s=\begin{array}{c}max(M)\\min(M)\end{array}$ $:\Leftrightarrow$ $s\in M$, $s$ ist $\begin{array}{c}Supremum\\Infimum\end{array}$ von $M$</text>
+		<suplink>Zahlbereiche</suplink>
+	</Linked>
+	<Linked>
+		<title>Selbstadjungierte lineare Abbildung</title>
+		<text>\textbf{Definition}\\$A: V \to V$ linear heißt selbstadjungiert (bzw hermitesch($A \in \mathbb{C}^{n \times n}$)/symmetrisch($A \in \mathbb{R}^{n \times n})$ \\$\Leftrightarrow$ $A^\dagger  = A$\\\textbf{Eigenschaften}\\-Alle Eigenwerte sind reell\\-Mindestens ein Eigenwert\\-Eigenvektoren zu verschiedenen Eigenwerten sind orthogonal\\-$\forall _{x \in \mathbb{C}^n}: \langle A \cdot x | x \rangle \in \mathbb{R}$\\-$\langle x| A y \rangle = \langle Ax | y \rangle$\\$\Rightarrow$ Selbstadjungierte lineare Abbildungen sind immer diagonalisierbar\\</text>
+		<suplink>Lineare Abbildungen</suplink>
+	</Linked>
+	<Linked>
+		<title>Signum</title>
+		<text>\textbf{Definition}\\$\sigma \in S_n$ $\Rightarrow$ $sgn(\sigma) := \prod_{1 \le m, l \le n} \frac{\sigma (m) - \sigma (l)}{m-l} \in \{ -1, 1 \}$\\\textbf{Eigenschaften}\\-$sgn(\tau \circ \sigma )=sgn(\tau )sgn(\sigma)$\\-Berechnung über Anzahl der Fehlstände($fst$: $\exists _{i, j}: i < j, \sigma (i) > \sigma(j)$) $\Rightarrow$ $sgn(\sigma)=(-1)^{fst}$</text>
+		<suplink>Determinante</suplink>
+	</Linked>
+	<Linked>
+		<title>Skalarfelder</title>
+		<text>\textbf{Definition}\\Skalarfelder sind Abbildungen $f: I \to \mathbb{R}$ mit $I \subset \mathbb{R}^n$\\\textbf{Eigenschaften}\\-Gradient eines Skalarfeldes $grad\ f(\vec x)$ = $\vec \nabla f(\vec x) = \left( \begin{array}{c}\partial_x_1 f(\vec x) \\ \vdots \\ \partial_x_n f(\vec x) \end{array} \right)$\\-$f$ heißt Potentialfeld $\Leftrightarrow$ $\oint f(\vec x) d\vec x = 0$ $\Leftrightarrow$ Es gibt ein zugehöriges Gradientenfeld $grad\ f(\vec x)$</text>
+		<suplink>Klassifizierung von Funktionen in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Skalarprodukt</title>
+		<text>\textbf{Definition}\\Ein Skalarprodukt ordnet zwei Elementen eines Vektorraumes $V$ einen Skalar zu:\\$\langle \cdot | \cdot \rangle : V \times V \to \mathbb{K}$ \\Axiome für Skalarprodukt($x, y, z \in V$, $\alpha \in \mathbb{R}$)\\1. Positive Definitheit: $\langle x | x \rangle \ge 0, \langle x | x \rangle = 0 \Leftrightarrow x = 0$\\2. Symmetrisch: $\langle x | y \rangle = \overline{\langle y | x \rangle}$\\3. Linearität: $\langle x+y|z \rangle = \langle x|z \rangle + \langle y|z \rangle,  \langle \alpha x | y \rangle = \alpha \langle x| y \rangle$ \\\textbf{Eigenschaften}\\-Cauchy-Schwarz-Ungleichung $\| \langle x | y \rangle \| \le \langle x | x \rangle ^\frac{1}{2} \langle y | y \rangle ^\frac{1}{2}$</text>
+		<suplink>Vektor</suplink>
+	</Linked>
+	<Linked>
+		<title>Stetigkeit in einem metrischen Raum</title>
+		<text>\textbf{Definition}\\$f:X \to Y$ mit den metrischen Räumen $(X, d_X)$, $(Y, d_Y)$ heißt stetig in $x_0$\\$\Leftrightarrow$ Folgenstetigkeit: $\forall_{(x_n)_n \subset X}: \[  \lim_{n \to \infty} x_n = x_0 \] \Rightarrow \[ \lim_{ n\to \infty} f(x_n) \] = f( \[ \lim_{n \to \infty} x_n\] )= f(x_0) $\\$\Leftrightarrow$ $\epsilon$-$\delta$-Definition: $\forall _{\epsilon > 0} \exists_{\delta>0}: \forall_{x \in X}: d_X(x, x_0) < \delta \Rightarrow d_Y(f(x), f(x_0)) < \epsilon$\\\textbf{Gleichmäßige Stetigkeit}\\$f$ heißt gleichmäßig stetig \\$\Leftrightarrow$ $\forall_{\epsilon > 0} \exists_{\delta >0}: \forall_{x, y \in X}: d_X(x,y)<\delta \Rightarrow d_Y(f(x), f(y))<\epsilon$\\\textbf{Lipschitzstetigkeit}\\$f$ heißt lipschitzstetig mit Lipschitzkonstante $L$\\$\Leftrightarrow$ $\forall_{x,y \in X}: d(f(x), f(y)) \le L\ d_X(x,y)$\\\textbf{Stetige Fortsetzung}\\$f:D\to\mathbb{R}$ heißt nach $x_0\notin D$ stetig fortsetzbar $:\Leftrightarrow$ $\[\lim_{x\to x_0}f(x)\]$ existiert\\-Stetige Fortsetzung finden: Problemnullstelle kürzen\\\textbf{Stetige Funktionen auf kompaktem Definitionsbereich}\\Stetige Funktionen nehmen auf einem kompakten Definitionsbereich Minimum und \\Maximum an.\\\textbf{Folgerungen}\\-Summe und Produkte stetiger Funktionen stetig\\-Polynome stetig\\-Lineare Abbildungen in endlichdimensionalen Vektorräumen stetig\\-Lipschitzstetig $\Rightarrow$ Gleichmäßig stetig\\-Unstetigkeiten: Sprünge, Singularitäten, Oszillationsstellen\\\textbf{Stetigkeit nachweisen}\\a) Stetigkeit widerlegen\\ -Gegenbeispiel für Folge, wo Grenzwertvertauschung nicht funktioniert\\b) Stetigkeit nachweisen\\ -Abschätzen: $\|f(x)-f(a)\| \le \dots \le 0$ $\Rightarrow$ $\[\lim_{x\to a} \|f(x)-f(a)\| \] =0$\\ -Als Komposition stetiger Funktionen stetig\\ -Sandwichtheorem: $g,h$ in $a$ stetig, $g(x)\le f(x)\le h(x)$, $g(a)=h(a)$ $\Rightarrow$ $f$ in $a$ stetig</text>
+		<suplink>Mehrdimensionale Analysis</suplink>
+		<link>Eindimensionale Analysis;0</link>
+	</Linked>
+	<Linked>
+		<title>Summe und Schnitt von Vektorräumen</title>
+		<text>$W_1, W_2$ seien Untervektorräume von $V$\\\textbf{Summe von Vektorräumen $W_1+W_2$}\\$W_1+W_2 := \{ x \in V | \exists _{y_1 \in W_1, y_2 \in W_2}: x = y_1 + y_2 \}$\\\textbf{Schnitt von Vektorräumen $W_1\cap W_2$}\\$W_1\cap W_2=\{ x\ |\ x\in W_1, x\in W_2\}$\\\textbf{Direkte Summe von Vektorräumen $W_1 \oplus W_2$}\\$W_1 \cap W_2 = \emptyset$ $\Rightarrow$ $W_1 \oplus W_2 := W_1 + W_2$\\\textbf{Dimension von Summen von Vektorräumen}\\$dim(W_1+W_2):=dim(W_1)+dim(W_2)-dim(W_1 \cap W_2)$</text>
+		<suplink>Vektorraum</suplink>
+	</Linked>
+	<Linked>
+		<title>Teilfolge und Häufungspunkt</title>
+		<text>\textbf{Teilfolge}\\$a_{\sigma (n)}$ ist Teilfolge von $a_n$ $\Leftrightarrow$ $\sigma:\mathbb{N}\to\mathbb{N}$ ist eine streng monotone Funktion\\\textbf{Häufungspunkt}\\$a_0$ heißt Häufungspunkt von $a_n$ $\Leftrightarrow$ Teilfolge $a_{\sigma (n)}$ ist konvergent mit Grenzwert $a_0$ \\\textbf{Satz von Bolzano-Weierstraß}\\Jede beschränkte $\mathbb{K}$-Folge besitzt mindestens einen Häufungspunkt</text>
+		<suplink>Folgen</suplink>
+	</Linked>
+	<Linked>
+		<title>Topologie</title>
+		<text>\textbf{Topologie}\\Die Topologie beschäftigt sich mit den Eigenschaften mathematischer Strukturen, \\die unter stetigen Verformungen erhalten bleiben. </text>
+		<suplink>Mathematik</suplink>
+	</Linked>
+	<Linked>
+		<title>Transformationsformel</title>
+		<text>\textbf{Transformationsformel für Skalarfelder $f:\mathbb{R}^n\to\mathbb{R}$}\\$B, D \subset \mathbb{R}^m$ offen, $g:D\to B$ Diffeomorphismus, $f\in L(D)$\\$\Rightarrow$ $\[ \int_D f(x) dx \] = \[ \int_B f(g(z))\ |det(J_g|\ dz \]$, $f(g)\ |det(J_g)| \in L(B)$\\\textbf{Transformationsformel für Vektorfelder $f:\mathbb{R}^n\to\mathbb{R}^m$}\\\textbf{Anwendungsbeispiele}\\Kurvenintegrale: $d\vec s = \partial_t \vec s\ dt$\\Flächenintegrale($\vec o=\vec o(x, y)$): $d\vec o=\vec N\ d(x_1, x_2) = \frac{\partial_x \vec o\times \partial_y \vec o}{\|\partial_x  \vec o \times \partial_y  \vec o\|}d(x, y)$</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+		<link>Diffeomorphismus;0</link>
+		<link>Jacobideterminante;0</link>
+	</Linked>
+	<Linked>
+		<title>Triangulierung</title>
+		<text>\textbf{Definition}\\$A:V \to V$, $V$ ist $n$-dimensionaler Vektorraum\\$A$ heißt triangulierbar $\Leftrightarrow$ $A$ besitzt eine Jordan-Normalform\\$\Leftrightarrow$ Charakteristisches Polynom $p_A(\lambda)$ zerfällt vollständig in Linearfaktoren\\$\Leftrightarrow$ $\exists_{S\ regulär,\ J\ Jordan-Normalform}: J=S^{-1}\cdot A\cdot S$\\\textbf{Jordan-Normalform}\\Jordan-Kästchen $J_i=\left(\begin{array}{cccc}\lambda&1&&\\&\ddots&\ddots&\\&&\ddots&1\\&&&\lambda\end{array}\right)$ zum Eigenwert $\lambda$, insgesamt also $n$ J.-K.\\Anzahl der Jordan-Blöcke der Größe $s\in\mathbb{N}_0$ zum Eigenwert $\lambda$:\\ 1) $a_s:=dim\ Kern(A-\lambda 1\!\!1_n)^s$ ist Dimension des $s$-ten Hauptraums \\     $a_0=0$, $a_1=geoV(\lambda)$, $lim_{s\to\infty}a_s\le algV(\lambda$\\ 2) Anzahl $n(s)$der Jordan-Blöcke der Größe $s$: $n(s)=2a_s-a_{s-1}-a_{s+1}$\\Jordan-Normalform $J=\left(\begin{array}{ccc}J_1&&\\&\ddots&\\&&J_n\end{array}\right)$mit Jordan-Kästchen $J_i$ für alle Eigenwerte: \\\textbf{Eigenschaften}\\-$\forall_{Eigenwerte\ \lambda_i}: algV(\lambda_i)=geoV(\lambda_i)$ $\Rightarrow$ Jordan-Normalform von $A$ hat Diagonalform\\\textbf{Berechnung einer Jordan-Basis}\\Für jeden Eigenwert $\lambda$ zugehörige Basisvektoren berechnen\\1) Eigenraum $E_A(\lambda)$ berechnen (Kenne Eigenvektoren)\\2) Gleichungssystem für $S=(s_1, \dots s_n)$ aufstellen: $S^{-1}AS=J \Rightarrow A\ Se_i=SJe_i$ ($s_i:=Se_i$)\\3) Für Gleichungen der Form $As_i=\lambda s_i$: $s_i:=$Unbenutzter, normierter Eigenvektor von $\lambda$\\4) Für Gleichungen der Form $As_i=\lambda s_i + s_j \Leftrightarrow (A-1\!\!1_n)s_i=s_j$: LGS-Lösung normieren\\Es gibt auch ein (komplizierteres) Verfahren, wenn man die Jordan-Normalform nicht kennt</text>
+		<suplink>Lineare Algebra</suplink>
+	</Linked>
+	<Linked>
+		<title>Trigonometrische Funktionen</title>
+		<text>\textbf{Cosinus}\\$cos(z):=\[\sum_{n=0}^\infty \frac{(-1)^nz^{2n}}{(2n)!}\] = \[\frac{1}{2}(e^{iz}+e^{-iz})\]$\\\textbf{Sinus}\\$sin(z):=\[\sum_{n=0}^\infty \frac{(-1)^nz^{2n+1}}{(2n+1)!}\] = \[\frac{1}{2}(e^{iz}-e^{-iz})\]$\\\textbf{Eulersche Formel}\\$\forall_{x\in\mathbb{R}}: e^{ix}=cos(x)+isin(x)$\\\textbf{Schöne Gleichung}\\$\forall_{z\in\mathbb{C}}: 1=cos^2(z)+sin^2(z)$</text>
+		<suplink>Potenzreihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Umkehrsatz</title>
+		<text>\textbf{Umkehrsatz}\\$D \subset \mathbb{R}^n$ offen, $f \in C^1(D, \mathbb{R}^n)$, $x_0 \in D$, $f'(x_0)$ invertierbar\\$\Rightarrow$ $\exists_{U, V offen}: x_0 \in U \subset D, y_0:=f(x_0) \in V$ mit $f$ ist ein Diffeomorphismus\\und $\forall_{x\in V}: (f^{-1})'(x)=(f'(f^{-1}(x)))^{-1}$\\\textbf{Bemerkungen}\\-Umkehrfunktion $f^{-1}$ existiert nur lokal\\-Funktion kann überall lokal umkehrbar, aber nicht injektiv sein(z.b. $sin(x)$)\\-Vergleiche mit Formel aus HM1: $(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}$\\-Umkehrsatz und Satz über implizite Funktionen sind äquivalent</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+		<link>Diffeomorphismus;0</link>
+	</Linked>
+	<Linked>
+		<title>Umordnungen</title>
+		<text>\textbf{Umordnung}\\Eine Umordnung/Permutation von $\mathbb{N}$ ist eine bijektive Funktion $\tau:\mathbb{N}\to\mathbb{N}$\\\textbf{Umordnungssatz}\\$\[ \sum_{k=1}^\infty a_k\]$ absolut konvergent\\ $\Rightarrow$ $\forall_{Umordnung\ \tau}: \[\sum_{k=1}^\infty a_{\tau (k)}\]$ konvergiert absolut gegen von $\tau$ unabhängigen Wert\\\textbf{Riemannscher Umordnungssatz}\\$\[\sum_{k=1}^\infty a_k\]$ konvergent, $\[\sum_{k=1}^\infty \vert a_k\vert\]$ divergent $\Rightarrow$ $\[\forall_{t\in\mathbb{R}}\exists_{Umordnung\ \tau}: \sum_{k=1}^\infty a_{\tau (k)}=t\]$\\-Anmerkung: Alles geht schief</text>
+		<suplink>Reihen</suplink>
+	</Linked>
+	<Linked>
+		<title>Uneigentliche Integrale</title>
+		<text>\textbf{Lokale, Uneigentliche und absolute Integrierbarkeit}\\Im Folgenden: $I$ Intervall mit Grenzen $-\infty\le a<b\le\infty$, $f:I\to\mathbb{R}$ \\$f$ heißt auf $I$ lokal integrierbar $\Leftrightarrow$ Für jedes kompakte $I'=[\alpha, \beta]\in I$ ist $f$ über $I'$ integrierbar\\$f$ heißt über $I$ uneigentlich integrierbar \\$:\Leftrightarrow$ $f$ ist auf $I$ lokal integrierbar, $\[\lim_{x\to b-}\int_c^x f(t)dt\]$, $\[\lim_{x\to a+}\int_x^c f(t)dt\]$ existieren\\$f$ heißt über $I$ absolut integrierbar $:\Leftrightarrow$ $\vert f\vert$ ist über $I$ uneigentlich integrierbar\\\textbf{Majorantenkriterium}\\$f,g$ auf $I$ lokal integrierbar, $g$ absolut integrierbar, $\vert f\vert \le g$ \\$\Rightarrow$ $f$ absolut integrierbar auf $I$, $\[\int_I \vert f(x)\vert dx \le \int_I g(x)dx\]$\\-Gute Majoranten: \\ $\int_0^1 \frac{dx}{x^s}=\frac{1}{1-s}$ für $s<1$\\ $\int_1^\infty \frac{dx}{x^s}=\frac{1}{s-1}$ für $s>1$\\ $\int_0^\infty e^{-x}dx=1$\\ $\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\pi}$\\ $\int_{-\infty}^\infty \frac{dx}{1+x^2}=\pi$\\-Gute Minoranten:\\ $\int_0^\alpha \frac{dx}{x}$\\ $\int_\alpha^\infty \frac{dx}{x}$</text>
+		<suplink>Integralrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Untersuchung auf Extrema</title>
+		<text>\textbf{Definition}\\$\exists_{\epsilon>0}\forall_{x\in B_\epsilon (x_0)}: f(x) \begin{cases}\le\\\ge\end{cases}f(x_0)$ $\Leftrightarrow$ $f$ hat in $x_0$ lokales $\begin{cases}Maximum\\Minimum\end{cases}$\\\textbf{Notwendiges Kriterium}\\$f$ hat lokales Extremum in $x_0$ $\Rightarrow$ $f'(x_0)=0$\\\textbf{Hinreichendes Kriterium}\\$f'(x_0)=0$, $f''(x_0)\begin{cases}<\\>\end{cases}0$ $\Leftrightarrow$ $f$ hat in $x_0$ lokales $\begin{cases}Maximum\\Minimum\end{cases}$\\\textbf{Vorgehen}\\1. $f\in C(I)$, $I$ kompakt $\Rightarrow$ $\exists_{x_m, x_M\in I}:\forall_{x\in I}: f(x_m)\le f(x)\le f(x_M)$\\2. $f'(x)=0$ und Ränder liefern Kandidaten für Extremstellen $x_i$, $i\in[1,j]$\\3. $\forall_{i\in[1,j]}:$ berechne $f(x_i)$ und vergleiche $\Rightarrow$ Finde $x_m$ und $x_M$\\$f=g\circ h$, $g$ streng monoton wachsend $\Rightarrow$ Untersuche $h$</text>
+		<suplink>Differentialrechnung in einer Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Untervektorraum</title>
+		<text>\textbf{Definition}\\Ein Untervektorraum ist auch ein Vektorraum. Er hat dieselben Verknüpfungen wie der \\Obervektorraum. Für einen Vektorraum $(V, +, *)$ und eine Teilmenge $U \in V$ gilt: \\$\forall _{x,y  \in U, \alpha\in K}:$ $x + y \in U$, $\alpha * y \in U$, $0 \in U$$\Rightarrow$ $U$ ist Vektorraum\\\textbf{Eigenschaften}\\-Beispiele für Untervektorräume vom Vektorraum $V$: $V$, $\{ 0 \}$\\-$0\in V$ $\Leftrightarrow$ $V\neq\emptyset$</text>
+		<suplink>Vektorraum</suplink>
+	</Linked>
+	<Linked>
+		<title>Vektor</title>
+		<text>\textbf{Definition}\\Ein Vektor $\vec x$ ist Element eines Vektorraums</text>
+		<suplink>Vektorraum</suplink>
+	</Linked>
+	<Linked>
+		<title>Vektorfelder</title>
+		<text>\textbf{Definition}\\Vektorfelder sind Abbildungen $\vec f: I \to \mathbb{R}^m$ mit $I \subset \mathbb{R}^n$\\\textbf{Eigenschaften}\\-Divergenz eines Vektorfeldes $div\ \vec f(\vec x) = \vec \nabla \cdot \vec f(\vec x) = \partial_x_i f_i(\vec x)$\\-Rotation eines Vektorfeldes $rot\ \vec f(\vec x) = \vec \nabla \times \vec f(\vec x) = \epsilon_{ijk} \partial_i f_j(\vec x) \vec{e_k}$\\-$\vec f$ heißt Gradientenfeld $\Leftrightarrow$ $rot\ \vec f=0$ $\Leftrightarrow$ $\vec f=\vec\nabla g$ mit Potentialfeld $g$\\-Verträglichkeitsbedingung für Gradientenfeld $\vec f$: $\forall_{j,k=1...n}: \partial_j f_k=\partial_k f_j$\\-$div\vec f=0$ $\Leftrightarrow$ $\vec f$ heißt quellfrei\\-$rot\vec f=0$ $\Leftrightarrow$ $\vec f$ heißt wirbelfrei</text>
+		<suplink>Klassifizierung von Funktionen in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Vektorraum</title>
+		<text>\textbf{Definition}\\Habe: Menge $V$, Körper $(K,+,*)$\\mit $+:V \times V \to V$(Vektoraddition), $*:K \times V\to V$(Skalarmultiplikation)\\$(M, +, *)$ heißt Vektorraum über K $\Leftrightarrow$\\Für die Vektoraddition gilt:\\1. Assoziativität: $\forall _{a,b,c \in V}: a+(b+c)=(a+b)+c$\\2. Kommutativität: $\forall _{a,b \in V}: a+b=b+a$\\3. Neutrales Element: $\exists _{0 \in V}: \forall _{a \in V}: 0+a=a$\\4. Inverses Element: $\forall _{a \in V} \exists _{(-a) \in V}: a + (-a) = 0$\\Für die Skalarmultiplikation gilt:\\5. Assoziativität: $\forall _{\alpha, \beta \in K, a \in V}: \alpha*(\beta*a) = (\alpha*\beta)*a$\\6. Neutrales Element: $\exists _{1 \in K} \forall _{a \in V}:  1*a=a$\\Es gelten folgende Distributivgesetze:\\7. $\forall _{\alpha \in K, a,b \in V}: \alpha*(a+b)=\alpha*a+\alpha*b$\\8. $\forall _{\alpha, \beta \in K, a \in V}: (\alpha + \beta)*a=\alpha*a + \beta*a$\\\textbf{Eigenschaften}\\-Alle Vektorräume sind abgeschlossen bezüglich ihren Verknüpfungen\\\textbf{Vektorraum nachweisen}\\a) Vektorraumaxiome nachrechnen(bei untypischen Verknüpfungen)\\b) Untervektorraumsatz(Teilmenge von bekanntem Vektorraum+gleiche Verknüpfungen)\\ -Wie sieht der allgemeine Vektor aus? \\ -Nachweis: Allgemein $x+y$, $x*y$ berechnen, Ergebnis ist im VR\\ -Gegenbeispiel, für das Vektoraddition oder Skalarmultiplikation nicht abgeschlossen ist</text>
+		<suplink>Algebraische Strukturen</suplink>
+	</Linked>
+	<Linked>
+		<title>Volumenintegrale</title>
+		<text>\textbf{Volumenintegrale über Skalarfelder $f:\mathbb{R}^n\to\mathbb{R}$}\\Volumenintegrale über Skalarfelder entsprechen Integralen über Normalbereiche\\\textbf{Volumenintegrale über Vektorfelder $f:\mathbb{R}^n\to\mathbb{R}^m$}\\$\[ \int_V f dx \]=\[ (\int_V f_1 dx, \dots \int_V f_m dx )\]$\\-Integration über jede Komponente einzeln - Ergebnis ist ein Vektor</text>
+		<suplink>Integration in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Zahlbereiche</title>
+		<text>Zahlbereiche sind Zahlenmengen, deren Elemente gemeinsame Eigenschaften haben.</text>
+		<suplink>Mengenlehre</suplink>
+	</Linked>
+	<Linked>
+		<title>Zweite Ableitung in mehreren Variablen</title>
+		<text>\textbf{Hessematrix}\\$H_f(\vec x)=(\partial_j \partial_k f(\vec x))_{jk}$ heißt Hessematrix und ist symmetrisch\\\textbf{Satz von Schwarz}\\$k \in \mathbb{N}$, $f \in C^k(D, \mathbb{R})$ \\$\Rightarrow$ Partielle Ableitungen der Ordnung $n \le k$ sind unabhängig von Reihenfolge \\der Differentiation(z.B. $\frac{\partial}{\partial x_1} \frac{\partial}{\partial x_2} f(x_1, x_2) = \frac{\partial}{\partial x_2} \frac{\partial}{\partial x_1} f(x_1, x_2)$)\\</text>
+		<suplink>Differentiation in mehreren Veränderlichen</suplink>
+	</Linked>
+	<Linked>
+		<title>Zwischenwertsatz</title>
+		<text>\textbf{Zwischenwertsatz}\\$f:D\to\mathbb{R}$ stetig, $D$ kompakt, $f(\alpha)<y<f(\beta)$ $\Rightarrow$ $\exists_{x\in[\alpha, \beta]}: f(x)=y$</text>
+		<suplink>Eindimensionale Analysis</suplink>
+	</Linked>
+	<Linked>
+		<title>Ähnliche Matrizen</title>
+		<text>\textbf{Definition}\\$A, B \in \mathbb{C}^{n \times n}$ heißen ähnlich ($A \sim B$) $\Leftrightarrow$ $\exists _{Matrix \ S\ invertierbar}: B = S^{-1} \cdot A \cdot S$\\\textbf{Eigenschaften}\\-Gleich: \\ -Charakteristisches Polynom\\ -Eigenwerte mit alg. und geo. Vielfachheiten\\ -Spur(Summe der Eigenwerte)\\ -Determinante(Produkt der Eigenwerte)\\ -Eigenschaften: Invertierbarkeit, Diagonalisierbarkeit, Triagulierbarkeit</text>
+		<suplink>Diagonalisierung</suplink>
+	</Linked>
+</LinkedList><118.09.05>
