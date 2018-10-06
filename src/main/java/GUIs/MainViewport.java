@@ -47,7 +47,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-public class MainViewport extends JFrame {
+public class MainViewport extends JPanel {
 		//Hilfsvariablen für LinkedList
 		private LinkedList links;
 		private Linked actual;
@@ -75,8 +75,14 @@ public class MainViewport extends JFrame {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
+						JFrame rahmen=new JFrame();
+						rahmen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						rahmen.setBounds(0, 0, (int)Hilfsklassen.Variables.standardsize.getWidth(), (int)Hilfsklassen.Variables.standardsize.getHeight()); 	//Format: 1920x1080
+						
 						MainViewport frame = new MainViewport();
-						frame.setVisible(true);
+						rahmen.setContentPane(frame);
+						rahmen.setTitle("MapOfMathematics");
+						rahmen.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -84,7 +90,7 @@ public class MainViewport extends JFrame {
 			});
 		}
 		
-		/**
+		/**Editing
 		 * Konstruktor zur Erzeugung und Initialisierung des GUI
 		 */
 		public MainViewport() {
@@ -104,7 +110,6 @@ public class MainViewport extends JFrame {
 			searchresults=new ArrayList<String>();
 			
 			//GUI erstellen
-			createGUIBasics();
 			createGUI();
 			
 			//install fonts
@@ -166,22 +171,16 @@ public class MainViewport extends JFrame {
 				}
 			}
 		}
-		/**
-		 * JFrame erstellen
-		 */
-		private void createGUIBasics() {
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(0, 0, (int)Hilfsklassen.Variables.standardsize.getWidth(), (int)Hilfsklassen.Variables.standardsize.getHeight()); 	//Format: 1920x1080
-			contentPane = new JPanel(new GridBagLayout());
-			contentPane.setBackground(new Color(255, 204, 153));
-			contentPane.setBorder(null);
-			setContentPane(contentPane);
-			setTitle("MapOfMathematics");
-		}
+
 		/**
 		 * GUI erstellen
 		 */
 		private void createGUI() {
+			setBackground(new Color(255, 204, 153));
+			setBorder(null);
+			layout=new GridBagLayout();
+			setLayout(layout);
+			
 			GridBagConstraints c=new GridBagConstraints();
 			//Position in Grid: gridx und gridy
 			//Größe des Fensters: gridwidth: immer 1; gridy; immer 1, bis auf viewportscroller(3)
@@ -198,7 +197,7 @@ public class MainViewport extends JFrame {
 			headerviewport.setFont(new Font(Hilfsklassen.Variables.fontname, Font.BOLD, 36));
 			headerviewport.setHorizontalAlignment(SwingConstants.CENTER);
 			c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
-			contentPane.add(headerviewport, c);
+			add(headerviewport, c);
 			
 			viewport = new JLabel();
 			viewport.setBorder(null);
@@ -209,7 +208,7 @@ public class MainViewport extends JFrame {
 			viewportscroller.setBorder(null);
 			viewportscroller.setViewportView(viewport);
 			c.gridx=0; c.gridy=1; c.gridheight=3; c.fill=GridBagConstraints.BOTH; c.weighty=1.0;
-			contentPane.add(viewportscroller, c);
+			add(viewportscroller, c);
 			
 			c.weightx=0.0;
 			//list initialisieren
@@ -219,7 +218,7 @@ public class MainViewport extends JFrame {
 			headerlist.setVerticalAlignment(SwingConstants.CENTER);
 			headerlist.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=0; c.gridheight=1; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
-			contentPane.add(headerlist, c);
+			add(headerlist, c);
 			
 			list = new JList<Hilfsklassen.ColoredString>();
 			list.setBorder(null);
@@ -257,7 +256,7 @@ public class MainViewport extends JFrame {
 			listscroller.setViewportView(list);
 			listscroller.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
-			contentPane.add(listscroller, c);
+			add(listscroller, c);
 
 			//Such-Feld initialisieren
 			search = new JTextField("Suche");
@@ -292,7 +291,7 @@ public class MainViewport extends JFrame {
 			});
 			search.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=2; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
-			contentPane.add(search, c);
+			add(search, c);
 			
 			//Zurück-Button
 			back=new JButton("Zurück");
@@ -307,6 +306,6 @@ public class MainViewport extends JFrame {
 			});
 			back.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=3; c.weighty=0.0;
-			contentPane.add(back, c);
+			add(back, c);
 		}
 }
