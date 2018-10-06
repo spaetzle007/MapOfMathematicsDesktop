@@ -1,3 +1,5 @@
+package Hilfsklassen;
+
 import java.awt.Dimension;
 
 public class Variables {

@@ -1,3 +1,5 @@
+package Hilfsklassen;
+
 import java.awt.Color;
 
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedString;

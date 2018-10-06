@@ -1,3 +1,5 @@
+package GUIs;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -60,8 +62,8 @@ public class MainViewport extends JFrame {
 		private JPanel contentPane;
 		private JLabel viewport, headerlist, headerviewport;
 		private JScrollPane listscroller, viewportscroller;
-		private JList<ColoredString> list;
-		private DefaultListModel<ColoredString> listhandler;
+		private JList<Hilfsklassen.ColoredString> list;
+		private DefaultListModel<Hilfsklassen.ColoredString> listhandler;
 		private JTextField search;
 		private JButton back;
 		private GridBagLayout layout;
@@ -114,7 +116,7 @@ public class MainViewport extends JFrame {
 				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new BufferedInputStream(getClass().getResourceAsStream("/Laksaman-BoldItalic.ttf"))));
 			} catch (IOException|FontFormatException e) {
 				JOptionPane.showMessageDialog(null, "Fonts nicht verfügbar", "Fehler", 3);	
-				Variables.fontname="Dialog";
+				Hilfsklassen.Variables.fontname="Dialog";
 			}
 			
 			//GUI-Inhalt auf Anfangseinstellungen
@@ -145,22 +147,22 @@ public class MainViewport extends JFrame {
 			actualSubLinks=links.getSubLinks(actual);
 			if(searchmode) {
 				for(int i=0; i<searchresults.size(); i++) {
-					listhandler.addElement(new ColoredString(searchresults.get(i), (byte)3));
+					listhandler.addElement(new Hilfsklassen.ColoredString(searchresults.get(i), (byte)3));
 				}
 			} else {
 				if(!actual.getName().equals("Mathematik")) {
-					listhandler.addElement(new ColoredString(actual.getSupLink(), (byte)0));
+					listhandler.addElement(new Hilfsklassen.ColoredString(actual.getSupLink(), (byte)0));
 				}
 				if(!actual.getName().equals("Mathematik")) {
 					for(int i=0; i<actualEqualLinks.size(); i++) {
-						listhandler.addElement(new ColoredString(actualEqualLinks.get(i), (byte)1));
+						listhandler.addElement(new Hilfsklassen.ColoredString(actualEqualLinks.get(i), (byte)1));
 					}
 				}
 				for(int i=0; i<actualSubLinks.size(); i++) {
-					listhandler.addElement(new ColoredString(actualSubLinks.get(i), (byte)2));
+					listhandler.addElement(new Hilfsklassen.ColoredString(actualSubLinks.get(i), (byte)2));
 				}
 				for(int i=0; i<actual.getLinks().size(); i++) {
-					listhandler.addElement(new ColoredString(actual.getLinks().get(i)));
+					listhandler.addElement(new Hilfsklassen.ColoredString(actual.getLinks().get(i)));
 				}
 			}
 		}
@@ -169,7 +171,7 @@ public class MainViewport extends JFrame {
 		 */
 		private void createGUIBasics() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(0, 0, (int)Variables.standardsize.getWidth(), (int)Variables.standardsize.getHeight()); 	//Format: 1920x1080
+			setBounds(0, 0, (int)Hilfsklassen.Variables.standardsize.getWidth(), (int)Hilfsklassen.Variables.standardsize.getHeight()); 	//Format: 1920x1080
 			contentPane = new JPanel(new GridBagLayout());
 			contentPane.setBackground(new Color(255, 204, 153));
 			contentPane.setBorder(null);
@@ -193,7 +195,7 @@ public class MainViewport extends JFrame {
 			c.weightx=1.0;
 			//Viewport initialisieren
 			headerviewport = new JLabel();
-			headerviewport.setFont(new Font(Variables.fontname, Font.BOLD, 36));
+			headerviewport.setFont(new Font(Hilfsklassen.Variables.fontname, Font.BOLD, 36));
 			headerviewport.setHorizontalAlignment(SwingConstants.CENTER);
 			c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
 			contentPane.add(headerviewport, c);
@@ -212,23 +214,23 @@ public class MainViewport extends JFrame {
 			c.weightx=0.0;
 			//list initialisieren
 			headerlist = new JLabel("Verknüpfte Themen");
-			headerlist.setFont(new Font(Variables.fontname, Font.BOLD, 20));
+			headerlist.setFont(new Font(Hilfsklassen.Variables.fontname, Font.BOLD, 20));
 			headerlist.setHorizontalAlignment(SwingConstants.CENTER);
 			headerlist.setVerticalAlignment(SwingConstants.CENTER);
-			headerlist.setPreferredSize(new Dimension(Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
+			headerlist.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=0; c.gridheight=1; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
 			contentPane.add(headerlist, c);
 			
-			list = new JList<ColoredString>();
+			list = new JList<Hilfsklassen.ColoredString>();
 			list.setBorder(null);
-			list.setFont(new Font(Variables.fontname, Font.PLAIN, 12));
+			list.setFont(new Font(Hilfsklassen.Variables.fontname, Font.PLAIN, 12));
 			list.setBackground(new Color(255, 204, 153));
 			list.setCellRenderer(new DefaultListCellRenderer() {		//Inhalte passend färben
 				public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 					Component c=super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-					for(int i=0; i<ColoredString.colors.length; i++ ) {
-						if(value instanceof ColoredString && ((ColoredString) value).getType()==(byte)i) {
-							setBackground(ColoredString.colors[i]);
+					for(int i=0; i<Hilfsklassen.ColoredString.colors.length; i++ ) {
+						if(value instanceof Hilfsklassen.ColoredString && ((Hilfsklassen.ColoredString) value).getType()==(byte)i) {
+							setBackground(Hilfsklassen.ColoredString.colors[i]);
 						}
 					}
 					return c;
@@ -248,12 +250,12 @@ public class MainViewport extends JFrame {
 					}
 				}
 			});
-			listhandler=new DefaultListModel<ColoredString>();
+			listhandler=new DefaultListModel<Hilfsklassen.ColoredString>();
 			list.setModel(listhandler);
 			listscroller= new JScrollPane();
 			listscroller.setBorder(null);
 			listscroller.setViewportView(list);
-			listscroller.setPreferredSize(new Dimension(Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
+			listscroller.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
 			contentPane.add(listscroller, c);
 
@@ -261,7 +263,7 @@ public class MainViewport extends JFrame {
 			search = new JTextField("Suche");
 			search.setHorizontalAlignment(SwingConstants.LEFT);
 			search.setBorder(null);
-			search.setFont(new Font(Variables.fontname, Font.PLAIN, 18));
+			search.setFont(new Font(Hilfsklassen.Variables.fontname, Font.PLAIN, 18));
 			search.setBackground(Color.decode("#FFB366"));
 			search.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent e) {
@@ -288,14 +290,14 @@ public class MainViewport extends JFrame {
 					}
 				}
 			});
-			search.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+			search.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=2; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
 			contentPane.add(search, c);
 			
 			//Zurück-Button
 			back=new JButton("Zurück");
 			back.setBorder(null);
-			back.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
+			back.setFont(new Font(Hilfsklassen.Variables.fontname, Font.PLAIN, 24));
 			back.setBackground(Color.decode("#FFB366"));
 			back.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -303,7 +305,7 @@ public class MainViewport extends JFrame {
 					update();
 				}
 			});
-			back.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+			back.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=3; c.weighty=0.0;
 			contentPane.add(back, c);
 		}
