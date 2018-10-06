@@ -45,9 +45,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 public class MainEditing extends JFrame implements ActionListener, WindowListener {
 
@@ -296,17 +300,13 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	 */
 	private void createGUIBasics() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
 		setBounds(0, 0, (int)Variables.standardsize.getWidth(), (int)Variables.standardsize.getHeight());
-		selectionMode= new JPanel();
+		selectionMode= new JPanel(new GridBagLayout());
 		selectionMode.setBackground(new Color(102, 204, 255));
 		selectionMode.setBorder(null);
-		selectionMode.setLayout(null);
-		editMode = new JPanel();
+		editMode = new JPanel(new GridBagLayout());
 		editMode.setBackground(new Color(102, 204, 255));
 		editMode.setBorder(null);
-		editMode.setLayout(null);
-		getContentPane().setLayout(null);
 		addWindowListener(this);
 		setTitle("MapOfMathematics Editiersoftware");
 	}
@@ -314,13 +314,18 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	 * GUI für SelectionMode erstellen
 	 */
 	private void createGUISelectionMode() {
+		GridBagConstraints c =new GridBagConstraints();
+		c.insets=new Insets(5,5,5,5);
+		c.anchor=GridBagConstraints.FIRST_LINE_START;
+		
+		c.weightx=1.0; 
 		overview = new JLabel("Übersicht");
 		overview.setFont(new Font(Variables.fontname, Font.BOLD, 36));
 		overview.setBorder(null);
 		overview.setBackground(new Color(204, 255, 255));
 		overview.setHorizontalAlignment(SwingConstants.CENTER);
-		overview.setBounds(10,10,(int)Variables.standardsize.getWidth()-Variables.rechterRand-10, 60);
-		selectionMode.add(overview);
+		c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.HORIZONTAL; c.gridwidth=2;
+		selectionMode.add(overview, c);
 		//Viewport mit Eintragsliste
 		overviewlist = new JList<String>();
 		overviewlist.setFont(new Font(Variables.smallfontname, Font.BOLD, 12));
@@ -339,59 +344,66 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			}
 		});
 		scrollerlist = new JScrollPane();
-		scrollerlist.setBounds(10, 70, (int)Variables.standardsize.getWidth()-Variables.rechterRand-10, (int)Variables.standardsize.getHeight()-110);
 		scrollerlist.setViewportView(overviewlist);
-		selectionMode.add(scrollerlist);
+		c.gridx=0; c.gridy=1; c.fill=GridBagConstraints.BOTH; c.weighty=1.0; c.gridheight=7; c.gridwidth=1;
+		selectionMode.add(scrollerlist, c);
 		
 		//Optionen rechts
+		c.weightx=0.0; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL; c.gridheight=1;
 		neu = new JButton("Neuer Eintrag");
 		neu.setBorder(null);
 		neu.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		neu.setForeground(new Color(255, 255, 255));
 		neu.setBackground(new Color(0, 0, 153));
-		neu.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 10, Variables.rechterRand-20, 40);
 		neu.addActionListener(this);
-		selectionMode.add(neu);
+		neu.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=1;
+		selectionMode.add(neu, c);
 		edit = new JButton("Eintrag bearbeiten");
 		edit.setBorder(null);
 		edit.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		edit.setForeground(new Color(255, 255, 255));
 		edit.setBackground(new Color(0, 0, 153));
-		edit.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 60, Variables.rechterRand-20, 40);
 		edit.addActionListener(this);
-		selectionMode.add(edit);
+		edit.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=2;
+		selectionMode.add(edit, c);
 		delete = new JButton("Eintrag löschen");
 		delete.setBorder(null);
 		delete.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		delete.setForeground(new Color(255, 255, 255));
 		delete.setBackground(new Color(0, 0, 153));
-		delete.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 110, Variables.rechterRand-20, 40);
 		delete.addActionListener(this);
-		selectionMode.add(delete);
+		delete.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=3;
+		selectionMode.add(delete, c);
 		show = new JButton("Alle anzeigen");
 		show.setBorder(null);
 		show.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		show.setForeground(new Color(255, 255, 255));
 		show.setBackground(new Color(0, 0, 153));
-		show.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 160, Variables.rechterRand-20, 40);
 		show.addActionListener(this);
-		selectionMode.add(show);
+		show.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=4;
+		selectionMode.add(show, c);
 		sicherung=new JButton("Sicherungskopie");
 		sicherung.setBorder(null);
 		sicherung.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		sicherung.setForeground(new Color(255, 255, 255));
 		sicherung.setBackground(new Color(0, 0, 153));
-		sicherung.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 300, Variables.rechterRand-20, 40);
 		sicherung.addActionListener(this);
-		selectionMode.add(sicherung);
+		sicherung.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=5;
+		selectionMode.add(sicherung, c);
 		synchronisieren=new JButton("Dbx-Synchro");
 		synchronisieren.setBorder(null);
 		synchronisieren.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		synchronisieren.setForeground(new Color(255, 255, 255));
 		synchronisieren.setBackground(new Color(0, 0, 153));
-		synchronisieren.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 350, Variables.rechterRand-20, 40);
 		synchronisieren.addActionListener(this);
-		selectionMode.add(synchronisieren);
+		synchronisieren.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=6;
+		selectionMode.add(synchronisieren, c);
 		//Such-Einstellungen
 		search = new JTextField("Suche");
 		search.setBorder(null);
@@ -399,7 +411,6 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		search.setHorizontalAlignment(SwingConstants.LEFT);
 		search.setForeground(new Color(255, 255, 255));
 		search.setBackground(new Color(0, 0, 153));
-		search.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 1000, Variables.rechterRand-20, 40);
 		search.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				search.setText("");
@@ -422,27 +433,80 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 				}
 			}
 		});
-		selectionMode.add(search);
+		search.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=7; c.anchor=GridBagConstraints.LAST_LINE_START; 
+		selectionMode.add(search, c);
 	}
 	/**
 	 * GUI für EditMode erstellen
 	 */
 	private void createGUIEditMode() {
+		GridBagConstraints c=new GridBagConstraints();
+		c.anchor=GridBagConstraints.FIRST_LINE_START; 
+		c.insets=new Insets(5,5,5,5);
+		
+		c.weightx=1.0; c.weighty=0.0;
 		//Inhalte
 		title = new JTextField();
 		title.setBorder(null);
 		title.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		title.setBackground(new Color(102, 204, 255));
-		title.setBounds(10,10, (int)Variables.standardsize.getWidth()-Variables.rechterRand-10, 40);
-		editMode.add(title);
+		c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.HORIZONTAL;
+		editMode.add(title, c);
 		content = new JTextPane();
 		content.setFont(new Font(Variables.smallfontname, Font.PLAIN, 12));
 		scrollertext = new JScrollPane();
 		scrollertext.setBorder(null);
-		scrollertext.setBounds(10, 60, (int)Variables.standardsize.getWidth()-Variables.rechterRand-10, (int)Variables.standardsize.getHeight()-150);
 		scrollertext.setViewportView(content);
-		editMode.add(scrollertext);
-		//Link-Liste
+		c.gridx=0; c.gridy=1; c.fill=GridBagConstraints.BOTH; c.weighty=1.0;
+		editMode.add(scrollertext, c);
+		
+		//Test-Viewport
+		testing=false;
+			
+		testViewport = new JLabel();
+		testViewport.setVerticalAlignment(SwingConstants.TOP);
+		testViewport.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		scrollertestViewport=new JScrollPane();
+		scrollertestViewport.setFont(new Font(Variables.fontname, Font.PLAIN, 12));
+		scrollertestViewport.setBorder(null);
+		scrollertestViewport.setViewportView(testViewport);
+		scrollertestViewport.setVisible(false);
+		editMode.add(scrollertestViewport, c);
+		
+		//Link-Liste und Combobox
+		c.weightx=0.0; c.weighty=0.0; 
+		comboboxhandler=new DefaultComboBoxModel<String>();
+		for(int i=0; i<list.size(); i++) {comboboxhandler.addElement(list.get(i).getName());}
+		linkselection = new JComboBox<String>();
+		linkselection.setBorder(null);
+		linkselection.setFont(new Font(Variables.smallfontname, Font.PLAIN, 12));
+		linkselection.setMaximumRowCount(54);
+		linkselection.setBackground(new Color(204, 255, 255));
+		linkselection.setModel(comboboxhandler);
+		linkselection.setEditable(false);
+		linkselection.addKeyListener(new KeyListener() {		//Einträge in list hinzufügen(Crosslinks)
+			public void keyPressed(KeyEvent e) {}
+			public void keyReleased(KeyEvent e) {	//Verschiedene Linkarten hinzufügen mit verschiedenen Tasten
+				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+					int index = linkselection.getSelectedIndex();
+					list.addLink(list.get(act), new LinkedString(comboboxhandler.getElementAt(index), (byte)0));
+					
+					update();
+				} else if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+					int index = linkselection.getSelectedIndex();
+					list.get(act).setSupLink(comboboxhandler.getElementAt(index));
+					
+					update();
+				}
+			}
+			public void keyTyped(KeyEvent e) {}
+		});
+		linkselection.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=0; c.fill=GridBagConstraints.BOTH;
+		editMode.add(linkselection, c);
+		
 		links = new JList<ColoredString>();
 		linkshandler = new DefaultListModel<ColoredString>();
 		links.setModel(linkshandler);
@@ -481,72 +545,31 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		
 		scrollerlinks = new JScrollPane();
 		scrollerlinks.setBorder(null);
-		scrollerlinks.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 60, Variables.rechterRand-20, (int)Variables.standardsize.getHeight()-150);
 		scrollerlinks.setViewportView(links);
-		editMode.add(scrollerlinks);
-		
-		comboboxhandler=new DefaultComboBoxModel<String>();
-		for(int i=0; i<list.size(); i++) {comboboxhandler.addElement(list.get(i).getName());}
-		linkselection = new JComboBox<String>();
-		linkselection.setBorder(null);
-		linkselection.setFont(new Font(Variables.smallfontname, Font.PLAIN, 12));
-		linkselection.setMaximumRowCount(54);
-		linkselection.setBackground(new Color(204, 255, 255));
-		linkselection.setModel(comboboxhandler);
-		linkselection.setEditable(false);
-		linkselection.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, 10, Variables.rechterRand-20, 40);
-		linkselection.addKeyListener(new KeyListener() {		//Einträge in list hinzufügen(Crosslinks)
-			public void keyPressed(KeyEvent e) {}
-			public void keyReleased(KeyEvent e) {	//Verschiedene Linkarten hinzufügen mit verschiedenen Tasten
-				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-					int index = linkselection.getSelectedIndex();
-					list.addLink(list.get(act), new LinkedString(comboboxhandler.getElementAt(index), (byte)0));
-					
-					update();
-				} else if(e.getKeyCode()==KeyEvent.VK_SPACE) {
-					int index = linkselection.getSelectedIndex();
-					list.get(act).setSupLink(comboboxhandler.getElementAt(index));
-					
-					update();
-				}
-			}
-			public void keyTyped(KeyEvent e) {}
-		});
-		editMode.add(linkselection);
-		
-		//Test-Viewport
-		testing=false;
-		
-		testViewport = new JLabel();
-		testViewport.setVerticalAlignment(SwingConstants.TOP);
-		testViewport.setHorizontalAlignment(SwingConstants.LEFT);
-		testViewport.setBounds(10, 60, 780, 830);
-		
-		scrollertestViewport=new JScrollPane();
-		scrollertestViewport.setFont(new Font(Variables.fontname, Font.PLAIN, 12));
-		scrollertestViewport.setBorder(null);
-		scrollertestViewport.setBounds(10, 60, (int)Variables.standardsize.getWidth()-Variables.rechterRand-10, (int)Variables.standardsize.getHeight()-150);
-		scrollertestViewport.setViewportView(testViewport);
-		scrollertestViewport.setVisible(false);
-		editMode.add(scrollertestViewport);
+		scrollerlinks.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
+		editMode.add(scrollerlinks, c);
 		
 		//Optionen
+		c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
 		back = new JButton("Zurück");
 		back.setBorder(null);
 		back.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		back.setForeground(new Color(255, 255, 255));
 		back.setBackground(new Color(0, 0, 153));
-		back.setBounds((int)Variables.standardsize.getWidth()-Variables.rechterRand+10, (int)Variables.standardsize.getHeight()-80, Variables.rechterRand-20, 40);
 		back.addActionListener(this);
-		editMode.add(back);
+		back.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=1; c.gridy=2; 
+		editMode.add(back, c);
 		showtestViewport=new JButton("Testansicht");
 		showtestViewport.setFont(new Font(Variables.fontname, Font.PLAIN, 24));
 		showtestViewport.setBorder(null);
 		showtestViewport.setForeground(new Color(255, 255, 255));
 		showtestViewport.setBackground(new Color(0, 0, 153));
-		showtestViewport.setBounds(10, (int)Variables.standardsize.getHeight()-80, 200, 40);
 		showtestViewport.addActionListener(this);
-		editMode.add(showtestViewport);
+		showtestViewport.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
+		c.gridx=0; c.gridy=2; c.weightx=1.0; c.fill=GridBagConstraints.NONE;
+		editMode.add(showtestViewport, c);
 	}
 	
 	@Override

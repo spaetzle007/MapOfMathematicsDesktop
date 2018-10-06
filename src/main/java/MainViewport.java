@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListCellRenderer;
@@ -214,6 +215,7 @@ public class MainViewport extends JFrame {
 			headerlist.setFont(new Font(Variables.fontname, Font.BOLD, 20));
 			headerlist.setHorizontalAlignment(SwingConstants.CENTER);
 			headerlist.setVerticalAlignment(SwingConstants.CENTER);
+			headerlist.setPreferredSize(new Dimension(Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=0; c.gridheight=1; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
 			contentPane.add(headerlist, c);
 			
@@ -239,13 +241,9 @@ public class MainViewport extends JFrame {
 						JList<String> treffer = (JList<String>)e.getSource();
 						int index = treffer.locationToIndex(e.getPoint());
 						
-						if(searchmode) {
-							actual=links.get(links.search(searchresults.get(index)));
-						} else {
-							actual=links.get(links.search(listhandler.get(index).getName()));
-						}
+						actual=links.get(links.search(listhandler.get(index).getName()));
+						
 						searchmode=false;
-		
 						update();
 					}
 				}
@@ -255,6 +253,7 @@ public class MainViewport extends JFrame {
 			listscroller= new JScrollPane();
 			listscroller.setBorder(null);
 			listscroller.setViewportView(list);
+			listscroller.setPreferredSize(new Dimension(Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
 			contentPane.add(listscroller, c);
 
@@ -289,6 +288,7 @@ public class MainViewport extends JFrame {
 					}
 				}
 			});
+			search.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
 			c.gridx=1; c.gridy=2; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
 			contentPane.add(search, c);
 			
@@ -303,6 +303,7 @@ public class MainViewport extends JFrame {
 					update();
 				}
 			});
+			back.setPreferredSize(new Dimension(Variables.rechterRand, Variables.buttonHeight));
 			c.gridx=1; c.gridy=3; c.weighty=0.0;
 			contentPane.add(back, c);
 		}
