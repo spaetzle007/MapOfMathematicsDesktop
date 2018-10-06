@@ -216,7 +216,9 @@ public class MainViewport extends JPanel {
 			headerlist.setFont(new Font(Hilfsklassen.Variables.fontname, Font.BOLD, 20));
 			headerlist.setHorizontalAlignment(SwingConstants.CENTER);
 			headerlist.setVerticalAlignment(SwingConstants.CENTER);
+			headerlist.setMinimumSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
 			headerlist.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
+			headerlist.setMaximumSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)headerlist.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=0; c.gridheight=1; c.fill=GridBagConstraints.HORIZONTAL; c.weighty=0.0;
 			add(headerlist, c);
 			
@@ -254,7 +256,9 @@ public class MainViewport extends JPanel {
 			listscroller= new JScrollPane();
 			listscroller.setBorder(null);
 			listscroller.setViewportView(list);
+			listscroller.setMinimumSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
 			listscroller.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
+			listscroller.setMaximumSize(new Dimension(Hilfsklassen.Variables.rechterRand, (int)listscroller.getPreferredSize().getHeight()));
 			c.gridx=1; c.gridy=1; c.weighty=1.0; c.fill=GridBagConstraints.BOTH;
 			add(listscroller, c);
 
@@ -289,7 +293,9 @@ public class MainViewport extends JPanel {
 					}
 				}
 			});
+			search.setMinimumSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			search.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
+			search.setMaximumSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=2; c.weighty=0.0; c.fill=GridBagConstraints.HORIZONTAL;
 			add(search, c);
 			
@@ -304,7 +310,9 @@ public class MainViewport extends JPanel {
 					update();
 				}
 			});
+			back.setMinimumSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			back.setPreferredSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
+			back.setMaximumSize(new Dimension(Hilfsklassen.Variables.rechterRand, Hilfsklassen.Variables.buttonHeight));
 			c.gridx=1; c.gridy=3; c.weighty=0.0;
 			add(back, c);
 		}
