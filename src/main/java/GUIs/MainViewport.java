@@ -308,4 +308,6 @@ public class MainViewport extends JPanel {
 			c.gridx=1; c.gridy=3; c.weighty=0.0;
 			add(back, c);
 		}
+		public Linked getLinked() {return actual;}
+		public LinkedList getLinkedList() {return links;}
 }
