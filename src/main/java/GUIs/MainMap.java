@@ -65,7 +65,7 @@ See Code for details
 
 public class MainMap extends JFrame implements ActionListener {
 	
-	//Benötigte Daten für erzeugen der Map
+	//Benoetigte Daten fuer erzeugen der Map
 	private MainViewport viewport;
 	private LinkedList links;
 	private Linked actual;
