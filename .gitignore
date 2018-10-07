@@ -2,3 +2,5 @@
 /AdditionalStaff
 /.gradle/
 /build/
+/gradle/
+MOM.xml
