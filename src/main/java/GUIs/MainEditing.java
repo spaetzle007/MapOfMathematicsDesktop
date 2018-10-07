@@ -194,14 +194,16 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			search.setText("Suche");
 			update();
 		} else if(e.getSource()==sicherung) {
-			list.sicherungskopie();
+			try {
+				list.sicherungskopie();
+			} catch(AccessException f) {
+				JOptionPane.showMessageDialog(null,  f.getMessage(), "Fehler", 3);
+			}
 		} else if(e.getSource()==synchronisieren) {
 			try {
 				list.saveList();
-			} catch (DeleteErrorException e1) {
-				JOptionPane.showMessageDialog(null, "MOM.xml verschwunden! Entwickler alarmieren!", "Fehler", 3);
-			} catch (DbxException | IOException e1) {
-				JOptionPane.showMessageDialog(null, "Dropbox-Synchronisierung nicht möglich! Keine Internetverbindung", "Fehler", 3);
+			} catch (AccessException f) {
+				JOptionPane.showMessageDialog(null,  f.getMessage(), "Fehler", 3);
 			}
 		} else if(e.getSource()==back) {
 			update();
@@ -599,10 +601,8 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 		
 		try {
 			list.saveList();
-		} catch (DeleteErrorException e) {
-			JOptionPane.showMessageDialog(null, "MOM.xml ist verschwunden! Entwickler alarmieren!",  "Fehler", 3);
-		} catch (DbxException | IOException e) {
-			JOptionPane.showMessageDialog(null, "Dropbox-Synchronisierung nicht möglich! Keine Internetverbindung", "Fehler", 3);
+		} catch (AccessException e) {
+			JOptionPane.showMessageDialog(null,  e.getMessage(), "Fehler", 3);
 		}
 		
 	}
