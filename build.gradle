@@ -1,0 +1,26 @@
+apply plugin: 'java'
+//apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+group = 'com.spaetzle007'
+version = '2.0.0'
+
+description = ""
+
+mainClassName='GUIs/MainViewport'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'com.dropbox.core', name: 'dropbox-core-sdk', version:'3.0.8'
+    compile group: 'org.scilab.forge', name: 'jlatexmath', version:'1.0.7'
+    compile project(':MapOfMathematicsLibraries')
+    
+    testCompile 'junit:junit:3.8.2'
+}

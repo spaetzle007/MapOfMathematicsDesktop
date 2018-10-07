@@ -1,4 +1,4 @@
 /target/
 /AdditionalStaff
-/Versions/
-/doc/
+/.gradle/
+/build/

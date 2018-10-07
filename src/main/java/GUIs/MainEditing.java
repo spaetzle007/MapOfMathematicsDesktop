@@ -137,8 +137,11 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new BufferedInputStream(getClass().getResourceAsStream("/Laksaman-Bold.ttf"))));
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new BufferedInputStream(getClass().getResourceAsStream("/Laksaman-Italic.ttf"))));
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new BufferedInputStream(getClass().getResourceAsStream("/Laksaman-BoldItalic.ttf"))));
-		} catch (IOException|FontFormatException e) {
-			JOptionPane.showMessageDialog(null, "Fonts nicht verfügbar", "Fehler", 3);
+		} catch(FontFormatException e) {
+			JOptionPane.showMessageDialog(null, "Font-Format fehlerhaft", "Fehler", 3);
+			Hilfsklassen.Variables.fontname="Dialog";
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Fonts nicht verfügbar", "Fehler", 3);	
 			Hilfsklassen.Variables.fontname="Dialog";
 		}
 		
