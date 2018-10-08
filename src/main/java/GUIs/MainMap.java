@@ -1,5 +1,6 @@
 package GUIs;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Point;
 
@@ -55,9 +56,8 @@ Other Possible versions are nested circles and grid lines
 
 To-do List:
 - Add Vertex
-- Conversion from LinkedList to LevelList (without positions, but absolute hierarchy) (Jonas?)
-- Implementation of supNode.getsubNodes()											  (Jonas?)
-- Is static class used correctly?													  (Jonas?)
+- Conversion from LinkedList to LevelList (without positions, but absolute hierarchy) 
+- Implementation of supNode.getsubNodes()											  
 - Navigation features
 - ....
 See Code for details
@@ -67,17 +67,133 @@ public class MainMap extends JFrame implements ActionListener {
 	
 	//Benoetigte Daten fuer erzeugen der Map
 	private MainViewport viewport;
-	private LinkedList links;
+	private LinkedList LinkedList;
 	private Linked actual;
+	private Point origin;
 	
+	private int width;
+	private int heigth;
+	
+	//Swing Component oder Bild -> Google
 	//Angezeigte Elemente auf Map
-	private ArrayList<JButton> Nodes;
+	private ArrayList<JButton> nodeButtons;
+	private ArrayList<Level> LevelList;
+	private JPanel MapPanel;
+	
 	//private ArrayList<???> Vertex
 	private JTextField search;
 	private JButton back;
 	
-	//Ist static class hier richtig um das runnable DisplayMapJFrame auszulagern?
-	public static class DisplayMapJFrame implements Runnable {
+	 
+//	//Ist static class hier richtig um das runnable DisplayMapJFrame auszulagern?
+//	public static class DisplayMapJFrame implements Runnable {
+//		
+//	  }
+	
+	public class Level{
+		ArrayList<Node> Nodes;
+		int level;
+		
+		
+		Level(){
+			
+		}
+		
+		//Constructor
+		Level(ArrayList<Node> Nodes,int level){
+			this.Nodes = Nodes;
+			this.level = level;
+		}
+		
+		Level(Node Mathematik){
+			ArrayList<Node> NodesL0 = new ArrayList<Node>();
+			NodesL0.add(Mathematik);
+			this.Nodes = NodesL0;
+			this.level = 0;
+			
+		}
+		public ArrayList<String> getlevelNames() {
+			ArrayList<String> levelNames = new ArrayList<String>();
+			for (Node lvlNode : Nodes) {
+				levelNames.add(lvlNode.nodeName);
+			}
+			return levelNames;
+		}
+	}
+
+	public class Node extends Point{
+		String nodeName;
+		Linked Link;
+		
+		Node (){
+			x = (int) origin.getX();
+			y = (int) origin.getY();
+		}
+		
+		
+		Node (Linked Link){
+			x = (int) origin.getX();
+			y = (int) origin.getY();
+			this.Link = Link;
+			this.nodeName = Link.getName();
+		}
+		
+		Node (String name){
+			x = (int) origin.getX();
+			y = (int) origin.getY();
+			this.nodeName = name;
+		}
+		
+		public double getAnglefromPoint(Point p) {
+			double deltax = x-p.getX();
+			double deltay = y-p.getY();
+			double angle = Math.atan2(deltay, deltax);
+			return angle;
+		}
+		
+		public int getLevel(ArrayList<Level> LevelList) {
+			Boolean nodefound = false;
+			int nodeLvl = 0;
+				for (Level lvl : LevelList) {
+					for (Node lvlNode : lvl.Nodes) {
+						if (lvlNode.nodeName.equals(nodeName)) {
+							nodefound = true;
+							nodeLvl = lvl.level;
+						}
+					}
+				}
+			//Falls Node nicht in LevelList gefunden werden konnte print error message
+			if (!nodefound) {
+				System.out.println("Node konnte nicht in LevelList gefunden werden");
+				JOptionPane.showMessageDialog(null, "Node konnte nicht in LevelList gefunden werden","Fehler", 3);
+			}
+			return nodeLvl;	
+		}
+
+		
+		public ArrayList<Node> getSubNodes(LinkedList LinkedList,ArrayList<Level> LevelList){
+			ArrayList<Node> subNodes = new ArrayList<Node>();
+			int subNodeLevel = getLevel(LevelList)+1;
+			//Test Fkt
+//			System.out.println("Subnodes: " + LevelList.get(subNodeLevel).getlevelNames());
+			
+			for (Node lvlNode : LevelList.get(subNodeLevel).Nodes) {
+				if (stringContained(LinkedList.getSubLinks(Link),lvlNode.nodeName)) {
+					subNodes.add(lvlNode);
+				}
+			}
+			return subNodes;
+			
+		}
+		
+	}
+	
+	/**
+	 * Main-Methode zum Starten der Ansicht
+	 */
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
 		public void run() {
 			try {
 				//MapJFrame erstellen mit Konstrkutor
@@ -89,71 +205,79 @@ public class MainMap extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 		}
-	  }
-	
-	public class Level{
-		ArrayList<Node> Nodes;
-		int level;
+	});
 		
-		//Is this Constructor even needed?
-		Level(ArrayList<Node> Nodes,int level){
-			this.Nodes = Nodes;
-			this.level = level;
-		}
-	}
-	
-	public class Node extends Point{
-		Point nodePos;
-		String nodeName;
-		
-		Node (Point nodePos,String nodeName){
-			this.nodePos = nodePos;
-			this.nodeName = nodeName;
-		}
-	}
-	
-	/**
-	 * Main-Methode zum Starten der Ansicht
-	 */
-	
-	public static void main(String[] args) {
-		DisplayMapJFrame DisplayMap = new DisplayMapJFrame();
-		EventQueue.invokeLater(DisplayMap);
-		
+//		DisplayMapJFrame DisplayMap = new DisplayMapJFrame();
+//		EventQueue.invokeLater(DisplayMap);
 	}
 	
 	//Konstruktor von MainMap()
-	@SuppressWarnings("null")
 	public MainMap() {
+		
+		//set global width and heigth
+		width = (int) Hilfsklassen.Variables.standardsize.getWidth();
+		heigth = (int)Hilfsklassen.Variables.standardsize.getHeight();
+		origin = new Point((int) (width*0.5),(int) (heigth*0.5));
+
 		
 		//Creates new Viewport to extract LinkedList and ActualLink
 		viewport = new MainViewport();
 		String CurrentLinked = viewport.getLinked().getName();
-		LinkedList LinkedList = viewport.getLinkedList();
+		LinkedList = viewport.getLinkedList();
 		
 		//Convert LinkedList to ArrayList<Level>
-		//(Should take place here in the future)
-		ArrayList<Level> LevelList = null;
+		//By starting from Mathematik and 
+		Node Mathematik = new Node(LinkedList.get(LinkedList.search("Mathematik")));
+		LevelList = new ArrayList<Level>();
+		LevelList.add(new Level(Mathematik));
+		int lvl = 0;
 		
-		//Sets the variables of the JFrame MainMap
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, (int) Hilfsklassen.Variables.standardsize.getWidth(), (int)Hilfsklassen.Variables.standardsize.getHeight()); 	//Format: 1920x1080
+		//Initializing as null is bad style
+		ArrayList<Node> initialnodeList = new ArrayList<Node>();
+		for (String subLink : LinkedList.getSubLinks(Mathematik.Link)) {
+			Node subNode = new Node(LinkedList.get(LinkedList.search(subLink)));
+			initialnodeList.add(subNode);
+		}
 		
-		//Origin determines the coordinate of the Mathematik node
-		//VERY complicted way just to initialize Node "Mathematik"
-		Point origin = new Point(0,0);
-		Node Mathematik = new Node(origin,"Mathematik");
-		ArrayList<Node> NodesL0 = new ArrayList<Node>();
-		NodesL0.add(Mathematik);
-		Level L0 = new Level(NodesL0,0);
-		LevelList.set(0, L0);
+		Level Ln = new Level(initialnodeList,1);
+		System.out.println("Size of first initialnodeList: " + initialnodeList.size());
+		System.out.println("Name of first node in initialnodeList: " + initialnodeList.get(0).nodeName);
+		LevelList.add(Ln);
+		System.out.println("Name of Link of first node in level: " + Ln.Nodes.get(0).Link.getName());
 		
+		while (checkforSubLinks(LinkedList,Ln)) {
+			ArrayList<Node> nodeList = new ArrayList<Node>();
+			System.out.println("add level to LevelList");
+			System.out.println("True if ln.nodes is empty: " + Ln.Nodes.isEmpty());
+
+			for (Node supNode : Ln.Nodes) {
+				for (String subLink : LinkedList.getSubLinks(supNode.Link)) {
+					Node subNode = new Node(LinkedList.get(LinkedList.search(subLink)));
+					nodeList.add(subNode);
+				}
+			}
+			lvl++;
+			Ln = new Level(nodeList,lvl);
+			System.out.println("Size of nodeList in conversion while loop: "+nodeList.size());
+			LevelList.add(Ln);
+		}
 		
 		//L0dist is distance from origin to first nodes
-		double L0dist = 40;
+		double L0dist = 300;
 		double L0size = 30;
-		JPanel MapPanel = new JPanel();
+		MapPanel = new JPanel();
 		MapPanel.setLayout(null);
+		MapPanel.setBackground(new Color(255, 204, 153));
+		nodeButtons = new ArrayList<JButton>();
+		
+		//Test Button
+		JButton nodeButton = new JButton("nodeName");
+		nodeButton.setText("Mathematik");
+		nodeButton.setBounds(origin.x, origin.y, 200, 30);
+		nodeButton.setBackground(Color.decode("#FFB366"));
+		MapPanel.add(nodeButton);
+		
+		System.out.println("Levellist length:" + LevelList.size());
 		
 		//for every level draw level
 		for (Level supLvl : LevelList) {
@@ -162,66 +286,146 @@ public class MainMap extends JFrame implements ActionListener {
 		
 		setContentPane(MapPanel);
 		setTitle("MapOfMathematics");
+		
+		//Sets the variables of the JFrame MainMap
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(0, 0, width, heigth); 	//Format: 1920x1080
+		
+		System.out.println("Anzahl nodeButtons: " + nodeButtons.size());
+//		for (JButton nodeButton2 : nodeButtons) {
+//			System.out.println(nodeButton2.getText());
+//			System.out.println(nodeButton2.getX());
+//			System.out.println(nodeButton2.getY());
+//		}
+		
 	}
+
 	
 	//supLvl already exists
 	//drawLevel draws the subLvl originating FROM the supLvl
 	public void drawLevel(Level supLvl, double L0dist, double L0size) {
+		//Test
+//		System.out.println(supLvl.level);
+//		System.out.println(supLvl.Nodes);
 		
 		//calculate radius and size of vertex/node by L0dist, L0size and level
-		double radius = Math.round(Math.pow(2/3, supLvl.level)*L0dist);
-		double size = Math.round(Math.pow(2/3, supLvl.level)*L0size);
+		double radius = Math.round(Math.pow(1/3., supLvl.level)*L0dist);
+		double size = Math.round(Math.pow(2/3., supLvl.level)*L0size);
 		
 		//for every Node in supLvl draw Subnodes
 		for (Node supNode : supLvl.Nodes) {
-			drawAllSubnodes(supNode,supLvl.level,radius,size);
+			drawAllSubnodes(supNode,radius,size);
 		}
 	}
 	
 	//Draws all Subnodes of a given Supnode
-	public void drawAllSubnodes(Node supNode,int supLvl,double radius, double size) {
+	public void drawAllSubnodes(Node supNode,double radius, double size) {
 
-		//This Subnodes ArrayList should be initialized by a ArrayList<Node> Subnodes = supnode.getSubnodes()
-		//as soon as implemented (if not already implemented??)
-		ArrayList<Node> subNodes = null;
+		//initializes subNodes as getSubNodes of supNode
+		ArrayList<Node> subNodes = supNode.getSubNodes(LinkedList, LevelList);
+//		System.out.println("Prints true if no more subNodes: " + subNodes.isEmpty());
+//		System.out.println("Xpos of supNode: " + supNode.x);
 		
 		//Increment angle between Nodes and set Maxangle between subnodes
 		int length = subNodes.size();
 		double maxangle = 1*Math.PI;
-		double deltaAngle = maxangle/length;
+		double angle = supNode.getAnglefromPoint(origin)-Math.PI/2.;
+		double deltaAngle = 0;
 		
-	
+		if (length > 5) {
+			deltaAngle = maxangle/(double) length;
+		}
+		
+		else {
+			deltaAngle = maxangle/4.;
+		}
+
 		
 		//for every node in subNodes draw the Subnode
 		for (Node subNode : subNodes) {
-			double angle =+ deltaAngle;
-			drawSubnode(subNode.nodeName,radius,angle,supNode.nodePos,(int) size);
+			angle += deltaAngle;
+			System.out.println(angle);
+			drawSubnode(subNode,radius,angle,supNode,(int) size);
 		}
-		
 	}
+	//Bugs:
+	//SupNodePos is always default point for some reason
+	//Angle is only one of 2 possible values
 	
 	//Draws a Subnode as a JButton and enables its visibility according to specifications
-	public void drawSubnode(String NodeName, double radius, double angle, Point SupNodePos,int size) {
+	public void drawSubnode(Node subNode, double radius, double angle, Node SupNode,int size) {
+		System.out.println();
+		System.out.println("subNodeName: " + subNode.nodeName);
+		System.out.println("SupNodeName: " + SupNode.nodeName);
+		System.out.println("SupNodeXPos: " + SupNode.getX());
+		System.out.println("SupNodeYPos: " + SupNode.getY());
+		
 		//Add difference to old position
 		double deltax = Math.cos(angle)*radius;
 		double deltay = Math.sin(angle)*radius;
 		
-		int xpos = (int) Math.round(SupNodePos.getX() + deltax);
-		int ypos = (int) Math.round(SupNodePos.getY() + deltay);
+		subNode.x = (int) Math.round(SupNode.getX() + deltax);
+		subNode.y= (int) Math.round(SupNode.getY() + deltay);
+		
+		System.out.println("SubNodeXpos: " + subNode.getX());
+		System.out.println("SubNodeYpos: " + subNode.getY());
+		editList(LevelList,subNode);
 		
 		//Create Buttton with corresponding coordinates, size and name
-		JButton Node = new JButton();
-//		Node.setVisible(true); needed?
-		Node.setText(NodeName);
-		Node.setBounds(xpos, ypos, size, size);
+		JButton nodeButton = new JButton(subNode.nodeName);
+		nodeButton.setText(subNode.nodeName);
+		nodeButton.setBounds((int) Math.round(subNode.getX()),(int) Math.round(subNode.getY()), size, size);
+		nodeButton.setBackground(Color.decode("#FFB366"));
+		MapPanel.add(nodeButton);
+		System.out.println("Button drawn!");
 		
-		//Add Node to Global ArrayList of Nodes
-		Nodes.add(Node);
+		//Add nodeButton to Global ArrayList of nodeButtons
+		nodeButtons.add(nodeButton);
 	}
 	
+	//Checks if any supNodes still even have subNodes
+	public boolean checkforSubLinks(LinkedList Data,Level supLevel) {
+		Boolean subLinksExist = false;
+		for (Node supNode : supLevel.Nodes) {
+			if (!Data.getSubLinks(supNode.Link).isEmpty()) {
+				subLinksExist = true;
+			}
+		}
+		return subLinksExist;
+	}
+	
+	public void editList(ArrayList<Level> levelList,Node editNode) {
+		Node nodetoEdit = new Node();
+		Level lvltoEdit = new Level();
+		Boolean edit = false;
+		
+		for (Level level : levelList) {
+			for (Node levelNode : level.Nodes) {
+				if (levelNode.nodeName.equals(editNode.nodeName)) {
+					nodetoEdit = levelNode;
+					lvltoEdit = level;
+					edit = true;
+				}
+			}
+		}
+		if (edit){
+			System.out.println("Edited!");
+			lvltoEdit.Nodes.remove(nodetoEdit);
+			lvltoEdit.Nodes.add(editNode);
+		}
+	}
 	
 	//Perform Action according to Action Event
 	public void actionPerformed(ActionEvent e) {
 		
+	}
+	
+	public boolean stringContained(ArrayList<String> stringList, String search) {
+		for (String Liststr : stringList) {
+			if (Liststr.trim().equals(search)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
