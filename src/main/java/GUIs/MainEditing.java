@@ -30,6 +30,7 @@ import javax.swing.JTextPane;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.files.DeleteErrorException;
 import com.spaetzle007.MapOfMathematicsLibraries.AccessException;
+import com.spaetzle007.MapOfMathematicsLibraries.DataHandler;
 import com.spaetzle007.MapOfMathematicsLibraries.LatexText;
 import com.spaetzle007.MapOfMathematicsLibraries.Linked;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedList;
@@ -113,7 +114,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	public MainEditing() {
 		//Grundeinstellungen
 		try {
-				list = new LinkedList();
+				list = new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())/*+File.seperator*/+"/MOM.xml");
 		} catch(AccessException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 			System.exit(1);

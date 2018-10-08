@@ -25,6 +25,7 @@ import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
 
 import com.spaetzle007.MapOfMathematicsLibraries.AccessException;
+import com.spaetzle007.MapOfMathematicsLibraries.DataHandler;
 import com.spaetzle007.MapOfMathematicsLibraries.Linked;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedList;
 import com.spaetzle007.MapOfMathematicsLibraries.LinkedParseException;
@@ -96,7 +97,7 @@ public class MainViewport extends JPanel {
 		public MainViewport() {
 			//LinkedList-Variablen initialisieren
 			try {
-				links = new LinkedList();
+				links= new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())/*+File.seperator*/+"/MOM.xml");
 			} catch(AccessException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 				System.exit(1);
