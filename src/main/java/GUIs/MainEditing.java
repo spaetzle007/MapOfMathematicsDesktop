@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -114,7 +115,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	public MainEditing() {
 		//Grundeinstellungen
 		try {
-				list = new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())/*+File.seperator*/+"/MOM.xml");
+				list = new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())+File.separator+"MOM.xml");
 		} catch(AccessException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 			System.exit(1);
