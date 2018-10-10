@@ -115,7 +115,7 @@ public class MainEditing extends JFrame implements ActionListener, WindowListene
 	public MainEditing() {
 		//Grundeinstellungen
 		try {
-				list = new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())+File.separator+"MOM.xml");
+				list = new LinkedList(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath()+"MOM.xml");
 		} catch(AccessException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 			System.exit(1);

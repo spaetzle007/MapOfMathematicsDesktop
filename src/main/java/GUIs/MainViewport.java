@@ -97,7 +97,11 @@ public class MainViewport extends JPanel {
 		public MainViewport() {
 			//LinkedList-Variablen initialisieren
 			try {
-				links= new LinkedList(DataHandler.cutLast(MainEditing.class.getProtectionDomain().getCodeSource().getLocation().getPath())+File.separator+"MOM.xml");
+				
+				System.out.println(MainViewport.class.getProtectionDomain().getCodeSource().getLocation().getPath()+"MOM.xml");
+				links= new LinkedList(MainViewport.class.getProtectionDomain().getCodeSource().getLocation().getPath()+"MOM.xml");
+
+				
 			} catch(AccessException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 				System.exit(1);
