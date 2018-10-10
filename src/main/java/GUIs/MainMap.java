@@ -47,13 +47,13 @@ public class MainMap extends JFrame implements ActionListener {
 	private Node origin = new Node(new Point((int) (width*0.5),(int) (height*0.5)),"Mathematik");
 	private int L0dist = 200;
 	private int L0size = 20;
-	private double globalAngle = 2*Math.PI;
+	private String originName = "Mathematik";
 	private Boolean debugging = true;
 
 	//Displayed Swing components on Map
 	private ArrayList<JButton> nodeButtons = new ArrayList<JButton>();
-	private ArrayList<Level> LevelList;
-	private JPanel MapPanel;
+	private ArrayList<Level> LevelList = convertLinkedListToLevelList();
+	private JPanel MapPanel = new JPanel();
 //	private ArrayList<???> Vertex
 	private JTextField search;
 	private JButton back;
@@ -164,13 +164,10 @@ public class MainMap extends JFrame implements ActionListener {
 
 	//Constructor of MapJFrame
 	public MainMap() {
-		LevelList = convertLinkedListToLevelList("Mathematik");
-
 		configurePanel();
 		configureMapJFrame();
 		
 		drawButton(origin,L0size);
-		
 		for (Level supLvl : LevelList) {
 				drawLevel(supLvl);
 		}
@@ -189,7 +186,7 @@ public class MainMap extends JFrame implements ActionListener {
 	public void drawAllSubnodes(Node supNode) {
 		ArrayList<Node> subNodes = supNode.getSubNodes();
 		
-		double maxangle = Math.pow(2/5., supNode.getLevel())*globalAngle;
+		double maxangle = Math.pow(2/5., supNode.getLevel())*2*Math.PI;
 		double length = subNodes.size();
 		double deltaAngle = maxangle/length;
 		
@@ -222,7 +219,7 @@ public class MainMap extends JFrame implements ActionListener {
 	}
 	
 	//Converts LinkedList to a List of Levels with the starting Linked being originName
-	public ArrayList<Level> convertLinkedListToLevelList(String originName){
+	public ArrayList<Level> convertLinkedListToLevelList(){
 		Level supLevel = new Level(0);
 		supLevel.add(new Node(LinkedList.get(LinkedList.search(originName))));
 		
@@ -273,7 +270,6 @@ public class MainMap extends JFrame implements ActionListener {
 	
 	//Configures JPanel
 	public void configurePanel() {
-		MapPanel = new JPanel();
 		MapPanel.setLayout(null);
 		MapPanel.setBackground(new Color(255, 204, 153));
 	}
