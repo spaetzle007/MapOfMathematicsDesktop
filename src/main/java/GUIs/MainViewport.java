@@ -123,7 +123,7 @@ public class MainViewport extends JPanel {
 				JOptionPane.showMessageDialog(null, "Font-Format fehlerhaft", "Fehler", 3);
 				Hilfsklassen.Variables.fontname="Dialog";
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Fonts nicht verfügbar", "Fehler", 3);	
+//				JOptionPane.showMessageDialog(null, "Fonts nicht verfügbar", "Fehler", 3);	
 				Hilfsklassen.Variables.fontname="Dialog";
 			}
 			
