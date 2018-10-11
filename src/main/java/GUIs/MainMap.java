@@ -3,6 +3,8 @@ package GUIs;
 import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
+import javax.swing.event.MouseInputListener;
+
 import java.awt.event.*;
 
 import java.awt.image.BufferedImage;
@@ -40,7 +42,7 @@ To-do List:
 - ....
 */
 
-public class MainMap extends JFrame implements ActionListener {
+public class MainMap extends JFrame{
 	//Creates new Viewport to extract LinkedList and ActualLink
 	private MainViewport viewport = new MainViewport();
 	private LinkedList LinkedList = viewport.getLinkedList();
@@ -52,19 +54,129 @@ public class MainMap extends JFrame implements ActionListener {
 	private int L0dist = 200;
 	private int L0size = 50;
 	private Point origin = new Point((int) (width/2.),(int) (height/2.));
-	private ArrayList<Level> LevelList = convertLinkedListToLevelList();
 	private Boolean debugging = true;
 	
 	//Displayed Swing components on Map
-	private ArrayList<JButton> nodeButtons = new ArrayList<JButton>();
+	private ArrayList<Node> globalNodeList = new ArrayList<Node>();
+	private ArrayList<Level> LevelList = convertLinkedListToLevelList();
 	private ArrayList<Vertex> treeVertices = new ArrayList<Vertex>();
-	private JPanel MapPanel = new drawPanel();
+	private DrawPanel MapPanel = new DrawPanel();
 	private JTextField search;
 	private JButton back;
 
-	//drawPanel is needed to draw Lines
-	public class drawPanel extends JPanel{
+	
+	MouseInputListener navigateByDrag = new MouseInputListener() {
+		Boolean navigating = false;
+		Point previousPos = new Point(0,0);
+		
+		public void mousePressed(MouseEvent mousePressed) {
+			navigating = true;
+			System.out.println("Navigating enabled!");
+		}
 
+		public void mouseReleased(MouseEvent mouseReleased) {
+			navigating = false;
+			System.out.println("Navigating disabled!");
+		}
+		
+		public void mouseMoved(MouseEvent mouseMoved) {
+			System.out.println("Mouse moved!");
+			Point mousePos = MouseInfo.getPointerInfo().getLocation();
+			Point deltaPos = vectorAddition(mousePos,scaleVector(previousPos,-1));
+			if (navigating) {
+				translate(mousePos,deltaPos);
+				previousPos = mousePos;
+			}
+		}
+		
+		public void translate(Point mousePos,Point deltaPos) {
+			MapPanel.removeAll();
+			
+			for (Node Node : globalNodeList) {
+				Node.setPos(vectorAddition(Node,deltaPos));
+			}
+			drawTreeVertices();
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+	
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		};
+	
+
+	
+	
+	//Zooms toward the given mouse Position
+	MouseWheelListener zoomInAction = new MouseWheelListener() {
+		int previousNotches = 0;
+		double scale = 1;
+		
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent turnEvent) {
+			int notches = turnEvent.getWheelRotation();
+			int deltaNotches = notches-previousNotches;
+			
+			Point mousePos = MouseInfo.getPointerInfo().getLocation();
+			zoomIn(mousePos,deltaNotches);
+			previousNotches = notches;
+		}
+			
+		public void zoomIn(Point mousePos,int deltaNotches) {
+			double factor = Math.pow(10, -deltaNotches/10.);
+			scale = scale*factor;
+			MapPanel.removeAll();
+			
+			for (Node Node : globalNodeList) {
+				Point mousePosToNode = vectorAddition(Node,scaleVector(mousePos,-1));
+				mousePosToNode = scaleVector(mousePosToNode,scale);
+				Node.setPos(vectorAddition(mousePos,mousePosToNode));
+				Node.setScale(scale);
+				System.out.println(mousePos);
+			}
+			drawTreeVertices();
+		}
+	};
+	
+	//Action Listener opens Topic in MainViewport
+	ActionListener openClicked(Node clickedNode) {
+		ActionListener openClicked = new ActionListener() {
+			public void actionPerformed(ActionEvent buttonClicked) {
+				Linked clickedLinked = clickedNode.Link;
+				viewport.setActual(clickedLinked);
+				setContentPane(viewport);
+				viewport.update();
+			}
+		};
+		return openClicked;
+	}
+	
+	//drawPanel is needed to draw Lines
+	public class DrawPanel extends JPanel{
+
+		public void clearLines() {
+			//if other vertices need to be cleared add here
+		    treeVertices.clear();
+		    repaint();
+		}
+		
 		public void addLine(Node start,Node end, Color color) {
 			treeVertices.add(new Vertex(start,end, color));        
 		    repaint();
@@ -99,6 +211,7 @@ public class MainMap extends JFrame implements ActionListener {
 	
 	//Node class is position, Name and Link of a Topic
 	public class Node extends Point{
+		JButton nodeButton;
 		String nodeName;
 		Linked Link;
 		int nodeWidth = L0size*5;
@@ -109,6 +222,18 @@ public class MainMap extends JFrame implements ActionListener {
 			this.y = origin.y;
 			this.Link = Link;
 			this.nodeName = Link.getName();
+		}
+		
+		//Prints a list of Stats for debugging if enabled
+		public void printDebuggingStats() {
+			System.out.println();
+			System.out.println("NodeName: " + nodeName);
+			System.out.println("SupNodeName: " + getSupNode().nodeName);
+			System.out.println("Angle from \"" + nodeName + "\" to \"" + getSupNode().nodeName + "\": " + getAngletoPoint(getSupNode())*360/(2*Math.PI));
+			System.out.println("SupNodeXPos: " + (int) getSupNode().y);
+			System.out.println("SupNodeYPos: " + (int) getSupNode().x);
+			System.out.println("NodeXpos: " + x);
+			System.out.println("NodeYpos: " + y);
 		}
 		
 		//Sets the Coordinates and size of a subNode with given angle to supNode
@@ -180,22 +305,29 @@ public class MainMap extends JFrame implements ActionListener {
 		}
 		
 		public void drawButton() {
-				//Create new Button and configure it
-				JButton nodeButton = new JButton(nodeName);
-				nodeButton.setText(nodeName);
-				nodeButton.setBounds((int) Math.round(x - nodeWidth*0.5)
-									,(int) Math.round(y - nodeHeight*0.5)
-									, nodeWidth
-									, nodeHeight);
-				nodeButton.setBackground(Color.decode("#FFB366"));
-				nodeButton.addActionListener(openClicked(this));
+			//Create new Button and configure it
+			nodeButton = new JButton(nodeName);
+			nodeButton.setText(nodeName);
+			nodeButton.setBounds((int) Math.round(x - nodeWidth*0.5)
+								,(int) Math.round(y - nodeHeight*0.5)
+								, nodeWidth
+								, nodeHeight);
+			nodeButton.setBackground(Color.decode("#FFB366"));
+			nodeButton.addActionListener(openClicked(this));
 				
-				MapPanel.add(nodeButton);
-				
-				//Add nodeButton to Global ArrayList of nodeButtons
-				nodeButtons.add(nodeButton);
+			MapPanel.add(nodeButton);
 			}
 	
+		public void setPos(Point p) {
+			this.x = p.x;
+			this.y = p.y;
+			drawButton();
+		}
+		
+		public void setScale(double scale) {
+			nodeWidth  = (int) Math.round(nodeWidth * scale);
+			nodeHeight = (int) Math.round(nodeHeight * scale);
+		}
 	}
 
 	//Level class is a List of Nodes and an integer levelNum
@@ -205,7 +337,18 @@ public class MainMap extends JFrame implements ActionListener {
 		Level(int level){
 			this.levelNum = level;
 		}
-			
+		
+		//Returns true if any Node.Link in supLevel have subLinked
+		public boolean isLowest() {
+			Boolean isLowest = true;
+			for (Node supNode : this) {
+				if (!LinkedList.getSubLinks(supNode.Link).isEmpty()) {
+					isLowest = false;
+				}
+			}
+			return isLowest;
+		}
+		
 		public ArrayList<String> getNodeNames() {
 			ArrayList<String> NodeNames = new ArrayList<String>();
 			for (Node lvlNode : this) {
@@ -220,25 +363,41 @@ public class MainMap extends JFrame implements ActionListener {
 		configurePanel();
 		configureMapJFrame();
 		
-		Node originNode = LevelList.get(0).get(0);
-		originNode.drawButton();
-		
-		for (Level supLvl : LevelList) {
-				drawLevel(supLvl);
+		drawNodes();
+		drawTreeVertices();
+	}
+	
+	//Draws all treeVertices
+	public void drawTreeVertices() {
+		for (Node Node : globalNodeList) {
+			drawVertex(Node);
 		}
 	}
-
-	//Draws the subLevel originating FROM the supLevel
-	public void drawLevel(Level supLvl) {
-		if (checkforSubLinks(supLvl)) {
-			for (Node supNode : supLvl) {
-				drawAllTwigs(supNode);
+	
+	//Calculates Position of and finally draws Line of Vertex
+	public void drawVertex(Node subNode) {
+			Vertex treeVertex = new Vertex(subNode.getSupNode(),subNode,Color.BLACK);
+			treeVertex.drawVertex();
+		}
+	
+	//Draws all Nodes
+	public void drawNodes() {
+		Node originNode = LevelList.get(0).get(0);
+		globalNodeList.add(originNode);
+		originNode.drawButton();
+		
+		//Draws the subLevel originating FROM the supLevel
+		for (Level supLvl : LevelList) {
+			if (!supLvl.isLowest()) {
+				for (Node supNode : supLvl) {
+					drawAllSubNodes(supNode);
+				}
 			}
 		}
 	}
 	
 	//Draws all subNodes and treeVertices of a given supNode
-	public void drawAllTwigs(Node supNode) {
+	public void drawAllSubNodes(Node supNode) {
 		ArrayList<Node> subNodes = supNode.getSubNodes();
 		
 		double maxangle = Math.pow(2/5., supNode.getlevelNum())*2*Math.PI;
@@ -251,31 +410,17 @@ public class MainMap extends JFrame implements ActionListener {
 		for (Node subNode : subNodes) {
 			angle += deltaAngle;
 			drawSubnode(subNode,angle);
-			drawVertex(subNode);
 		}
 	}
 
 	//Calculates Position of and finally draws JButton of subNode
 	public void drawSubnode(Node subNode,double angle) {
-		Node supNode 	= subNode.getSupNode();
 		subNode.setNodeProperties(angle);
 		subNode.drawButton();
 		
-		
 		if (debugging) {
-			printDebuggingStats(subNode,supNode);
+//			subNode.printDebuggingStats();
 		}
-	}
-	
-	//Calculates Position of and finally draws Line of Vertex
-	public void drawVertex(Node subNode) {
-			Vertex treeVertex = new Vertex(subNode.getSupNode(),subNode,Color.BLACK);
-			treeVertex.drawVertex();
-		}
-	
-	//Perform Action according to Action Event
-	public void actionPerformed(ActionEvent e) {
-		
 	}
 	
 	//Converts LinkedList to a List of Levels with the starting Linked being originName
@@ -286,12 +431,13 @@ public class MainMap extends JFrame implements ActionListener {
 		LevelList = new ArrayList<Level>();
 		LevelList.add(supLevel);
 		
-		while (checkforSubLinks(supLevel)) {
+		while (!supLevel.isLowest()) {
 			Level subLevel = new Level(LevelList.size());
 
 			for (Node supNode : supLevel) {
 				for (String subLink : LinkedList.getSubLinks(supNode.Link)) {
 					Node subNode = new Node(LinkedList.get(LinkedList.search(subLink)));
+					globalNodeList.add(subNode);
 					subLevel.add(subNode);
 				}
 			}
@@ -307,6 +453,8 @@ public class MainMap extends JFrame implements ActionListener {
 	
 	//Configures JPanel
 	public void configurePanel() {
+		MapPanel.addMouseListener(navigateByDrag);
+		MapPanel.addMouseWheelListener(zoomInAction);
 		MapPanel.setLayout(null);
 		MapPanel.setBackground(new Color(255, 204, 153));
 	}
@@ -338,39 +486,17 @@ public class MainMap extends JFrame implements ActionListener {
 		});
 	}
 	
-	//Action Listener opens Topic in MainViewport
-	public ActionListener openClicked(Node clickedNode) {
-		ActionListener openClicked = new ActionListener() {
-			public void actionPerformed(ActionEvent buttonClicked) {
-				Linked clickedLinked = clickedNode.Link;
-				viewport.setActual(clickedLinked);
-				setContentPane(viewport);
-				viewport.update();
-			}
-		};
-		return openClicked;
-	}
-
-	//Returns true if any Node.Link in supLevel have subLinked
-	public boolean checkforSubLinks(Level supLevel) {
-		Boolean subLinksExist = false;
-		for (Node supNode : supLevel) {
-			if (!LinkedList.getSubLinks(supNode.Link).isEmpty()) {
-				subLinksExist = true;
-			}
-		}
-		return subLinksExist;
+	public static Point scaleVector(Point a,double scale) {
+		Point scaledVector = new Point();
+		scaledVector.x = (int) Math.round(a.x*scale);
+		scaledVector.y = (int) Math.round(a.y*scale);
+		return scaledVector;
+		
 	}
 	
-	//Prints a list of Stats for debugging if enabled
-	public void printDebuggingStats(Node subNode,Node supNode) {
-		System.out.println();
-		System.out.println("SubNodeName: " + subNode.nodeName);
-		System.out.println("SupNodeName: " + supNode.nodeName);
-		System.out.println("Angle from \"" + subNode.nodeName + "\" to \"" + supNode.nodeName + "\": " + subNode.getAngletoPoint(supNode)*360/(2*Math.PI));
-		System.out.println("SupNodeXPos: " + (int) supNode.getX());
-		System.out.println("SupNodeYPos: " + (int) supNode.getY());
-		System.out.println("SubNodeXpos: " + (int) subNode.getX());
-		System.out.println("SubNodeYpos: " + (int) subNode.getY());
+	public static Point vectorAddition(Point a, Point b) {
+		Point c = new Point(a.x+b.x,
+							a.y+b.y);
+		return c;
 	}
 }
