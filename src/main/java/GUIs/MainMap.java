@@ -30,11 +30,8 @@ subLvl: Level that is being drawn TO
 This is Map Version 1 which is supposed to look like a branching tree or mindmap
 Other Possible versions are nested circles and grid lines
 
-To-do List:			
-- Get MainViewport Article if Node is clicked						  
+To-do List:								  
 - Navigation features 
-	- zooming in
-	- move by dragging mouse
 	- use Map space more effectively
 		- no stacking
 		- no lonely Nodes
@@ -63,6 +60,7 @@ public class MainMap extends JFrame{
 	private ArrayList<Vertex> treeVertices = new ArrayList<Vertex>();
 	private DrawPanel MapPanel = new DrawPanel();
 	private JTextField search;
+	private JButton cleanMap;
 	private JButton back;
 
 	
@@ -117,6 +115,7 @@ public class MainMap extends JFrame{
 		
 	//Zooms toward the given mouse Position
 	MouseWheelListener zoomInByScroll = new MouseWheelListener() {
+
 //		int previousNotches = 0;
 		int logScale = 0;
 		
@@ -145,6 +144,7 @@ public class MainMap extends JFrame{
 	};
 	
 	//Action Listener opens Topic in MainViewport
+	
 	ActionListener openClicked(Node clickedNode) {
 		ActionListener openClicked = new ActionListener() {
 			public void actionPerformed(ActionEvent buttonClicked) {
@@ -156,6 +156,13 @@ public class MainMap extends JFrame{
 		};
 		return openClicked;
 	}
+	
+	ActionListener cleanMapAction = new ActionListener() {
+			public void actionPerformed(ActionEvent buttonClicked) {
+				cleanUpMap();
+			}
+		};
+
 	
 	//drawPanel is needed to draw Lines
 	public class DrawPanel extends JPanel{
@@ -349,6 +356,18 @@ public class MainMap extends JFrame{
 	
 	//Constructor of MapJFrame
 	public MainMap() {
+		cleanMap = new JButton();
+		cleanMap = new JButton("Clean Map");
+		cleanMap.setText("CleanMap");
+		cleanMap.setBounds(0
+						  ,0
+						  , 200
+						  , 30);
+		cleanMap.setBackground(Color.decode("#FFB366"));
+		cleanMap.addActionListener(cleanMapAction);
+			
+		MapPanel.add(cleanMap);
+		
 		configurePanel();
 		configureMapJFrame();
 		
@@ -494,6 +513,60 @@ public class MainMap extends JFrame{
 	
 	//Executes algorithm to make the map with least possible crossover and maximum spread
 	public void cleanUpMap() {
+		double ke = 1*Math.pow(10, 4);
+		double ks = 0.00001;
+		MapPanel.removeAll();
+
 		
+		int iterations = 10;
+		double deltaT = Math.pow(10, 2)/iterations;
+		
+		for (int i = 0;i<iterations;i++) {
+			ArrayList<Point> deltaPosList = new ArrayList<Point>();
+			ArrayList<Point> velocityList = new ArrayList<Point>();
+			
+			for (Node recvNode : globalNodeList) {
+				int index = globalNodeList.indexOf(recvNode);
+				
+				velocityList.add(index, new Point(0,0));
+				deltaPosList.add(index, new Point(0,0));
+				Point resForce = new Point(0,0);
+
+				ArrayList<Node> genNodes = new ArrayList<Node>();
+				genNodes = (ArrayList<Node>) globalNodeList.clone();
+				genNodes.remove(recvNode);
+				
+				for (Node genNode : genNodes) {
+					double distance = recvNode.distance(genNode);
+					if (distance != 0) {
+						Point unitVectorGtoR = vectorAddition(recvNode,scaleVector(genNode,-1));
+						
+						Point EMforce = scaleVector(unitVectorGtoR,ke*Math.pow(distance, -2));
+						Point springForce = scaleVector(scaleVector(unitVectorGtoR,-1),ks*Math.pow(distance, 2));
+						Point totalForce = vectorAddition(EMforce,springForce);
+						
+						resForce = vectorAddition(resForce,totalForce);
+					}
+				}
+			
+				Point deltavelocity = scaleVector(resForce,deltaT);
+				Point velocity =  vectorAddition(velocityList.get(index),deltavelocity);
+				velocityList.set(index,velocity);
+				
+				
+				Point deltaPos = scaleVector(velocity,deltaT);
+				deltaPosList.set(index, deltaPos);
+				recvNode.setPos(vectorAddition(recvNode,deltaPos));
+			}
+
+			
+			for (Point deltaPos: deltaPosList) {
+				int index = deltaPosList.indexOf(deltaPos);
+				Point newLocation = vectorAddition(globalNodeList.get(deltaPosList.indexOf(deltaPos)),deltaPos);
+				globalNodeList.get(index).setPos(newLocation);
+				
+			}
+		}
+		drawTreeVertices();
 	}
 }
