@@ -53,6 +53,7 @@ public class MainMap extends JFrame{
 	private int height = (int) Hilfsklassen.Variables.standardsize.getHeight();
 	private int L0dist = 200;
 	private int L0size = 50;
+	private double scale = 1;
 	private Point origin = new Point((int) (width/2.),(int) (height/2.));
 	private Boolean debugging = true;
 	
@@ -66,27 +67,20 @@ public class MainMap extends JFrame{
 
 	
 	MouseInputListener navigateByDrag = new MouseInputListener() {
-		Boolean navigating = false;
-		Point previousPos = new Point(0,0);
+		Point previousPos;
 		
-		public void mousePressed(MouseEvent mousePressed) {
-			navigating = true;
-			System.out.println("Navigating enabled!");
-		}
+		public void mouseDragged(MouseEvent mouseDragged) {
+			System.out.println("Mouse dragged!");
+			Point mousePos = mouseDragged.getPoint();
+			Point deltaPos = vectorAddition(mousePos,scaleVector(previousPos,-1));
+			
+			translate(mousePos,deltaPos);
+			previousPos = mousePos;
 
-		public void mouseReleased(MouseEvent mouseReleased) {
-			navigating = false;
-			System.out.println("Navigating disabled!");
 		}
 		
 		public void mouseMoved(MouseEvent mouseMoved) {
-			System.out.println("Mouse moved!");
-			Point mousePos = MouseInfo.getPointerInfo().getLocation();
-			Point deltaPos = vectorAddition(mousePos,scaleVector(previousPos,-1));
-			if (navigating) {
-				translate(mousePos,deltaPos);
-				previousPos = mousePos;
-			}
+			previousPos = mouseMoved.getPoint();
 		}
 		
 		public void translate(Point mousePos,Point deltaPos) {
@@ -96,6 +90,13 @@ public class MainMap extends JFrame{
 				Node.setPos(vectorAddition(Node,deltaPos));
 			}
 			drawTreeVertices();
+		}
+		
+		
+		public void mousePressed(MouseEvent e) {
+		}
+
+		public void mouseReleased(MouseEvent e) {
 		}
 		
 		@Override
@@ -112,45 +113,33 @@ public class MainMap extends JFrame{
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 		}
-
-	
-		public void mouseDragged(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		};
-	
-
-	
-	
+	};
+		
 	//Zooms toward the given mouse Position
-	MouseWheelListener zoomInAction = new MouseWheelListener() {
-		int previousNotches = 0;
-		double scale = 1;
+	MouseWheelListener zoomInByScroll = new MouseWheelListener() {
+//		int previousNotches = 0;
+		int logScale = 0;
 		
 		@Override
 		public void mouseWheelMoved(MouseWheelEvent turnEvent) {
-			int notches = turnEvent.getWheelRotation();
-			int deltaNotches = notches-previousNotches;
+			Point mousePos = turnEvent.getPoint();
+			logScale += turnEvent.getWheelRotation();
 			
-			Point mousePos = MouseInfo.getPointerInfo().getLocation();
-			zoomIn(mousePos,deltaNotches);
-			previousNotches = notches;
+			zoomIn(mousePos);
 		}
 			
-		public void zoomIn(Point mousePos,int deltaNotches) {
-			double factor = Math.pow(10, -deltaNotches/10.);
-			scale = scale*factor;
+		public void zoomIn(Point mousePos) {
+			double scaleNew = Math.pow(10, -logScale/10.);
 			MapPanel.removeAll();
 			
 			for (Node Node : globalNodeList) {
 				Point mousePosToNode = vectorAddition(Node,scaleVector(mousePos,-1));
-				mousePosToNode = scaleVector(mousePosToNode,scale);
+				mousePosToNode = scaleVector(mousePosToNode,scaleNew/scale);
+				Node.setScale(scaleNew/scale);
 				Node.setPos(vectorAddition(mousePos,mousePosToNode));
-				Node.setScale(scale);
-				System.out.println(mousePos);
 			}
+			System.out.println(scaleNew);
+			scale = scaleNew;
 			drawTreeVertices();
 		}
 	};
@@ -214,8 +203,8 @@ public class MainMap extends JFrame{
 		JButton nodeButton;
 		String nodeName;
 		Linked Link;
-		int nodeWidth = L0size*5;
-		int nodeHeight = L0size;
+		double nodeWidth = L0size*5;
+		double nodeHeight = L0size;
 		
 		Node (Linked Link){
 			this.x = origin.x;
@@ -310,8 +299,8 @@ public class MainMap extends JFrame{
 			nodeButton.setText(nodeName);
 			nodeButton.setBounds((int) Math.round(x - nodeWidth*0.5)
 								,(int) Math.round(y - nodeHeight*0.5)
-								, nodeWidth
-								, nodeHeight);
+								,(int) Math.round(nodeWidth)
+								,(int) Math.round(nodeHeight));
 			nodeButton.setBackground(Color.decode("#FFB366"));
 			nodeButton.addActionListener(openClicked(this));
 				
@@ -325,8 +314,8 @@ public class MainMap extends JFrame{
 		}
 		
 		public void setScale(double scale) {
-			nodeWidth  = (int) Math.round(nodeWidth * scale);
-			nodeHeight = (int) Math.round(nodeHeight * scale);
+			nodeWidth  = nodeWidth * scale;
+			nodeHeight = nodeHeight * scale;
 		}
 	}
 
@@ -400,7 +389,7 @@ public class MainMap extends JFrame{
 	public void drawAllSubNodes(Node supNode) {
 		ArrayList<Node> subNodes = supNode.getSubNodes();
 		
-		double maxangle = Math.pow(2/5., supNode.getlevelNum())*2*Math.PI;
+		double maxangle = Math.pow(3/5., supNode.getlevelNum())*2*Math.PI;
 		double length = subNodes.size();
 		double deltaAngle = maxangle/length;
 		
@@ -454,7 +443,8 @@ public class MainMap extends JFrame{
 	//Configures JPanel
 	public void configurePanel() {
 		MapPanel.addMouseListener(navigateByDrag);
-		MapPanel.addMouseWheelListener(zoomInAction);
+		MapPanel.addMouseMotionListener(navigateByDrag);
+		MapPanel.addMouseWheelListener(zoomInByScroll);
 		MapPanel.setLayout(null);
 		MapPanel.setBackground(new Color(255, 204, 153));
 	}
@@ -486,6 +476,7 @@ public class MainMap extends JFrame{
 		});
 	}
 	
+	//scales a vector by a scalar
 	public static Point scaleVector(Point a,double scale) {
 		Point scaledVector = new Point();
 		scaledVector.x = (int) Math.round(a.x*scale);
@@ -494,9 +485,15 @@ public class MainMap extends JFrame{
 		
 	}
 	
+	//adds two vectors together and outputs the result
 	public static Point vectorAddition(Point a, Point b) {
 		Point c = new Point(a.x+b.x,
 							a.y+b.y);
 		return c;
+	}
+	
+	//Executes algorithm to make the map with least possible crossover and maximum spread
+	public void cleanUpMap() {
+		
 	}
 }
