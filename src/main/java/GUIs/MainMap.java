@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.files.DeleteErrorException;
@@ -52,7 +53,7 @@ public class MainMap extends JFrame{
 	private int L0size = 50;
 	private double scale = 1;
 	private Point origin = new Point((int) (width/2.),(int) (height/2.));
-	private Boolean debugging = true;
+	private Boolean debugging = false;
 	
 	//Displayed Swing components on Map
 	private ArrayList<Node> globalNodeList = new ArrayList<Node>();
@@ -64,17 +65,16 @@ public class MainMap extends JFrame{
 	private JButton back;
 
 	
+	//Allows navigation by translating the whole map in direction of drag
 	MouseInputListener navigateByDrag = new MouseInputListener() {
 		Point previousPos;
 		
 		public void mouseDragged(MouseEvent mouseDragged) {
-			System.out.println("Mouse dragged!");
 			Point mousePos = mouseDragged.getPoint();
 			Point deltaPos = vectorAddition(mousePos,scaleVector(previousPos,-1));
 			
 			translate(mousePos,deltaPos);
 			previousPos = mousePos;
-
 		}
 		
 		public void mouseMoved(MouseEvent mouseMoved) {
@@ -89,7 +89,6 @@ public class MainMap extends JFrame{
 			}
 			drawTreeVertices();
 		}
-		
 		
 		public void mousePressed(MouseEvent e) {
 		}
@@ -115,8 +114,6 @@ public class MainMap extends JFrame{
 		
 	//Zooms toward the given mouse Position
 	MouseWheelListener zoomInByScroll = new MouseWheelListener() {
-
-//		int previousNotches = 0;
 		int logScale = 0;
 		
 		@Override
@@ -137,14 +134,12 @@ public class MainMap extends JFrame{
 				Node.setScale(scaleNew/scale);
 				Node.setPos(vectorAddition(mousePos,mousePosToNode));
 			}
-			System.out.println(scaleNew);
 			scale = scaleNew;
 			drawTreeVertices();
 		}
 	};
 	
-	//Action Listener opens Topic in MainViewport
-	
+	//Opens Topic in MainViewport when clicked
 	ActionListener openClicked(Node clickedNode) {
 		ActionListener openClicked = new ActionListener() {
 			public void actionPerformed(ActionEvent buttonClicked) {
@@ -157,22 +152,8 @@ public class MainMap extends JFrame{
 		return openClicked;
 	}
 	
-	ActionListener cleanMapAction = new ActionListener() {
-			public void actionPerformed(ActionEvent buttonClicked) {
-				cleanUpMap();
-			}
-		};
-
-	
 	//drawPanel is needed to draw Lines
-	public class DrawPanel extends JPanel{
-
-		public void clearLines() {
-			//if other vertices need to be cleared add here
-		    treeVertices.clear();
-		    repaint();
-		}
-		
+	public class DrawPanel extends JPanel{	
 		public void addLine(Node start,Node end, Color color) {
 			treeVertices.add(new Vertex(start,end, color));        
 		    repaint();
@@ -203,6 +184,7 @@ public class MainMap extends JFrame{
 		    treeVertices.add(this);        
 		    repaint();
 		}
+		
 	}
 	
 	//Node class is position, Name and Link of a Topic
@@ -220,6 +202,23 @@ public class MainMap extends JFrame{
 			this.nodeName = Link.getName();
 		}
 		
+		//Draws all subNodes and treeVertices of a given supNode
+		public void drawAllSubNodes() {
+			ArrayList<Node> subNodes = getSubNodes();
+			
+			double maxangle = Math.pow(2/5., getlevelNum())*2*Math.PI;
+			double length = subNodes.size();
+			double deltaAngle = maxangle/length;
+			
+			double angle = getAngletoPoint(getSupNode());
+			angle -= (deltaAngle + maxangle)/2.;
+			
+			for (Node subNode : subNodes) {
+				angle += deltaAngle;
+				subNode.draw(angle);
+			}
+		}
+		
 		//Prints a list of Stats for debugging if enabled
 		public void printDebuggingStats() {
 			System.out.println();
@@ -233,7 +232,7 @@ public class MainMap extends JFrame{
 		}
 		
 		//Sets the Coordinates and size of a subNode with given angle to supNode
-		public void setNodeProperties(double angleToSupNode) {
+		public void draw(double angleToSupNode) {
 			int radius 		= (int) Math.round(Math.pow(2/3., getSupNode().getlevelNum())*L0dist);
 			int size 		= (int) Math.round(Math.pow(3/5., getlevelNum())*L0size);
 			nodeWidth = size*5;
@@ -244,6 +243,12 @@ public class MainMap extends JFrame{
 			
 			x = (int) Math.round(getSupNode().x + deltax);
 			y = (int) Math.round(getSupNode().y + deltay);
+			
+			drawButton();
+			
+			if (debugging) {
+				printDebuggingStats();
+			}
 		}
 		
 		public double getAngletoPoint(Point p) {
@@ -356,17 +361,7 @@ public class MainMap extends JFrame{
 	
 	//Constructor of MapJFrame
 	public MainMap() {
-		cleanMap = new JButton();
-		cleanMap = new JButton("Clean Map");
-		cleanMap.setText("CleanMap");
-		cleanMap.setBounds(0
-						  ,0
-						  , 200
-						  , 30);
-		cleanMap.setBackground(Color.decode("#FFB366"));
-		cleanMap.addActionListener(cleanMapAction);
-			
-		MapPanel.add(cleanMap);
+		createCleanMapJButton();
 		
 		configurePanel();
 		configureMapJFrame();
@@ -374,20 +369,31 @@ public class MainMap extends JFrame{
 		drawNodes();
 		drawTreeVertices();
 	}
-	
-	//Draws all treeVertices
-	public void drawTreeVertices() {
-		for (Node Node : globalNodeList) {
-			drawVertex(Node);
-		}
+	//Creates cleanMapJButton
+	public void createCleanMapJButton() {
+		//Starts MapCleanUp
+		ActionListener cleanMapAction = new ActionListener() {
+			public void actionPerformed(ActionEvent buttonClicked) {
+				try {
+					cleanUpMap();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		JButton cleanMapJButton = new JButton("Clean Map");
+		cleanMapJButton.setText("cleanMapJButton");
+		cleanMapJButton.setBounds(0
+						  ,0
+						  , 200
+						  , 30);
+		cleanMapJButton.setBackground(Color.decode("#FFB366"));
+		cleanMapJButton.addActionListener(cleanMapAction);
+		MapPanel.add(cleanMapJButton);
 	}
-	
-	//Calculates Position of and finally draws Line of Vertex
-	public void drawVertex(Node subNode) {
-			Vertex treeVertex = new Vertex(subNode.getSupNode(),subNode,Color.BLACK);
-			treeVertex.drawVertex();
-		}
-	
+
 	//Draws all Nodes
 	public void drawNodes() {
 		Node originNode = LevelList.get(0).get(0);
@@ -398,39 +404,20 @@ public class MainMap extends JFrame{
 		for (Level supLvl : LevelList) {
 			if (!supLvl.isLowest()) {
 				for (Node supNode : supLvl) {
-					drawAllSubNodes(supNode);
+					supNode.drawAllSubNodes();
 				}
 			}
 		}
 	}
 	
-	//Draws all subNodes and treeVertices of a given supNode
-	public void drawAllSubNodes(Node supNode) {
-		ArrayList<Node> subNodes = supNode.getSubNodes();
-		
-		double maxangle = Math.pow(3/5., supNode.getlevelNum())*2*Math.PI;
-		double length = subNodes.size();
-		double deltaAngle = maxangle/length;
-		
-		double angle = supNode.getAngletoPoint(supNode.getSupNode());
-		angle -= (deltaAngle + maxangle)/2.;
-		
-		for (Node subNode : subNodes) {
-			angle += deltaAngle;
-			drawSubnode(subNode,angle);
+	//Draws all treeVertices
+	public void drawTreeVertices() {
+		for (Node Node : globalNodeList) {
+			Vertex treeVertex = new Vertex(Node.getSupNode(),Node,Color.BLACK);
+			treeVertex.drawVertex();
 		}
 	}
-
-	//Calculates Position of and finally draws JButton of subNode
-	public void drawSubnode(Node subNode,double angle) {
-		subNode.setNodeProperties(angle);
-		subNode.drawButton();
 		
-		if (debugging) {
-//			subNode.printDebuggingStats();
-		}
-	}
-	
 	//Converts LinkedList to a List of Levels with the starting Linked being originName
 	public ArrayList<Level> convertLinkedListToLevelList(){
 		Level supLevel = new Level(0);
@@ -512,14 +499,12 @@ public class MainMap extends JFrame{
 	}
 	
 	//Executes algorithm to make the map with least possible crossover and maximum spread
-	public void cleanUpMap() {
-		double ke = 1*Math.pow(10, 4);
-		double ks = 0.00001;
-		MapPanel.removeAll();
-
+	public void cleanUpMap() throws InterruptedException {
+		double ke = 1*Math.pow(10,1);
+		double ks = 1*Math.pow(10, 10);
 		
-		int iterations = 10;
-		double deltaT = Math.pow(10, 2)/iterations;
+		int iterations = 20;
+		double deltaT = 5./iterations;
 		
 		for (int i = 0;i<iterations;i++) {
 			ArrayList<Point> deltaPosList = new ArrayList<Point>();
@@ -535,17 +520,24 @@ public class MainMap extends JFrame{
 				ArrayList<Node> genNodes = new ArrayList<Node>();
 				genNodes = (ArrayList<Node>) globalNodeList.clone();
 				genNodes.remove(recvNode);
+				Node spgenNode = recvNode.getSupNode();
+				
+				double distance = recvNode.distance(spgenNode);
+				Point unitVectorGtoR = vectorAddition(recvNode,scaleVector(spgenNode,1));
+				Point springForce = scaleVector(scaleVector(unitVectorGtoR,1),ks*Math.pow((
+																							distance-Math.round(Math.pow(2/3., spgenNode.getlevelNum())*L0dist)), 2));
+				resForce = vectorAddition(resForce,springForce);
 				
 				for (Node genNode : genNodes) {
-					double distance = recvNode.distance(genNode);
+					distance = recvNode.distance(genNode);
 					if (distance != 0) {
-						Point unitVectorGtoR = vectorAddition(recvNode,scaleVector(genNode,-1));
+						unitVectorGtoR = vectorAddition(recvNode,scaleVector(genNode,-1));
 						
 						Point EMforce = scaleVector(unitVectorGtoR,ke*Math.pow(distance, -2));
-						Point springForce = scaleVector(scaleVector(unitVectorGtoR,-1),ks*Math.pow(distance, 2));
-						Point totalForce = vectorAddition(EMforce,springForce);
 						
-						resForce = vectorAddition(resForce,totalForce);
+//						Point totalForce = vectorAddition(EMforce,springForce);
+						
+						resForce = vectorAddition(resForce,EMforce);
 					}
 				}
 			
@@ -553,20 +545,20 @@ public class MainMap extends JFrame{
 				Point velocity =  vectorAddition(velocityList.get(index),deltavelocity);
 				velocityList.set(index,velocity);
 				
-				
 				Point deltaPos = scaleVector(velocity,deltaT);
 				deltaPosList.set(index, deltaPos);
 				recvNode.setPos(vectorAddition(recvNode,deltaPos));
 			}
 
-			
+			MapPanel.removeAll();
 			for (Point deltaPos: deltaPosList) {
 				int index = deltaPosList.indexOf(deltaPos);
 				Point newLocation = vectorAddition(globalNodeList.get(deltaPosList.indexOf(deltaPos)),deltaPos);
 				globalNodeList.get(index).setPos(newLocation);
-				
 			}
+			drawTreeVertices();
+			MapPanel.repaint();
+//			TimeUnit.MILLISECONDS.sleep((int) (deltaT*1000));
 		}
-		drawTreeVertices();
 	}
 }
