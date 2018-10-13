@@ -37,6 +37,7 @@ To-do List:
 		- no stacking
 		- no lonely Nodes
 - Nicer Aesthetics
+- Compiler Compliances
 - ....
 */
 
@@ -146,6 +147,7 @@ public class MainMap extends JFrame{
 				Linked clickedLinked = clickedNode.Link;
 				viewport.setActual(clickedLinked);
 				setContentPane(viewport);
+				viewport.update();
 			}
 		};
 		return openClicked;

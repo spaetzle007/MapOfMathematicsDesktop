@@ -134,7 +134,7 @@ public class MainViewport extends JPanel {
 		/**
 		 * Ausgabe aktualisieren
 		 */
-		private void update() {
+		public void update() {
 			//Überschrift
 			headerviewport.setText(actual.getName());	
 					
