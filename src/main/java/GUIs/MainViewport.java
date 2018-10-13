@@ -322,4 +322,5 @@ public class MainViewport extends JPanel {
 		}
 		public Linked getLinked() {return actual;}
 		public LinkedList getLinkedList() {return links;}
+		public void setActual(Linked clickedLinked) {actual = clickedLinked;}
 }
