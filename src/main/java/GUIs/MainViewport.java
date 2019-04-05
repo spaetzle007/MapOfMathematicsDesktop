@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
@@ -96,8 +97,16 @@ public class MainViewport extends JPanel {
 		 */
 		public MainViewport() {
 			//LinkedList-Variablen initialisieren
+				
+				
 			try {
-				links= new LinkedList(MainViewport.class.getProtectionDomain().getCodeSource().getLocation().getPath()+"MOM.xml");
+				File MoMFile = new File(MainViewport.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+				links= new LinkedList(MoMFile.getAbsolutePath() + File.separator + "MOM.xml");
+				
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
 			} catch(AccessException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Fehler", 3);
 				System.exit(1);
