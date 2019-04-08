@@ -50,6 +50,7 @@ public class MainMap extends JFrame{
 
 /**********************************************************************************************************************************/
 	
+
 	//Main-Methode zum Starten der Map Ansicht
 	public static void main(String[] args) {
 		//Why is the Event Queue,runnable, run shit even needed?
@@ -99,7 +100,6 @@ public class MainMap extends JFrame{
 			MapPanel.removeAll();
 			
 			for (Node Node : globalNodeList) {
-//				Node.setPos(vectorAddition(Node,deltaPos));
 				Node.setPos(Node.add(deltaPos));
 			}
 			drawTreeEdges();
